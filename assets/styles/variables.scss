@@ -1,11 +1,23 @@
-$bg-color: #ffffff;
-$white: #fff;
-$link-color: #4386ff;
-$text-color: #282828;
-$mobile: "max-width: 768px";
-$tablet: "max-width: 991px";
-$small-dekstop: "max-width: 1280px";
-$dekstop: "max-width: 1366px";
-$middle-dekstop: "max-width: 1440px";
-$large-dekstop: "max-width: 1920px";
-$extra-dekstop: "min-width: 1920px";
+body {
+	--color-text: #fbd54a;
+	--color-bg: #333;
+	--color-link: #4d4f5f;
+	--color-link-hover: #fff;
+	--color-info: #fff;
+	--color-main-bg: #24262d;
+	--path-fill-1: #000000;
+	--path-fill-2: #1d1d1f;
+	--path-fill-3: #fbd54a;
+	--color-title: #fff;
+	--font-family-title: 'Arapey', serif;
+	--font-size-title: 5vmax;
+	--font-weight-title: 400;
+	--color-menu: #000000;
+	--color-menu-hover: #fff;
+	--font-family-menu: 'Arapey', serif;
+	--font-size-menu: 4vmax;
+	--font-weight-menu: 400;
+	--button-bg: #fff;
+	--button-circle: #ada4a4;
+	--button-line: #222;
+}

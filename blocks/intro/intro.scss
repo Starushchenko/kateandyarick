@@ -1,0 +1,213 @@
+// В этом файле должны быть стили для БЭМ-блока intro, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/mixins.scss";
+
+.intro {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	background: url('../img/intro-demo.jpg') no-repeat;
+	background-size: cover;
+}
+
+.intro__names-svg {
+	width: 1000px;
+
+	#yar-1 {
+		stroke-dasharray: 1300;
+		stroke-dashoffset: 1300;
+		animation: dash 3s linear forwards;
+		-webkit-animation-delay: 1s; /* Chrome, Safari, Opera */
+		animation-delay: 1s;
+	}
+
+	#yar-1-1 {
+		stroke-dasharray: 500;
+		stroke-dashoffset: 500;
+		animation: dash 2s linear forwards;
+		animation-delay: 1.1s;
+	}
+
+	#yar-2-1 {
+		stroke-dasharray: 500;
+		stroke-dashoffset: 500;
+		animation: dash 3s linear forwards;
+		animation-delay: 1.3s;
+	}
+
+	#yar-2-2 {
+		stroke-dasharray: 500;
+		stroke-dashoffset: 500;
+		animation: dash 3s linear forwards;
+		animation-delay: 1.6s;
+	}
+
+	#yar-3-1 {
+		stroke-dasharray: 500;
+		stroke-dashoffset: 500;
+		animation: dash 3s linear forwards;
+		animation-delay: 2.1s;
+	}
+
+	#yar-3-2 {
+		stroke-dasharray: 500;
+		stroke-dashoffset: 500;
+		animation: dash 3s linear forwards;
+		animation-delay: 2.4s;
+	}
+
+	#yar-4 {
+		stroke-dasharray: 700;
+		stroke-dashoffset: 700;
+		animation: dash 3s linear forwards;
+		animation-delay: 2.6s;
+	}
+
+	#yar-5 {
+		stroke-dasharray: 500;
+		stroke-dashoffset: 500;
+		animation: dash 3s linear forwards;
+		animation-delay: 3s;
+	}
+
+	#yar-6 {
+		stroke-dasharray: 500;
+		stroke-dashoffset: 500;
+		animation: dash 3s linear forwards;
+		animation-delay: 3.1s;
+	}
+
+	#yar-7 {
+		stroke-dasharray: 1500;
+		stroke-dashoffset: 1500;
+		animation: dash 3s linear forwards;
+		animation-delay: 3.3s;
+	}
+
+	#and-1 {
+		stroke-dasharray: 1500;
+		stroke-dashoffset: 1500;
+		animation: dash 3s linear forwards;
+		animation-delay: 3.5s;
+	}
+
+	#kate-1-1 {
+		stroke-dasharray: 1500;
+		stroke-dashoffset: 1500;
+		animation: dash 3s linear forwards;
+		animation-delay: 3.6s;
+	}
+
+	#kate-1-2 {
+		stroke-dasharray: 1500;
+		stroke-dashoffset: 1500;
+		animation: dash 3s linear forwards;
+		animation-delay: 3.7s;
+	}
+
+	#kate-1-3 {
+		stroke-dasharray: 1500;
+		stroke-dashoffset: 1500;
+		animation: dash 3s linear forwards;
+		animation-delay: 3.8s;
+	}
+
+	#kate-1-4 {
+		stroke-dasharray: 1500;
+		stroke-dashoffset: 1500;
+		animation: dash 3s linear forwards;
+		animation-delay: 3.9s;
+	}
+
+	#kate-2-1 {
+		stroke-dasharray: 1500;
+		stroke-dashoffset: 1500;
+		animation: dash 3s linear forwards;
+		animation-delay: 4.1s;
+	}
+
+	#kate-2-2 {
+		stroke-dasharray: 1500;
+		stroke-dashoffset: 1500;
+		animation: dash 3s linear forwards;
+		animation-delay: 4.3s;
+	}
+
+	#kate-3 {
+		stroke-dasharray: 1500;
+		stroke-dashoffset: 1500;
+		animation: dash 3s linear forwards;
+		animation-delay: 4.4s;
+	}
+
+	#kate-4-1 {
+		stroke-dasharray: 1500;
+		stroke-dashoffset: 1500;
+		animation: dash 3s linear forwards;
+		animation-delay: 4.5s;
+	}
+
+	#kate-4-2 {
+		stroke-dasharray: 1500;
+		stroke-dashoffset: 1500;
+		animation: dash 3s linear forwards;
+		animation-delay: 4.7s;
+	}
+
+	#kate-4-3 {
+		stroke-dasharray: 1500;
+		stroke-dashoffset: 1500;
+		animation: dash 3s linear forwards;
+		animation-delay: 4.8s;
+	}
+
+	#kate-5 {
+		stroke-dasharray: 1500;
+		stroke-dashoffset: 1500;
+		animation: dash 3s linear forwards;
+		animation-delay: 5s;
+	}
+
+	#kate-6-1 {
+		stroke-dasharray: 1500;
+		stroke-dashoffset: 1500;
+		animation: dash 3s linear forwards;
+		animation-delay: 5.1s;
+	}
+
+	#kate-6-2 {
+		stroke-dasharray: 1500;
+		stroke-dashoffset: 1500;
+		animation: dash 3s linear forwards;
+		animation-delay: 5.2s;
+	}
+
+	#kate-7 {
+		stroke-dasharray: 1500;
+		stroke-dashoffset: 1500;
+		animation: dash 3s linear forwards;
+		animation-delay: 5.3s;
+	}
+
+	#kate-8-1, #kate-8-2, #kate-8-3, #kate-8-4, #kate-8-5, #kate-8-6, #kate-8-7, #kate-8-8 {
+		stroke-dasharray: 1500;
+		stroke-dashoffset: 1500;
+		animation: dash 3s linear forwards;
+		animation-delay: 5.4s;
+	}
+
+	#kate-9 {
+		stroke-dasharray: 1500;
+		stroke-dashoffset: 1500;
+		animation: dash 3s linear forwards;
+		animation-delay: 5.6s;
+	}
+}
+
+@keyframes dash {
+	to {
+		stroke-dashoffset: 0;
+	}
+}

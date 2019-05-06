@@ -1,4 +1,5 @@
 // assets and script style addons
+@import "libs/animate.scss";
 @import "libs/magnific-popup.scss";
 
 // global styles
@@ -12,5 +13,7 @@
 // BEM blocks
 @import "../../blocks/accordion/accordion.scss";
 @import "../../blocks/elastic-tabs/elastic-tabs.scss";
-@import "../../blocks/tabs/tabs.scss";
+@import "../../blocks/intro/intro.scss";
 @import "../../blocks/modal/modal.scss";
+@import "../../blocks/navigation/navigation.scss";
+@import "../../blocks/tabs/tabs.scss";

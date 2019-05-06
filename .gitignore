@@ -1,4 +1,5 @@
 build/*
+design/
 node_modules/
 *.log
 *.rar
