@@ -1,0 +1,40 @@
+// В этом файле должны быть стили для БЭМ-блока story-map, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/mixins.scss";
+
+.story-map {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: #fff;
+}
+
+.story-map__label-title {
+	font-size: 14px;
+	line-height: 1.3;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+.story-map__label-title, .story-map__label-description {
+	color: #000;
+}
+
+img {
+	border: 0;
+}
+
+#storyMap {
+	width: 800px;
+	height: 500px;
+}
+
+#content {
+	position: fixed;
+	top: 10px;
+	left: 800px;
+	margin: 30px;
+}

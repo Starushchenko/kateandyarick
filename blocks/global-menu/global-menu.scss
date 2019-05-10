@@ -1,0 +1,173 @@
+// В этом файле должны быть стили для БЭМ-блока global-menu, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/mixins.scss";
+
+
+.global-menu {
+	width: 100vw;
+	height: 90vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+	z-index: 100;
+}
+
+.global-menu__wrap {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.global-menu__item {
+	color: var(--color-menu);
+	font-size: 30px;
+	line-height: 1.3;
+	opacity: 0;
+	transform: translateY(-100%);
+	pointer-events: none;
+	display: inline-block;
+	margin: .25em 0 .35em;
+	padding-bottom: 1px;
+	transition: transform 0.3s, opacity 0.3s;
+	transition-timing-function: ease-in;
+}
+
+.global-menu__item--big {
+	transition: transform 0.1s, opacity 0.1s;
+	transform: translateY(100%);
+	transition-timing-function: ease-out;
+}
+
+.global-menu__item:hover {
+	color: var(--color-menu-hover);
+	border-bottom: 1px solid;
+	padding-bottom: 0;
+}
+
+.global-menu__item.is-opened {
+	opacity: 1;
+	transform: translateY(0) rotate(0);
+	pointer-events: auto;
+	transition-timing-function: ease;
+}
+
+.global-menu__item:nth-of-type(1) {
+	transition-delay: 0s;
+}
+
+.global-menu__item.is-opened:nth-of-type(1) {
+	transition-delay: 0.45s;
+}
+
+.global-menu__item:nth-of-type(2) {
+	transition-delay: 0.03s;
+}
+
+.global-menu__item.is-opened:nth-of-type(2) {
+	transition-delay: 0.4s;
+}
+
+.global-menu__item:nth-of-type(3) {
+	transition-delay: 0.05s;
+}
+
+.global-menu__item.is-opened:nth-of-type(3) {
+	transition-delay: 0.45s;
+}
+
+.global-menu__item:nth-of-type(4) {
+	transition-delay: 0.7s;
+}
+
+.global-menu__item.is-opened:nth-of-type(4) {
+	transition-delay: 0.5s;
+}
+
+.global-menu__item--big.is-opened {
+	transition-duration: 0.3s;
+}
+
+.global-menu__item--big:nth-of-type(1) {
+	transition-delay: 0s;
+}
+
+.global-menu__item--big.is-opened:nth-of-type(1) {
+	transition-delay: 0.65s;
+}
+
+.global-menu__item--big:nth-of-type(2) {
+	transition-delay: 0s;
+}
+
+.global-menu__item--big.is-opened:nth-of-type(2) {
+	transition-delay: 0.7s;
+}
+
+.global-menu__item--big:nth-of-type(3) {
+	transition-delay: 0s;
+}
+
+.global-menu__item--big.is-opened:nth-of-type(3) {
+	transition-delay: 0.75s;
+}
+
+.global-menu__item--big:nth-of-type(4) {
+	transition-delay: 0s;
+}
+
+.global-menu__item--big.is-opened:nth-of-type(4) {
+	transition-delay: 0.8s;
+}
+
+.global-menu__item--big:nth-of-type(5) {
+	transition-delay: 0s;
+}
+
+.global-menu__item--big.is-opened:nth-of-type(5) {
+	transition-delay: 0.8s;
+}
+
+.global-menu__item--big:nth-of-type(6) {
+	transition-delay: 0s;
+}
+
+.global-menu__item--big.is-opened:nth-of-type(6) {
+	transition-delay: 0.8s;
+}
+
+.global-menu__item--big:nth-of-type(7) {
+	transition-delay: 0s;
+}
+
+.global-menu__item--big.is-opened:nth-of-type(7) {
+	transition-delay: 0.8s;
+}
+
+.global-menu__item--big:nth-of-type(8) {
+	transition-delay: 0s;
+}
+
+.global-menu__item--big.is-opened:nth-of-type(8) {
+	transition-delay: 0.8s;
+}
+
+.global-menu__item--big:nth-of-type(9) {
+	transition-delay: 0s;
+}
+
+.global-menu__item--big.is-opened:nth-of-type(9) {
+	transition-delay: 0.8s;
+}
+
+.global-menu__item--big:nth-of-type(10) {
+	transition-delay: 0s;
+}
+
+.global-menu__item--big.is-opened:nth-of-type(10) {
+	transition-delay: 0.8s;
+}

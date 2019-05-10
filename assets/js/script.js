@@ -2018,6 +2018,7 @@ function () {
   });
 })();
 
+document.addEventListener('DOMContentLoaded', function () {});
 jQuery(document).ready(function ($) {
   var tabs = $('.tabs');
   tabs.each(function () {

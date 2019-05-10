@@ -15,6 +15,14 @@
 .intro__names-svg {
 	width: 1000px;
 
+	path {
+		stroke-dashoffset: 1300;
+		stroke-dasharray: 1300;
+	}
+}
+
+.intro__names-svg.intro__names-svg--js-ready {
+
 	#yar-1 {
 		stroke-dasharray: 1300;
 		stroke-dashoffset: 1300;

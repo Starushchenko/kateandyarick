@@ -21,9 +21,49 @@ html {
 }
 
 body {
-	font-family: Arial, sans-serif;
 	font-size: 18px;
-	color: #000;
+	color: var(--color-info);
+	background: #2c2d31;
+	font-family: 'Museo Cyrl', Arial, sans-serif;
+	font-weight: 300;
+}
+
+.loading::before {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #2c2d31;
+}
+
+.js .loading::before, .js .loading::after {
+	content: '';
+	position: fixed;
+	z-index: 1000;
+}
+
+/*.loading::after {
+	top: 50%;
+	left: 50%;
+	width: 40px;
+	height: 40px;
+	margin: -20px 0 0 -20px;
+	border: 8px solid #383a41;
+	border-bottom-color: #565963;
+	border-radius: 50%;
+	animation: animLoader 0.8s linear infinite forwards;
+}*/
+
+.loading::after {
+	top: calc(50% - 1.5em);
+	left: calc(50% - 1.3em);
+	width: 2.6em;
+	height: 3em;
+	border: 3px solid transparent;
+	border-top-color: #b0fbff;
+	border-bottom-color: #b0fbff;
+	border-radius: 50%;
+	animation: spin-stretch 2s ease infinite;
 }
 
 a {
@@ -52,10 +92,6 @@ select {
 	-webkit-appearance: none;
 	appearance: none;
 	background-color: #fff;
-	/* note: bg image below uses 2 urls. The first is an svg data uri for the arrow icon, and the second is the gradient.
-		for the icon, if you want to change the color, be sure to use `%23` instead of `#`, since it's a url. You can also swap in a different svg icon or an external image reference
-
-	*/
 	background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
 	linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
 	background-repeat: no-repeat, repeat;
@@ -65,17 +101,14 @@ select {
 	background-size: .65em auto, 100%;
 }
 
-/* Hide arrow icon in IE browsers */
 select::-ms-expand {
 	display: none;
 }
 
-/* Hover style */
 select:hover {
 	border-color: #888;
 }
 
-/* Focus style */
 select:focus {
 	border-color: #aaa;
 	/* It'd be nice to use -webkit-focus-ring-color here but it doesn't work on box-shadow */
@@ -85,12 +118,10 @@ select:focus {
 	outline: none;
 }
 
-/* Set options to normal weight */
 select option {
 	font-weight: normal;
 }
 
-/* Support for rtl text, explicit support for Arabic and Hebrew */
 *[dir="rtl"] select, :root:lang(ar) select, :root:lang(iw) select {
 	background-position: left .7em top 50%, 0 0;
 	padding: .6em .8em .5em 1.4em;
@@ -107,7 +138,6 @@ textarea {
 	box-sizing: border-box;
 }
 
-
 .visually-hidden {
 	clip: rect(0 0 0 0);
 	width: 1px;
@@ -122,4 +152,21 @@ textarea {
 
 .invisible {
 	visibility: hidden;
+}
+
+@keyframes animLoader {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes spin-stretch {
+	50% {
+		transform: rotate(360deg) scale(0.4, 0.33);
+		border-width: 8px;
+	}
+	100% {
+		transform: rotate(720deg) scale(1, 1);
+		border-width: 3px;
+	}
 }
