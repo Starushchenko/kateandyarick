@@ -1,6 +1,7 @@
 // assets and script style addons
 @import "libs/animate.scss";
 @import "libs/magnific-popup.scss";
+@import "libs/jquery.mCustomScrollbar.scss";
 
 // global styles
 @import "reset.scss";
@@ -11,12 +12,13 @@
 @import "svg_sprite.scss";
 
 // BEM blocks
-@import "../../blocks/accordion/accordion.scss";
-@import "../../blocks/elastic-tabs/elastic-tabs.scss";
+@import "../../blocks/about/about.scss";
 @import "../../blocks/global-menu/global-menu.scss";
+@import "../../blocks/grid/grid.scss";
+@import "../../blocks/guests/guests.scss";
 @import "../../blocks/hamburger/hamburger.scss";
 @import "../../blocks/intro/intro.scss";
-@import "../../blocks/modal/modal.scss";
 @import "../../blocks/navigation/navigation.scss";
 @import "../../blocks/story-map/story-map.scss";
-@import "../../blocks/tabs/tabs.scss";
+@import "../../blocks/timeline/timeline.scss";
+@import "../../blocks/wedding/wedding.scss";

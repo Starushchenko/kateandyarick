@@ -1,8 +1,8 @@
 {
-  "name": "projectTemplate",
+  "name": "staru-wedding-site",
   "version": "1.0.0",
   "private": true,
-  "description": "Стартовый шаблон проекта на gulp с sass и БЭМ",
+  "description": "Yarick Starushchenko & Kate Podbello Wedding",
   "author": "Yaroslav Starushchenko",
   "devDependencies": {
     "@babel/core": "^7.2.2",

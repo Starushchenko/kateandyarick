@@ -11,7 +11,7 @@
 		/* Modern Browsers */
 	url('../fonts/MuseoSansCyrl-300.ttf') format('truetype');
 	/* Legacy iOS */
-	font-display: optional;
+	font-display: fallback;
 }
 
 @font-face {
@@ -27,7 +27,15 @@
 		/* Modern Browsers */
 	url('../fonts/MuseoSansCyrl-300Italic.ttf') format('truetype');
 	/* Legacy iOS */
-	font-display: optional;
+	font-display: fallback;
+}
+
+@font-face {
+	font-family: 'Museo Cyrl';
+	font-style: normal;
+	font-weight: 500;
+	src: url('../fonts/museosanscyrl-500.ttf');
+	font-display: fallback;
 }
 
 @font-face {
@@ -43,5 +51,5 @@
 		/* Modern Browsers */
 	url('../fonts/MuseoSansCyrl-700.ttf') format('truetype');
 	/* Legacy iOS */
-	font-display: optional;
+	font-display: fallback;
 }

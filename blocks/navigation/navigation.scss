@@ -4,6 +4,8 @@
 @import "../../assets/styles/mixins.scss";
 
 .navigation {
+	z-index: 3;
+
 	a {
 		text-decoration: none;
 		color: var(--color-link);
@@ -12,7 +14,7 @@
 
 	a:hover,
 	a:focus {
-		color: var(--color-link-hover);
+		color: $color-accent-dark;
 		outline: none;
 	}
 }
@@ -24,6 +26,7 @@
 	position: fixed;
 	top: 0;
 	left: 0;
+	z-index: 4;
 }
 
 .shape-overlays.is-opened {

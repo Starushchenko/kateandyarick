@@ -6,1839 +6,10 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-jQuery(document).ready(function () {
-  var accordionsMenu = $('.accordion');
-
-  if (accordionsMenu.length > 0) {
-    accordionsMenu.each(function () {
-      var accordion = $(this); //detect change in the input[type="checkbox"] value
-
-      accordion.on('change', '.accordion__toggler', function () {
-        var checkbox = $(this);
-        checkbox.prop('checked') ? checkbox.siblings('.accordion__item-content').attr('style', 'display:none;').slideDown(300) : checkbox.siblings('.accordion__item-content').attr('style', 'display:block;').slideUp(300);
-      });
-    });
-  }
-});
-$(document).ready(function () {
-  var tabs = $('.elastic-tabs');
-  var items = $('.elastic-tabs').find('.elastic-tabs__item').length;
-  var selector = $(".elastic-tabs").find(".elastic-tabs__range");
-  var activeItem = tabs.find('.elastic-tabs__item--active');
-  var activeWidth = activeItem.innerWidth();
-  $(".elastic-tabs__range").css({
-    "left": activeItem.position.left + "px",
-    "width": activeWidth + "px"
-  });
-  $(".elastic-tabs").on("click", ".elastic-tabs__item", function (e) {
-    e.preventDefault();
-    $('.elastic-tabs__item').removeClass("elastic-tabs__item--active");
-    $(this).addClass('elastic-tabs__item--active');
-    var activeWidth = $(this).innerWidth();
-    var itemPos = $(this).position();
-    $(".elastic-tabs__range").css({
-      "left": itemPos.left + "px",
-      "width": activeWidth + "px"
-    });
-  });
-});
-/*! Magnific Popup - v1.1.0 - 2016-02-20
- * http://dimsemenov.com/plugins/magnific-popup/
- * Copyright (c) 2016 Dmitry Semenov; */
-
-;
-
-(function (factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['jquery'], factory);
-  } else if ((typeof exports === "undefined" ? "undefined" : _typeof(exports)) === 'object') {
-    // Node/CommonJS
-    factory(require('jquery'));
-  } else {
-    // Browser globals
-    factory(window.jQuery || window.Zepto);
-  }
-})(function ($) {
-  /*>>core*/
-
-  /**
-   *
-   * Magnific Popup Core JS file
-   *
-   */
-
-  /**
-   * Private static constants
-   */
-  var CLOSE_EVENT = 'Close',
-      BEFORE_CLOSE_EVENT = 'BeforeClose',
-      AFTER_CLOSE_EVENT = 'AfterClose',
-      BEFORE_APPEND_EVENT = 'BeforeAppend',
-      MARKUP_PARSE_EVENT = 'MarkupParse',
-      OPEN_EVENT = 'Open',
-      CHANGE_EVENT = 'Change',
-      NS = 'mfp',
-      EVENT_NS = '.' + NS,
-      READY_CLASS = 'mfp-ready',
-      REMOVING_CLASS = 'mfp-removing',
-      PREVENT_CLOSE_CLASS = 'mfp-prevent-close';
-  /**
-   * Private vars
-   */
-
-  /*jshint -W079 */
-
-  var mfp,
-      // As we have only one instance of MagnificPopup object, we define it locally to not to use 'this'
-  MagnificPopup = function MagnificPopup() {},
-      _isJQ = !!window.jQuery,
-      _prevStatus,
-      _window = $(window),
-      _document,
-      _prevContentType,
-      _wrapClasses,
-      _currPopupType;
-  /**
-   * Private functions
-   */
-
-
-  var _mfpOn = function _mfpOn(name, f) {
-    mfp.ev.on(NS + name + EVENT_NS, f);
-  },
-      _getEl = function _getEl(className, appendTo, html, raw) {
-    var el = document.createElement('div');
-    el.className = 'mfp-' + className;
-
-    if (html) {
-      el.innerHTML = html;
-    }
-
-    if (!raw) {
-      el = $(el);
-
-      if (appendTo) {
-        el.appendTo(appendTo);
-      }
-    } else if (appendTo) {
-      appendTo.appendChild(el);
-    }
-
-    return el;
-  },
-      _mfpTrigger = function _mfpTrigger(e, data) {
-    mfp.ev.triggerHandler(NS + e, data);
-
-    if (mfp.st.callbacks) {
-      // converts "mfpEventName" to "eventName" callback and triggers it if it's present
-      e = e.charAt(0).toLowerCase() + e.slice(1);
-
-      if (mfp.st.callbacks[e]) {
-        mfp.st.callbacks[e].apply(mfp, $.isArray(data) ? data : [data]);
-      }
-    }
-  },
-      _getCloseBtn = function _getCloseBtn(type) {
-    if (type !== _currPopupType || !mfp.currTemplate.closeBtn) {
-      mfp.currTemplate.closeBtn = $(mfp.st.closeMarkup.replace('%title%', mfp.st.tClose));
-      _currPopupType = type;
-    }
-
-    return mfp.currTemplate.closeBtn;
-  },
-      // Initialize Magnific Popup only when called at least once
-  _checkInstance = function _checkInstance() {
-    if (!$.magnificPopup.instance) {
-      /*jshint -W020 */
-      mfp = new MagnificPopup();
-      mfp.init();
-      $.magnificPopup.instance = mfp;
-    }
-  },
-      // CSS transition detection, http://stackoverflow.com/questions/7264899/detect-css-transitions-using-javascript-and-without-modernizr
-  supportsTransitions = function supportsTransitions() {
-    var s = document.createElement('p').style,
-        // 's' for style. better to create an element if body yet to exist
-    v = ['ms', 'O', 'Moz', 'Webkit']; // 'v' for vendor
-
-    if (s['transition'] !== undefined) {
-      return true;
-    }
-
-    while (v.length) {
-      if (v.pop() + 'Transition' in s) {
-        return true;
-      }
-    }
-
-    return false;
-  };
-  /**
-   * Public functions
-   */
-
-
-  MagnificPopup.prototype = {
-    constructor: MagnificPopup,
-
-    /**
-     * Initializes Magnific Popup plugin.
-     * This function is triggered only once when $.fn.magnificPopup or $.magnificPopup is executed
-     */
-    init: function init() {
-      var appVersion = navigator.appVersion;
-      mfp.isLowIE = mfp.isIE8 = document.all && !document.addEventListener;
-      mfp.isAndroid = /android/gi.test(appVersion);
-      mfp.isIOS = /iphone|ipad|ipod/gi.test(appVersion);
-      mfp.supportsTransition = supportsTransitions(); // We disable fixed positioned lightbox on devices that don't handle it nicely.
-      // If you know a better way of detecting this - let me know.
-
-      mfp.probablyMobile = mfp.isAndroid || mfp.isIOS || /(Opera Mini)|Kindle|webOS|BlackBerry|(Opera Mobi)|(Windows Phone)|IEMobile/i.test(navigator.userAgent);
-      _document = $(document);
-      mfp.popupsCache = {};
-    },
-
-    /**
-     * Opens popup
-     * @param  data [description]
-     */
-    open: function open(data) {
-      var i;
-
-      if (data.isObj === false) {
-        // convert jQuery collection to array to avoid conflicts later
-        mfp.items = data.items.toArray();
-        mfp.index = 0;
-        var items = data.items,
-            item;
-
-        for (i = 0; i < items.length; i++) {
-          item = items[i];
-
-          if (item.parsed) {
-            item = item.el[0];
-          }
-
-          if (item === data.el[0]) {
-            mfp.index = i;
-            break;
-          }
-        }
-      } else {
-        mfp.items = $.isArray(data.items) ? data.items : [data.items];
-        mfp.index = data.index || 0;
-      } // if popup is already opened - we just update the content
-
-
-      if (mfp.isOpen) {
-        mfp.updateItemHTML();
-        return;
-      }
-
-      mfp.types = [];
-      _wrapClasses = '';
-
-      if (data.mainEl && data.mainEl.length) {
-        mfp.ev = data.mainEl.eq(0);
-      } else {
-        mfp.ev = _document;
-      }
-
-      if (data.key) {
-        if (!mfp.popupsCache[data.key]) {
-          mfp.popupsCache[data.key] = {};
-        }
-
-        mfp.currTemplate = mfp.popupsCache[data.key];
-      } else {
-        mfp.currTemplate = {};
-      }
-
-      mfp.st = $.extend(true, {}, $.magnificPopup.defaults, data);
-      mfp.fixedContentPos = mfp.st.fixedContentPos === 'auto' ? !mfp.probablyMobile : mfp.st.fixedContentPos;
-
-      if (mfp.st.modal) {
-        mfp.st.closeOnContentClick = false;
-        mfp.st.closeOnBgClick = false;
-        mfp.st.showCloseBtn = false;
-        mfp.st.enableEscapeKey = false;
-      } // Building markup
-      // main containers are created only once
-
-
-      if (!mfp.bgOverlay) {
-        // Dark overlay
-        mfp.bgOverlay = _getEl('bg').on('click' + EVENT_NS, function () {
-          mfp.close();
-        });
-        mfp.wrap = _getEl('wrap').attr('tabindex', -1).on('click' + EVENT_NS, function (e) {
-          if (mfp._checkIfClose(e.target)) {
-            mfp.close();
-          }
-        });
-        mfp.container = _getEl('container', mfp.wrap);
-      }
-
-      mfp.contentContainer = _getEl('content');
-
-      if (mfp.st.preloader) {
-        mfp.preloader = _getEl('preloader', mfp.container, mfp.st.tLoading);
-      } // Initializing modules
-
-
-      var modules = $.magnificPopup.modules;
-
-      for (i = 0; i < modules.length; i++) {
-        var n = modules[i];
-        n = n.charAt(0).toUpperCase() + n.slice(1);
-        mfp['init' + n].call(mfp);
-      }
-
-      _mfpTrigger('BeforeOpen');
-
-      if (mfp.st.showCloseBtn) {
-        // Close button
-        if (!mfp.st.closeBtnInside) {
-          mfp.wrap.append(_getCloseBtn());
-        } else {
-          _mfpOn(MARKUP_PARSE_EVENT, function (e, template, values, item) {
-            values.close_replaceWith = _getCloseBtn(item.type);
-          });
-
-          _wrapClasses += ' mfp-close-btn-in';
-        }
-      }
-
-      if (mfp.st.alignTop) {
-        _wrapClasses += ' mfp-align-top';
-      }
-
-      if (mfp.fixedContentPos) {
-        mfp.wrap.css({
-          overflow: mfp.st.overflowY,
-          overflowX: 'hidden',
-          overflowY: mfp.st.overflowY
-        });
-      } else {
-        mfp.wrap.css({
-          top: _window.scrollTop(),
-          position: 'absolute'
-        });
-      }
-
-      if (mfp.st.fixedBgPos === false || mfp.st.fixedBgPos === 'auto' && !mfp.fixedContentPos) {
-        mfp.bgOverlay.css({
-          height: _document.height(),
-          position: 'absolute'
-        });
-      }
-
-      if (mfp.st.enableEscapeKey) {
-        // Close on ESC key
-        _document.on('keyup' + EVENT_NS, function (e) {
-          if (e.keyCode === 27) {
-            mfp.close();
-          }
-        });
-      }
-
-      _window.on('resize' + EVENT_NS, function () {
-        mfp.updateSize();
-      });
-
-      if (!mfp.st.closeOnContentClick) {
-        _wrapClasses += ' mfp-auto-cursor';
-      }
-
-      if (_wrapClasses) mfp.wrap.addClass(_wrapClasses); // this triggers recalculation of layout, so we get it once to not to trigger twice
-
-      var windowHeight = mfp.wH = _window.height();
-
-      var windowStyles = {};
-
-      if (mfp.fixedContentPos) {
-        if (mfp._hasScrollBar(windowHeight)) {
-          var s = mfp._getScrollbarSize();
-
-          if (s) {
-            windowStyles.marginRight = s;
-          }
-        }
-      }
-
-      if (mfp.fixedContentPos) {
-        if (!mfp.isIE7) {
-          windowStyles.overflow = 'hidden';
-        } else {
-          // ie7 double-scroll bug
-          $('body, html').css('overflow', 'hidden');
-        }
-      }
-
-      var classesToadd = mfp.st.mainClass;
-
-      if (mfp.isIE7) {
-        classesToadd += ' mfp-ie7';
-      }
-
-      if (classesToadd) {
-        mfp._addClassToMFP(classesToadd);
-      } // add content
-
-
-      mfp.updateItemHTML();
-
-      _mfpTrigger('BuildControls'); // remove scrollbar, add margin e.t.c
-
-
-      $('html').css(windowStyles); // add everything to DOM
-
-      mfp.bgOverlay.add(mfp.wrap).prependTo(mfp.st.prependTo || $(document.body)); // Save last focused element
-
-      mfp._lastFocusedEl = document.activeElement; // Wait for next cycle to allow CSS transition
-
-      setTimeout(function () {
-        if (mfp.content) {
-          mfp._addClassToMFP(READY_CLASS);
-
-          mfp._setFocus();
-        } else {
-          // if content is not defined (not loaded e.t.c) we add class only for BG
-          mfp.bgOverlay.addClass(READY_CLASS);
-        } // Trap the focus in popup
-
-
-        _document.on('focusin' + EVENT_NS, mfp._onFocusIn);
-      }, 16);
-      mfp.isOpen = true;
-      mfp.updateSize(windowHeight);
-
-      _mfpTrigger(OPEN_EVENT);
-
-      return data;
-    },
-
-    /**
-     * Closes the popup
-     */
-    close: function close() {
-      if (!mfp.isOpen) return;
-
-      _mfpTrigger(BEFORE_CLOSE_EVENT);
-
-      mfp.isOpen = false; // for CSS3 animation
-
-      if (mfp.st.removalDelay && !mfp.isLowIE && mfp.supportsTransition) {
-        mfp._addClassToMFP(REMOVING_CLASS);
-
-        setTimeout(function () {
-          mfp._close();
-        }, mfp.st.removalDelay);
-      } else {
-        mfp._close();
-      }
-    },
-
-    /**
-     * Helper for close() function
-     */
-    _close: function _close() {
-      _mfpTrigger(CLOSE_EVENT);
-
-      var classesToRemove = REMOVING_CLASS + ' ' + READY_CLASS + ' ';
-      mfp.bgOverlay.detach();
-      mfp.wrap.detach();
-      mfp.container.empty();
-
-      if (mfp.st.mainClass) {
-        classesToRemove += mfp.st.mainClass + ' ';
-      }
-
-      mfp._removeClassFromMFP(classesToRemove);
-
-      if (mfp.fixedContentPos) {
-        var windowStyles = {
-          marginRight: ''
-        };
-
-        if (mfp.isIE7) {
-          $('body, html').css('overflow', '');
-        } else {
-          windowStyles.overflow = '';
-        }
-
-        $('html').css(windowStyles);
-      }
-
-      _document.off('keyup' + EVENT_NS + ' focusin' + EVENT_NS);
-
-      mfp.ev.off(EVENT_NS); // clean up DOM elements that aren't removed
-
-      mfp.wrap.attr('class', 'mfp-wrap').removeAttr('style');
-      mfp.bgOverlay.attr('class', 'mfp-bg');
-      mfp.container.attr('class', 'mfp-container'); // remove close button from target element
-
-      if (mfp.st.showCloseBtn && (!mfp.st.closeBtnInside || mfp.currTemplate[mfp.currItem.type] === true)) {
-        if (mfp.currTemplate.closeBtn) mfp.currTemplate.closeBtn.detach();
-      }
-
-      if (mfp.st.autoFocusLast && mfp._lastFocusedEl) {
-        $(mfp._lastFocusedEl).focus(); // put tab focus back
-      }
-
-      mfp.currItem = null;
-      mfp.content = null;
-      mfp.currTemplate = null;
-      mfp.prevHeight = 0;
-
-      _mfpTrigger(AFTER_CLOSE_EVENT);
-    },
-    updateSize: function updateSize(winHeight) {
-      if (mfp.isIOS) {
-        // fixes iOS nav bars https://github.com/dimsemenov/Magnific-Popup/issues/2
-        var zoomLevel = document.documentElement.clientWidth / window.innerWidth;
-        var height = window.innerHeight * zoomLevel;
-        mfp.wrap.css('height', height);
-        mfp.wH = height;
-      } else {
-        mfp.wH = winHeight || _window.height();
-      } // Fixes #84: popup incorrectly positioned with position:relative on body
-
-
-      if (!mfp.fixedContentPos) {
-        mfp.wrap.css('height', mfp.wH);
-      }
-
-      _mfpTrigger('Resize');
-    },
-
-    /**
-     * Set content of popup based on current index
-     */
-    updateItemHTML: function updateItemHTML() {
-      var item = mfp.items[mfp.index]; // Detach and perform modifications
-
-      mfp.contentContainer.detach();
-      if (mfp.content) mfp.content.detach();
-
-      if (!item.parsed) {
-        item = mfp.parseEl(mfp.index);
-      }
-
-      var type = item.type;
-
-      _mfpTrigger('BeforeChange', [mfp.currItem ? mfp.currItem.type : '', type]); // BeforeChange event works like so:
-      // _mfpOn('BeforeChange', function(e, prevType, newType) { });
-
-
-      mfp.currItem = item;
-
-      if (!mfp.currTemplate[type]) {
-        var markup = mfp.st[type] ? mfp.st[type].markup : false; // allows to modify markup
-
-        _mfpTrigger('FirstMarkupParse', markup);
-
-        if (markup) {
-          mfp.currTemplate[type] = $(markup);
-        } else {
-          // if there is no markup found we just define that template is parsed
-          mfp.currTemplate[type] = true;
-        }
-      }
-
-      if (_prevContentType && _prevContentType !== item.type) {
-        mfp.container.removeClass('mfp-' + _prevContentType + '-holder');
-      }
-
-      var newContent = mfp['get' + type.charAt(0).toUpperCase() + type.slice(1)](item, mfp.currTemplate[type]);
-      mfp.appendContent(newContent, type);
-      item.preloaded = true;
-
-      _mfpTrigger(CHANGE_EVENT, item);
-
-      _prevContentType = item.type; // Append container back after its content changed
-
-      mfp.container.prepend(mfp.contentContainer);
-
-      _mfpTrigger('AfterChange');
-    },
-
-    /**
-     * Set HTML content of popup
-     */
-    appendContent: function appendContent(newContent, type) {
-      mfp.content = newContent;
-
-      if (newContent) {
-        if (mfp.st.showCloseBtn && mfp.st.closeBtnInside && mfp.currTemplate[type] === true) {
-          // if there is no markup, we just append close button element inside
-          if (!mfp.content.find('.mfp-close').length) {
-            mfp.content.append(_getCloseBtn());
-          }
-        } else {
-          mfp.content = newContent;
-        }
-      } else {
-        mfp.content = '';
-      }
-
-      _mfpTrigger(BEFORE_APPEND_EVENT);
-
-      mfp.container.addClass('mfp-' + type + '-holder');
-      mfp.contentContainer.append(mfp.content);
-    },
-
-    /**
-     * Creates Magnific Popup data object based on given data
-     * @param  {int} index Index of item to parse
-     */
-    parseEl: function parseEl(index) {
-      var item = mfp.items[index],
-          type;
-
-      if (item.tagName) {
-        item = {
-          el: $(item)
-        };
-      } else {
-        type = item.type;
-        item = {
-          data: item,
-          src: item.src
-        };
-      }
-
-      if (item.el) {
-        var types = mfp.types; // check for 'mfp-TYPE' class
-
-        for (var i = 0; i < types.length; i++) {
-          if (item.el.hasClass('mfp-' + types[i])) {
-            type = types[i];
-            break;
-          }
-        }
-
-        item.src = item.el.attr('data-mfp-src');
-
-        if (!item.src) {
-          item.src = item.el.attr('href');
-        }
-      }
-
-      item.type = type || mfp.st.type || 'inline';
-      item.index = index;
-      item.parsed = true;
-      mfp.items[index] = item;
-
-      _mfpTrigger('ElementParse', item);
-
-      return mfp.items[index];
-    },
-
-    /**
-     * Initializes single popup or a group of popups
-     */
-    addGroup: function addGroup(el, options) {
-      var eHandler = function eHandler(e) {
-        e.mfpEl = this;
-
-        mfp._openClick(e, el, options);
-      };
-
-      if (!options) {
-        options = {};
-      }
-
-      var eName = 'click.magnificPopup';
-      options.mainEl = el;
-
-      if (options.items) {
-        options.isObj = true;
-        el.off(eName).on(eName, eHandler);
-      } else {
-        options.isObj = false;
-
-        if (options.delegate) {
-          el.off(eName).on(eName, options.delegate, eHandler);
-        } else {
-          options.items = el;
-          el.off(eName).on(eName, eHandler);
-        }
-      }
-    },
-    _openClick: function _openClick(e, el, options) {
-      var midClick = options.midClick !== undefined ? options.midClick : $.magnificPopup.defaults.midClick;
-
-      if (!midClick && (e.which === 2 || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey)) {
-        return;
-      }
-
-      var disableOn = options.disableOn !== undefined ? options.disableOn : $.magnificPopup.defaults.disableOn;
-
-      if (disableOn) {
-        if ($.isFunction(disableOn)) {
-          if (!disableOn.call(mfp)) {
-            return true;
-          }
-        } else {
-          // else it's number
-          if (_window.width() < disableOn) {
-            return true;
-          }
-        }
-      }
-
-      if (e.type) {
-        e.preventDefault(); // This will prevent popup from closing if element is inside and popup is already opened
-
-        if (mfp.isOpen) {
-          e.stopPropagation();
-        }
-      }
-
-      options.el = $(e.mfpEl);
-
-      if (options.delegate) {
-        options.items = el.find(options.delegate);
-      }
-
-      mfp.open(options);
-    },
-
-    /**
-     * Updates text on preloader
-     */
-    updateStatus: function updateStatus(status, text) {
-      if (mfp.preloader) {
-        if (_prevStatus !== status) {
-          mfp.container.removeClass('mfp-s-' + _prevStatus);
-        }
-
-        if (!text && status === 'loading') {
-          text = mfp.st.tLoading;
-        }
-
-        var data = {
-          status: status,
-          text: text
-        }; // allows to modify status
-
-        _mfpTrigger('UpdateStatus', data);
-
-        status = data.status;
-        text = data.text;
-        mfp.preloader.html(text);
-        mfp.preloader.find('a').on('click', function (e) {
-          e.stopImmediatePropagation();
-        });
-        mfp.container.addClass('mfp-s-' + status);
-        _prevStatus = status;
-      }
-    },
-
-    /*
-     "Private" helpers that aren't private at all
-     */
-    // Check to close popup or not
-    // "target" is an element that was clicked
-    _checkIfClose: function _checkIfClose(target) {
-      if ($(target).hasClass(PREVENT_CLOSE_CLASS)) {
-        return;
-      }
-
-      var closeOnContent = mfp.st.closeOnContentClick;
-      var closeOnBg = mfp.st.closeOnBgClick;
-
-      if (closeOnContent && closeOnBg) {
-        return true;
-      } else {
-        // We close the popup if click is on close button or on preloader. Or if there is no content.
-        if (!mfp.content || $(target).hasClass('mfp-close') || mfp.preloader && target === mfp.preloader[0]) {
-          return true;
-        } // if click is outside the content
-
-
-        if (target !== mfp.content[0] && !$.contains(mfp.content[0], target)) {
-          if (closeOnBg) {
-            // last check, if the clicked element is in DOM, (in case it's removed onclick)
-            if ($.contains(document, target)) {
-              return true;
-            }
-          }
-        } else if (closeOnContent) {
-          return true;
-        }
-      }
-
-      return false;
-    },
-    _addClassToMFP: function _addClassToMFP(cName) {
-      mfp.bgOverlay.addClass(cName);
-      mfp.wrap.addClass(cName);
-    },
-    _removeClassFromMFP: function _removeClassFromMFP(cName) {
-      this.bgOverlay.removeClass(cName);
-      mfp.wrap.removeClass(cName);
-    },
-    _hasScrollBar: function _hasScrollBar(winHeight) {
-      return (mfp.isIE7 ? _document.height() : document.body.scrollHeight) > (winHeight || _window.height());
-    },
-    _setFocus: function _setFocus() {
-      (mfp.st.focus ? mfp.content.find(mfp.st.focus).eq(0) : mfp.wrap).focus();
-    },
-    _onFocusIn: function _onFocusIn(e) {
-      if (e.target !== mfp.wrap[0] && !$.contains(mfp.wrap[0], e.target)) {
-        mfp._setFocus();
-
-        return false;
-      }
-    },
-    _parseMarkup: function _parseMarkup(template, values, item) {
-      var arr;
-
-      if (item.data) {
-        values = $.extend(item.data, values);
-      }
-
-      _mfpTrigger(MARKUP_PARSE_EVENT, [template, values, item]);
-
-      $.each(values, function (key, value) {
-        if (value === undefined || value === false) {
-          return true;
-        }
-
-        arr = key.split('_');
-
-        if (arr.length > 1) {
-          var el = template.find(EVENT_NS + '-' + arr[0]);
-
-          if (el.length > 0) {
-            var attr = arr[1];
-
-            if (attr === 'replaceWith') {
-              if (el[0] !== value[0]) {
-                el.replaceWith(value);
-              }
-            } else if (attr === 'img') {
-              if (el.is('img')) {
-                el.attr('src', value);
-              } else {
-                el.replaceWith($('<img>').attr('src', value).attr('class', el.attr('class')));
-              }
-            } else {
-              el.attr(arr[1], value);
-            }
-          }
-        } else {
-          template.find(EVENT_NS + '-' + key).html(value);
-        }
-      });
-    },
-    _getScrollbarSize: function _getScrollbarSize() {
-      // thx David
-      if (mfp.scrollbarSize === undefined) {
-        var scrollDiv = document.createElement("div");
-        scrollDiv.style.cssText = 'width: 99px; height: 99px; overflow: scroll; position: absolute; top: -9999px;';
-        document.body.appendChild(scrollDiv);
-        mfp.scrollbarSize = scrollDiv.offsetWidth - scrollDiv.clientWidth;
-        document.body.removeChild(scrollDiv);
-      }
-
-      return mfp.scrollbarSize;
-    }
-  };
-  /* MagnificPopup core prototype end */
-
-  /**
-   * Public static functions
-   */
-
-  $.magnificPopup = {
-    instance: null,
-    proto: MagnificPopup.prototype,
-    modules: [],
-    open: function open(options, index) {
-      _checkInstance();
-
-      if (!options) {
-        options = {};
-      } else {
-        options = $.extend(true, {}, options);
-      }
-
-      options.isObj = true;
-      options.index = index || 0;
-      return this.instance.open(options);
-    },
-    close: function close() {
-      return $.magnificPopup.instance && $.magnificPopup.instance.close();
-    },
-    registerModule: function registerModule(name, module) {
-      if (module.options) {
-        $.magnificPopup.defaults[name] = module.options;
-      }
-
-      $.extend(this.proto, module.proto);
-      this.modules.push(name);
-    },
-    defaults: {
-      // Info about options is in docs:
-      // http://dimsemenov.com/plugins/magnific-popup/documentation.html#options
-      disableOn: 0,
-      key: null,
-      midClick: false,
-      mainClass: '',
-      preloader: true,
-      focus: '',
-      // CSS selector of input to focus after popup is opened
-      closeOnContentClick: false,
-      closeOnBgClick: true,
-      closeBtnInside: true,
-      showCloseBtn: true,
-      enableEscapeKey: true,
-      modal: false,
-      alignTop: false,
-      removalDelay: 0,
-      prependTo: null,
-      fixedContentPos: 'auto',
-      fixedBgPos: 'auto',
-      overflowY: 'auto',
-      closeMarkup: '<button title="%title%" type="button" class="mfp-close">&#215;</button>',
-      tClose: 'Close (Esc)',
-      tLoading: 'Loading...',
-      autoFocusLast: true
-    }
-  };
-
-  $.fn.magnificPopup = function (options) {
-    _checkInstance();
-
-    var jqEl = $(this); // We call some API method of first param is a string
-
-    if (typeof options === "string") {
-      if (options === 'open') {
-        var items,
-            itemOpts = _isJQ ? jqEl.data('magnificPopup') : jqEl[0].magnificPopup,
-            index = parseInt(arguments[1], 10) || 0;
-
-        if (itemOpts.items) {
-          items = itemOpts.items[index];
-        } else {
-          items = jqEl;
-
-          if (itemOpts.delegate) {
-            items = items.find(itemOpts.delegate);
-          }
-
-          items = items.eq(index);
-        }
-
-        mfp._openClick({
-          mfpEl: items
-        }, jqEl, itemOpts);
-      } else {
-        if (mfp.isOpen) mfp[options].apply(mfp, Array.prototype.slice.call(arguments, 1));
-      }
-    } else {
-      // clone options obj
-      options = $.extend(true, {}, options);
-      /*
-       * As Zepto doesn't support .data() method for objects
-       * and it works only in normal browsers
-       * we assign "options" object directly to the DOM element. FTW!
-       */
-
-      if (_isJQ) {
-        jqEl.data('magnificPopup', options);
-      } else {
-        jqEl[0].magnificPopup = options;
-      }
-
-      mfp.addGroup(jqEl, options);
-    }
-
-    return jqEl;
-  };
-  /*>>core*/
-
-  /*>>inline*/
-
-
-  var INLINE_NS = 'inline',
-      _hiddenClass,
-      _inlinePlaceholder,
-      _lastInlineElement,
-      _putInlineElementsBack = function _putInlineElementsBack() {
-    if (_lastInlineElement) {
-      _inlinePlaceholder.after(_lastInlineElement.addClass(_hiddenClass)).detach();
-
-      _lastInlineElement = null;
-    }
-  };
-
-  $.magnificPopup.registerModule(INLINE_NS, {
-    options: {
-      hiddenClass: 'hide',
-      // will be appended with `mfp-` prefix
-      markup: '',
-      tNotFound: 'Content not found'
-    },
-    proto: {
-      initInline: function initInline() {
-        mfp.types.push(INLINE_NS);
-
-        _mfpOn(CLOSE_EVENT + '.' + INLINE_NS, function () {
-          _putInlineElementsBack();
-        });
-      },
-      getInline: function getInline(item, template) {
-        _putInlineElementsBack();
-
-        if (item.src) {
-          var inlineSt = mfp.st.inline,
-              el = $(item.src);
-
-          if (el.length) {
-            // If target element has parent - we replace it with placeholder and put it back after popup is closed
-            var parent = el[0].parentNode;
-
-            if (parent && parent.tagName) {
-              if (!_inlinePlaceholder) {
-                _hiddenClass = inlineSt.hiddenClass;
-                _inlinePlaceholder = _getEl(_hiddenClass);
-                _hiddenClass = 'mfp-' + _hiddenClass;
-              } // replace target inline element with placeholder
-
-
-              _lastInlineElement = el.after(_inlinePlaceholder).detach().removeClass(_hiddenClass);
-            }
-
-            mfp.updateStatus('ready');
-          } else {
-            mfp.updateStatus('error', inlineSt.tNotFound);
-            el = $('<div>');
-          }
-
-          item.inlineElement = el;
-          return el;
-        }
-
-        mfp.updateStatus('ready');
-
-        mfp._parseMarkup(template, {}, item);
-
-        return template;
-      }
-    }
-  });
-  /*>>inline*/
-
-  /*>>ajax*/
-
-  var AJAX_NS = 'ajax',
-      _ajaxCur,
-      _removeAjaxCursor = function _removeAjaxCursor() {
-    if (_ajaxCur) {
-      $(document.body).removeClass(_ajaxCur);
-    }
-  },
-      _destroyAjaxRequest = function _destroyAjaxRequest() {
-    _removeAjaxCursor();
-
-    if (mfp.req) {
-      mfp.req.abort();
-    }
-  };
-
-  $.magnificPopup.registerModule(AJAX_NS, {
-    options: {
-      settings: null,
-      cursor: 'mfp-ajax-cur',
-      tError: '<a href="%url%">The content</a> could not be loaded.'
-    },
-    proto: {
-      initAjax: function initAjax() {
-        mfp.types.push(AJAX_NS);
-        _ajaxCur = mfp.st.ajax.cursor;
-
-        _mfpOn(CLOSE_EVENT + '.' + AJAX_NS, _destroyAjaxRequest);
-
-        _mfpOn('BeforeChange.' + AJAX_NS, _destroyAjaxRequest);
-      },
-      getAjax: function getAjax(item) {
-        if (_ajaxCur) {
-          $(document.body).addClass(_ajaxCur);
-        }
-
-        mfp.updateStatus('loading');
-        var opts = $.extend({
-          url: item.src,
-          success: function success(data, textStatus, jqXHR) {
-            var temp = {
-              data: data,
-              xhr: jqXHR
-            };
-
-            _mfpTrigger('ParseAjax', temp);
-
-            mfp.appendContent($(temp.data), AJAX_NS);
-            item.finished = true;
-
-            _removeAjaxCursor();
-
-            mfp._setFocus();
-
-            setTimeout(function () {
-              mfp.wrap.addClass(READY_CLASS);
-            }, 16);
-            mfp.updateStatus('ready');
-
-            _mfpTrigger('AjaxContentAdded');
-          },
-          error: function error() {
-            _removeAjaxCursor();
-
-            item.finished = item.loadError = true;
-            mfp.updateStatus('error', mfp.st.ajax.tError.replace('%url%', item.src));
-          }
-        }, mfp.st.ajax.settings);
-        mfp.req = $.ajax(opts);
-        return '';
-      }
-    }
-  });
-  /*>>ajax*/
-
-  /*>>image*/
-
-  var _imgInterval,
-      _getTitle = function _getTitle(item) {
-    if (item.data && item.data.title !== undefined) return item.data.title;
-    var src = mfp.st.image.titleSrc;
-
-    if (src) {
-      if ($.isFunction(src)) {
-        return src.call(mfp, item);
-      } else if (item.el) {
-        return item.el.attr(src) || '';
-      }
-    }
-
-    return '';
-  };
-
-  $.magnificPopup.registerModule('image', {
-    options: {
-      markup: '<div class="mfp-figure">' + '<div class="mfp-close"></div>' + '<figure>' + '<div class="mfp-img"></div>' + '<figcaption>' + '<div class="mfp-bottom-bar">' + '<div class="mfp-title"></div>' + '<div class="mfp-counter"></div>' + '</div>' + '</figcaption>' + '</figure>' + '</div>',
-      cursor: 'mfp-zoom-out-cur',
-      titleSrc: 'title',
-      verticalFit: true,
-      tError: '<a href="%url%">The image</a> could not be loaded.'
-    },
-    proto: {
-      initImage: function initImage() {
-        var imgSt = mfp.st.image,
-            ns = '.image';
-        mfp.types.push('image');
-
-        _mfpOn(OPEN_EVENT + ns, function () {
-          if (mfp.currItem.type === 'image' && imgSt.cursor) {
-            $(document.body).addClass(imgSt.cursor);
-          }
-        });
-
-        _mfpOn(CLOSE_EVENT + ns, function () {
-          if (imgSt.cursor) {
-            $(document.body).removeClass(imgSt.cursor);
-          }
-
-          _window.off('resize' + EVENT_NS);
-        });
-
-        _mfpOn('Resize' + ns, mfp.resizeImage);
-
-        if (mfp.isLowIE) {
-          _mfpOn('AfterChange', mfp.resizeImage);
-        }
-      },
-      resizeImage: function resizeImage() {
-        var item = mfp.currItem;
-        if (!item || !item.img) return;
-
-        if (mfp.st.image.verticalFit) {
-          var decr = 0; // fix box-sizing in ie7/8
-
-          if (mfp.isLowIE) {
-            decr = parseInt(item.img.css('padding-top'), 10) + parseInt(item.img.css('padding-bottom'), 10);
-          }
-
-          item.img.css('max-height', mfp.wH - decr);
-        }
-      },
-      _onImageHasSize: function _onImageHasSize(item) {
-        if (item.img) {
-          item.hasSize = true;
-
-          if (_imgInterval) {
-            clearInterval(_imgInterval);
-          }
-
-          item.isCheckingImgSize = false;
-
-          _mfpTrigger('ImageHasSize', item);
-
-          if (item.imgHidden) {
-            if (mfp.content) mfp.content.removeClass('mfp-loading');
-            item.imgHidden = false;
-          }
-        }
-      },
-
-      /**
-       * Function that loops until the image has size to display elements that rely on it asap
-       */
-      findImageSize: function findImageSize(item) {
-        var counter = 0,
-            img = item.img[0],
-            mfpSetInterval = function mfpSetInterval(delay) {
-          if (_imgInterval) {
-            clearInterval(_imgInterval);
-          } // decelerating interval that checks for size of an image
-
-
-          _imgInterval = setInterval(function () {
-            if (img.naturalWidth > 0) {
-              mfp._onImageHasSize(item);
-
-              return;
-            }
-
-            if (counter > 200) {
-              clearInterval(_imgInterval);
-            }
-
-            counter++;
-
-            if (counter === 3) {
-              mfpSetInterval(10);
-            } else if (counter === 40) {
-              mfpSetInterval(50);
-            } else if (counter === 100) {
-              mfpSetInterval(500);
-            }
-          }, delay);
-        };
-
-        mfpSetInterval(1);
-      },
-      getImage: function getImage(item, template) {
-        var guard = 0,
-            // image load complete handler
-        onLoadComplete = function onLoadComplete() {
-          if (item) {
-            if (item.img[0].complete) {
-              item.img.off('.mfploader');
-
-              if (item === mfp.currItem) {
-                mfp._onImageHasSize(item);
-
-                mfp.updateStatus('ready');
-              }
-
-              item.hasSize = true;
-              item.loaded = true;
-
-              _mfpTrigger('ImageLoadComplete');
-            } else {
-              // if image complete check fails 200 times (20 sec), we assume that there was an error.
-              guard++;
-
-              if (guard < 200) {
-                setTimeout(onLoadComplete, 100);
-              } else {
-                onLoadError();
-              }
-            }
-          }
-        },
-            // image error handler
-        onLoadError = function onLoadError() {
-          if (item) {
-            item.img.off('.mfploader');
-
-            if (item === mfp.currItem) {
-              mfp._onImageHasSize(item);
-
-              mfp.updateStatus('error', imgSt.tError.replace('%url%', item.src));
-            }
-
-            item.hasSize = true;
-            item.loaded = true;
-            item.loadError = true;
-          }
-        },
-            imgSt = mfp.st.image;
-
-        var el = template.find('.mfp-img');
-
-        if (el.length) {
-          var img = document.createElement('img');
-          img.className = 'mfp-img';
-
-          if (item.el && item.el.find('img').length) {
-            img.alt = item.el.find('img').attr('alt');
-          }
-
-          item.img = $(img).on('load.mfploader', onLoadComplete).on('error.mfploader', onLoadError);
-          img.src = item.src; // without clone() "error" event is not firing when IMG is replaced by new IMG
-          // TODO: find a way to avoid such cloning
-
-          if (el.is('img')) {
-            item.img = item.img.clone();
-          }
-
-          img = item.img[0];
-
-          if (img.naturalWidth > 0) {
-            item.hasSize = true;
-          } else if (!img.width) {
-            item.hasSize = false;
-          }
-        }
-
-        mfp._parseMarkup(template, {
-          title: _getTitle(item),
-          img_replaceWith: item.img
-        }, item);
-
-        mfp.resizeImage();
-
-        if (item.hasSize) {
-          if (_imgInterval) clearInterval(_imgInterval);
-
-          if (item.loadError) {
-            template.addClass('mfp-loading');
-            mfp.updateStatus('error', imgSt.tError.replace('%url%', item.src));
-          } else {
-            template.removeClass('mfp-loading');
-            mfp.updateStatus('ready');
-          }
-
-          return template;
-        }
-
-        mfp.updateStatus('loading');
-        item.loading = true;
-
-        if (!item.hasSize) {
-          item.imgHidden = true;
-          template.addClass('mfp-loading');
-          mfp.findImageSize(item);
-        }
-
-        return template;
-      }
-    }
-  });
-  /*>>image*/
-
-  /*>>zoom*/
-
-  var hasMozTransform,
-      getHasMozTransform = function getHasMozTransform() {
-    if (hasMozTransform === undefined) {
-      hasMozTransform = document.createElement('p').style.MozTransform !== undefined;
-    }
-
-    return hasMozTransform;
-  };
-
-  $.magnificPopup.registerModule('zoom', {
-    options: {
-      enabled: false,
-      easing: 'ease-in-out',
-      duration: 300,
-      opener: function opener(element) {
-        return element.is('img') ? element : element.find('img');
-      }
-    },
-    proto: {
-      initZoom: function initZoom() {
-        var zoomSt = mfp.st.zoom,
-            ns = '.zoom',
-            image;
-
-        if (!zoomSt.enabled || !mfp.supportsTransition) {
-          return;
-        }
-
-        var duration = zoomSt.duration,
-            getElToAnimate = function getElToAnimate(image) {
-          var newImg = image.clone().removeAttr('style').removeAttr('class').addClass('mfp-animated-image'),
-              transition = 'all ' + zoomSt.duration / 1000 + 's ' + zoomSt.easing,
-              cssObj = {
-            position: 'fixed',
-            zIndex: 9999,
-            left: 0,
-            top: 0,
-            '-webkit-backface-visibility': 'hidden'
-          },
-              t = 'transition';
-          cssObj['-webkit-' + t] = cssObj['-moz-' + t] = cssObj['-o-' + t] = cssObj[t] = transition;
-          newImg.css(cssObj);
-          return newImg;
-        },
-            showMainContent = function showMainContent() {
-          mfp.content.css('visibility', 'visible');
-        },
-            openTimeout,
-            animatedImg;
-
-        _mfpOn('BuildControls' + ns, function () {
-          if (mfp._allowZoom()) {
-            clearTimeout(openTimeout);
-            mfp.content.css('visibility', 'hidden'); // Basically, all code below does is clones existing image, puts in on top of the current one and animated it
-
-            image = mfp._getItemToZoom();
-
-            if (!image) {
-              showMainContent();
-              return;
-            }
-
-            animatedImg = getElToAnimate(image);
-            animatedImg.css(mfp._getOffset());
-            mfp.wrap.append(animatedImg);
-            openTimeout = setTimeout(function () {
-              animatedImg.css(mfp._getOffset(true));
-              openTimeout = setTimeout(function () {
-                showMainContent();
-                setTimeout(function () {
-                  animatedImg.remove();
-                  image = animatedImg = null;
-
-                  _mfpTrigger('ZoomAnimationEnded');
-                }, 16); // avoid blink when switching images
-              }, duration); // this timeout equals animation duration
-            }, 16); // by adding this timeout we avoid short glitch at the beginning of animation
-            // Lots of timeouts...
-          }
-        });
-
-        _mfpOn(BEFORE_CLOSE_EVENT + ns, function () {
-          if (mfp._allowZoom()) {
-            clearTimeout(openTimeout);
-            mfp.st.removalDelay = duration;
-
-            if (!image) {
-              image = mfp._getItemToZoom();
-
-              if (!image) {
-                return;
-              }
-
-              animatedImg = getElToAnimate(image);
-            }
-
-            animatedImg.css(mfp._getOffset(true));
-            mfp.wrap.append(animatedImg);
-            mfp.content.css('visibility', 'hidden');
-            setTimeout(function () {
-              animatedImg.css(mfp._getOffset());
-            }, 16);
-          }
-        });
-
-        _mfpOn(CLOSE_EVENT + ns, function () {
-          if (mfp._allowZoom()) {
-            showMainContent();
-
-            if (animatedImg) {
-              animatedImg.remove();
-            }
-
-            image = null;
-          }
-        });
-      },
-      _allowZoom: function _allowZoom() {
-        return mfp.currItem.type === 'image';
-      },
-      _getItemToZoom: function _getItemToZoom() {
-        if (mfp.currItem.hasSize) {
-          return mfp.currItem.img;
-        } else {
-          return false;
-        }
-      },
-      // Get element postion relative to viewport
-      _getOffset: function _getOffset(isLarge) {
-        var el;
-
-        if (isLarge) {
-          el = mfp.currItem.img;
-        } else {
-          el = mfp.st.zoom.opener(mfp.currItem.el || mfp.currItem);
-        }
-
-        var offset = el.offset();
-        var paddingTop = parseInt(el.css('padding-top'), 10);
-        var paddingBottom = parseInt(el.css('padding-bottom'), 10);
-        offset.top -= $(window).scrollTop() - paddingTop;
-        /*
-        		 Animating left + top + width/height looks glitchy in Firefox, but perfect in Chrome. And vice-versa.
-        		 */
-
-        var obj = {
-          width: el.width(),
-          // fix Zepto height+padding issue
-          height: (_isJQ ? el.innerHeight() : el[0].offsetHeight) - paddingBottom - paddingTop
-        }; // I hate to do this, but there is no another option
-
-        if (getHasMozTransform()) {
-          obj['-moz-transform'] = obj['transform'] = 'translate(' + offset.left + 'px,' + offset.top + 'px)';
-        } else {
-          obj.left = offset.left;
-          obj.top = offset.top;
-        }
-
-        return obj;
-      }
-    }
-  });
-  /*>>zoom*/
-
-  /*>>iframe*/
-
-  var IFRAME_NS = 'iframe',
-      _emptyPage = '//about:blank',
-      _fixIframeBugs = function _fixIframeBugs(isShowing) {
-    if (mfp.currTemplate[IFRAME_NS]) {
-      var el = mfp.currTemplate[IFRAME_NS].find('iframe');
-
-      if (el.length) {
-        // reset src after the popup is closed to avoid "video keeps playing after popup is closed" bug
-        if (!isShowing) {
-          el[0].src = _emptyPage;
-        } // IE8 black screen bug fix
-
-
-        if (mfp.isIE8) {
-          el.css('display', isShowing ? 'block' : 'none');
-        }
-      }
-    }
-  };
-
-  $.magnificPopup.registerModule(IFRAME_NS, {
-    options: {
-      markup: '<div class="mfp-iframe-scaler">' + '<div class="mfp-close"></div>' + '<iframe class="mfp-iframe" src="//about:blank" frameborder="0" allowfullscreen></iframe>' + '</div>',
-      srcAction: 'iframe_src',
-      // we don't care and support only one default type of URL by default
-      patterns: {
-        youtube: {
-          index: 'youtube.com',
-          id: 'v=',
-          src: '//www.youtube.com/embed/%id%?autoplay=1'
-        },
-        vimeo: {
-          index: 'vimeo.com/',
-          id: '/',
-          src: '//player.vimeo.com/video/%id%?autoplay=1'
-        },
-        gmaps: {
-          index: '//maps.google.',
-          src: '%id%&output=embed'
-        }
-      }
-    },
-    proto: {
-      initIframe: function initIframe() {
-        mfp.types.push(IFRAME_NS);
-
-        _mfpOn('BeforeChange', function (e, prevType, newType) {
-          if (prevType !== newType) {
-            if (prevType === IFRAME_NS) {
-              _fixIframeBugs(); // iframe if removed
-
-            } else if (newType === IFRAME_NS) {
-              _fixIframeBugs(true); // iframe is showing
-
-            }
-          } // else {
-          // iframe source is switched, don't do anything
-          //}
-
-        });
-
-        _mfpOn(CLOSE_EVENT + '.' + IFRAME_NS, function () {
-          _fixIframeBugs();
-        });
-      },
-      getIframe: function getIframe(item, template) {
-        var embedSrc = item.src;
-        var iframeSt = mfp.st.iframe;
-        $.each(iframeSt.patterns, function () {
-          if (embedSrc.indexOf(this.index) > -1) {
-            if (this.id) {
-              if (typeof this.id === 'string') {
-                embedSrc = embedSrc.substr(embedSrc.lastIndexOf(this.id) + this.id.length, embedSrc.length);
-              } else {
-                embedSrc = this.id.call(this, embedSrc);
-              }
-            }
-
-            embedSrc = this.src.replace('%id%', embedSrc);
-            return false; // break;
-          }
-        });
-        var dataObj = {};
-
-        if (iframeSt.srcAction) {
-          dataObj[iframeSt.srcAction] = embedSrc;
-        }
-
-        mfp._parseMarkup(template, dataObj, item);
-
-        mfp.updateStatus('ready');
-        return template;
-      }
-    }
-  });
-  /*>>iframe*/
-
-  /*>>gallery*/
-
-  /**
-   * Get looped index depending on number of slides
-   */
-
-  var _getLoopedId = function _getLoopedId(index) {
-    var numSlides = mfp.items.length;
-
-    if (index > numSlides - 1) {
-      return index - numSlides;
-    } else if (index < 0) {
-      return numSlides + index;
-    }
-
-    return index;
-  },
-      _replaceCurrTotal = function _replaceCurrTotal(text, curr, total) {
-    return text.replace(/%curr%/gi, curr + 1).replace(/%total%/gi, total);
-  };
-
-  $.magnificPopup.registerModule('gallery', {
-    options: {
-      enabled: false,
-      arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>',
-      preload: [0, 2],
-      navigateByImgClick: true,
-      arrows: true,
-      tPrev: 'Previous (Left arrow key)',
-      tNext: 'Next (Right arrow key)',
-      tCounter: '%curr% of %total%'
-    },
-    proto: {
-      initGallery: function initGallery() {
-        var gSt = mfp.st.gallery,
-            ns = '.mfp-gallery';
-        mfp.direction = true; // true - next, false - prev
-
-        if (!gSt || !gSt.enabled) return false;
-        _wrapClasses += ' mfp-gallery';
-
-        _mfpOn(OPEN_EVENT + ns, function () {
-          if (gSt.navigateByImgClick) {
-            mfp.wrap.on('click' + ns, '.mfp-img', function () {
-              if (mfp.items.length > 1) {
-                mfp.next();
-                return false;
-              }
-            });
-          }
-
-          _document.on('keydown' + ns, function (e) {
-            if (e.keyCode === 37) {
-              mfp.prev();
-            } else if (e.keyCode === 39) {
-              mfp.next();
-            }
-          });
-        });
-
-        _mfpOn('UpdateStatus' + ns, function (e, data) {
-          if (data.text) {
-            data.text = _replaceCurrTotal(data.text, mfp.currItem.index, mfp.items.length);
-          }
-        });
-
-        _mfpOn(MARKUP_PARSE_EVENT + ns, function (e, element, values, item) {
-          var l = mfp.items.length;
-          values.counter = l > 1 ? _replaceCurrTotal(gSt.tCounter, item.index, l) : '';
-        });
-
-        _mfpOn('BuildControls' + ns, function () {
-          if (mfp.items.length > 1 && gSt.arrows && !mfp.arrowLeft) {
-            var markup = gSt.arrowMarkup,
-                arrowLeft = mfp.arrowLeft = $(markup.replace(/%title%/gi, gSt.tPrev).replace(/%dir%/gi, 'left')).addClass(PREVENT_CLOSE_CLASS),
-                arrowRight = mfp.arrowRight = $(markup.replace(/%title%/gi, gSt.tNext).replace(/%dir%/gi, 'right')).addClass(PREVENT_CLOSE_CLASS);
-            arrowLeft.click(function () {
-              mfp.prev();
-            });
-            arrowRight.click(function () {
-              mfp.next();
-            });
-            mfp.container.append(arrowLeft.add(arrowRight));
-          }
-        });
-
-        _mfpOn(CHANGE_EVENT + ns, function () {
-          if (mfp._preloadTimeout) clearTimeout(mfp._preloadTimeout);
-          mfp._preloadTimeout = setTimeout(function () {
-            mfp.preloadNearbyImages();
-            mfp._preloadTimeout = null;
-          }, 16);
-        });
-
-        _mfpOn(CLOSE_EVENT + ns, function () {
-          _document.off(ns);
-
-          mfp.wrap.off('click' + ns);
-          mfp.arrowRight = mfp.arrowLeft = null;
-        });
-      },
-      next: function next() {
-        mfp.direction = true;
-        mfp.index = _getLoopedId(mfp.index + 1);
-        mfp.updateItemHTML();
-      },
-      prev: function prev() {
-        mfp.direction = false;
-        mfp.index = _getLoopedId(mfp.index - 1);
-        mfp.updateItemHTML();
-      },
-      goTo: function goTo(newIndex) {
-        mfp.direction = newIndex >= mfp.index;
-        mfp.index = newIndex;
-        mfp.updateItemHTML();
-      },
-      preloadNearbyImages: function preloadNearbyImages() {
-        var p = mfp.st.gallery.preload,
-            preloadBefore = Math.min(p[0], mfp.items.length),
-            preloadAfter = Math.min(p[1], mfp.items.length),
-            i;
-
-        for (i = 1; i <= (mfp.direction ? preloadAfter : preloadBefore); i++) {
-          mfp._preloadItem(mfp.index + i);
-        }
-
-        for (i = 1; i <= (mfp.direction ? preloadBefore : preloadAfter); i++) {
-          mfp._preloadItem(mfp.index - i);
-        }
-      },
-      _preloadItem: function _preloadItem(index) {
-        index = _getLoopedId(index);
-
-        if (mfp.items[index].preloaded) {
-          return;
-        }
-
-        var item = mfp.items[index];
-
-        if (!item.parsed) {
-          item = mfp.parseEl(index);
-        }
-
-        _mfpTrigger('LazyLoad', item);
-
-        if (item.type === 'image') {
-          item.img = $('<img class="mfp-img" />').on('load.mfploader', function () {
-            item.hasSize = true;
-          }).on('error.mfploader', function () {
-            item.hasSize = true;
-            item.loadError = true;
-
-            _mfpTrigger('LazyLoadError', item);
-          }).attr('src', item.src);
-        }
-
-        item.preloaded = true;
-      }
-    }
-  });
-  /*>>gallery*/
-
-  /*>>retina*/
-
-  var RETINA_NS = 'retina';
-  $.magnificPopup.registerModule(RETINA_NS, {
-    options: {
-      replaceSrc: function replaceSrc(item) {
-        return item.src.replace(/\.\w+$/, function (m) {
-          return '@2x' + m;
-        });
-      },
-      ratio: 1 // Function or number.  Set to 1 to disable.
-
-    },
-    proto: {
-      initRetina: function initRetina() {
-        if (window.devicePixelRatio > 1) {
-          var st = mfp.st.retina,
-              ratio = st.ratio;
-          ratio = !isNaN(ratio) ? ratio : ratio();
-
-          if (ratio > 1) {
-            _mfpOn('ImageHasSize' + '.' + RETINA_NS, function (e, item) {
-              item.img.css({
-                'max-width': item.img[0].naturalWidth / ratio,
-                'width': '100%'
-              });
-            });
-
-            _mfpOn('ElementParse' + '.' + RETINA_NS, function (e, item) {
-              item.src = st.replaceSrc(item, ratio);
-            });
-          }
-        }
-      }
-    }
-  });
-  /*>>retina*/
-
-  _checkInstance();
-});
-
-$(document).ready(function () {
-  if ($('.js_modal-trigger-zoom')) {
-    var zoomModalTrigger = $('.js_modal-trigger-zoom');
-    var triggerDataHref = zoomModalTrigger.attr('data-href');
-    zoomModalTrigger.attr('href', triggerDataHref);
-    zoomModalTrigger.magnificPopup({
-      type: 'inline',
-      fixedContentPos: false,
-      fixedBgPos: true,
-      overflowY: 'auto',
-      showCloseBtn: false,
-      preloader: false,
-      midClick: true,
-      removalDelay: 300,
-      mainClass: 'mfp-zoom-in'
-    });
-  }
-});
-
-function closePopup() {
-  $.magnificPopup.close();
-} //
+$(document).ready(function () {}); //
 // these easing functions are based on the code of glsl-easing module.
 // https://github.com/glslify/glsl-easings
 //
-
 
 var ease = {
   exponentialIn: function exponentialIn(t) {
@@ -1881,7 +52,7 @@ var ease = {
  *
  * Licensed under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
- * 
+ *
  * Copyright 2017, Codrops
  * http://www.codrops.com
  */
@@ -1923,7 +94,7 @@ function () {
     key: "open",
     value: function open() {
       this.isOpened = true;
-      this.elm.classList.add('is-opened');
+      this.elm.classList.add('shape-overlays--opened');
       this.timeStart = Date.now();
       this.renderLoop();
     }
@@ -1931,7 +102,7 @@ function () {
     key: "close",
     value: function close() {
       this.isOpened = false;
-      this.elm.classList.remove('is-opened');
+      this.elm.classList.remove('shape-overlays--opened');
       this.timeStart = Date.now();
       this.renderLoop();
     }
@@ -2006,61 +177,531 @@ function () {
       elmHamburger.classList.add('is-opened-navi');
 
       for (var i = 0; i < gNavItems.length; i++) {
-        gNavItems[i].classList.add('is-opened');
+        gNavItems[i].classList.add('global-menu__item--opened');
       }
     } else {
       elmHamburger.classList.remove('is-opened-navi');
 
       for (var i = 0; i < gNavItems.length; i++) {
-        gNavItems[i].classList.remove('is-opened');
+        gNavItems[i].classList.remove('global-menu__item--opened');
       }
     }
   });
+
+  for (var i = 0; i < gNavItems.length; i++) {
+    gNavItems[i].addEventListener('click', function () {
+      overlay.close();
+      elmHamburger.classList.remove('is-opened-navi');
+      $(".global-menu__item--opened").removeClass('global-menu__item--opened');
+    });
+  }
 })();
 
-document.addEventListener('DOMContentLoaded', function () {});
-jQuery(document).ready(function ($) {
-  var tabs = $('.tabs');
-  tabs.each(function () {
-    var tab = $(this),
-        tabItems = tab.find('ul.tabs__navigation'),
-        tabContentWrapper = tab.children('ul.tabs__content'),
-        tabNavigation = tab.find('nav');
-    tabItems.on('click', 'a', function (event) {
-      event.preventDefault();
-      var selectedItem = $(this);
+$(document).ready(function () {
+  var map;
+  var arrMarkers = [];
+  var arrInfoWindows = [];
+  var storyMap = {
+    "places": [{
+      "title": "Alma Park Resort, Песчаное",
+      "description": "<p class='story-map__label-description'>Свадебная церемония и банкет - 09.09.2019</p>",
+      "category": "wedding",
+      "image": "alma.jpg",
+      "lat": 44.859077,
+      "lng": 33.606132
+    }, {
+      "title": "Отдел ЗАГС Гагаринского района, Севастополь",
+      "description": "<p class='story-map__label-description'>Официальное бракосочетание - 06.09.2019</p>",
+      "category": "wedding",
+      "image": "garik.jpg",
+      "lat": 44.593835,
+      "lng": 33.451392
+    }, {
+      "title": "Белая Скала, Белогорский район",
+      "description": "<p class='story-map__label-description'>Здесь на высоте 850 метров в корзине воздушного шара Ярик сделал Кате предложение руки и сердца</p>",
+      "category": "important",
+      "image": "belaya-skala.jpg",
+      "lat": 45.093281,
+      "lng": 34.621554
+    }, {
+      "title": "Севастопольский Академический Театр Танца имени Вадима Елизарова",
+      "description": "<p class='story-map__label-description'>Место знакомства и Альма-матер в искусстве для Ярика и Кати. Здесь всегда атмосфера творчества, приключений и грации</p>",
+      "category": "important",
+      "image": "teatr-tanca.jpg",
+      "lat": 44.615609,
+      "lng": 33.521819
+    }, {
+      "title": "Общежитие №3 СИБД НБУ, ныне ЧВВМУ им П.С. Нахимова",
+      "description": "<p class='story-map__label-description'>Место теплейших посиделок до поздна, костюмированных вечеринок и настольных игр. Самое беззаботное время для Ярика и Кати</p>",
+      "category": "favorite",
+      "image": "bankovskaya.jpg",
+      "lat": 44.602716,
+      "lng": 33.462867
+    }, {
+      "title": "Пляж Парк Победы",
+      "description": "<p class='story-map__label-description'>Самый близкий и удобный пляж на районе. Здесь можно застать Катю и Ярика на поджарке знойными летними утрами</p>",
+      "category": "favorite",
+      "image": "park-pobedi.jpg",
+      "lat": 44.608967,
+      "lng": 33.456127
+    }, {
+      "title": "Центр связи Черноморского флота ВС РФ",
+      "description": "<p class='story-map__label-description'>Здесь прошел год \"близкого\" расставания Ярика и Кати, период для проверки чувств на прочность. Здесь проходил дозор Ярика на страже границ и редкие приятные встречи на КПП с Катей</p>",
+      "category": "favorite",
+      "image": "armiya.jpg",
+      "lat": 44.610855,
+      "lng": 33.526964
+    }, {
+      "title": "Магазин цветов на остановке ул. Юмашева",
+      "description": "<p class='story-map__label-description'>Здесь продаются самые красивые эустомы и хризантемы, которые больше всего любит Катя</p>",
+      "category": "favorite",
+      "image": "yumasheva.jpg",
+      "lat": 44.590573,
+      "lng": 33.460512
+    }, {
+      "title": "Торговый центр \"Муссон\"",
+      "description": "<p class='story-map__label-description'>Тут у Кати с Яриком всегда аэрохоккей, пинг-понг и хороший кинотеатр с Grand-залом. Ну и иногда покупки 😊</p>",
+      "category": "favorite",
+      "image": "musson.jpg",
+      "lat": 44.588555,
+      "lng": 33.489273
+    }, {
+      "title": "Торговый центр \"Меганом\", Симферополь",
+      "description": "<p class='story-map__label-description'>Самый лучший в Крыму и любимый торговый центр, самый крутой для совместного шопинга Кати и Ярика</p>",
+      "category": "favorite",
+      "image": "meganom.jpg",
+      "lat": 44.971485,
+      "lng": 34.077981
+    }, {
+      "title": "Международный аэропорт Симферополь",
+      "description": "<p class='story-map__label-description'>Потому что здесь начинаются самые интересные приключения</p>",
+      "category": "favorite",
+      "image": "aeroport-simfer.jpg",
+      "lat": 45.019281,
+      "lng": 33.997552
+    }, {
+      "title": "Суши SushiBox",
+      "description": "<p class='story-map__label-description'>Небольшая забегаловка, в которой делают самые вкусные роллы в Крыму (по версии Ярика)</p>",
+      "category": "favorite",
+      "image": "sushi-box.jpg",
+      "lat": 44.592136,
+      "lng": 33.456590
+    }, {
+      "title": "Яшмовый пляж, мыс Фиолент",
+      "description": "<p class='story-map__label-description'>Лучшее место, чтобы поплавать с маской в Севастополе. Ярик и Катя любят этот пляж</p>",
+      "category": "favorite",
+      "image": "fiolent.jpg",
+      "lat": 44.502773,
+      "lng": 33.509932
+    }, {
+      "title": "Кафе \"Е=ДА2\"",
+      "description": "<p class='story-map__label-description'>Здесь как нигде делают сырную пиццу на тонком тесте, Катя точно знает</p>",
+      "category": "favorite",
+      "image": "e-da2.jpg",
+      "lat": 44.586533,
+      "lng": 33.448334
+    }, {
+      "title": "Кинотеатр \"Сатурн\" IMAX, Ялта",
+      "description": "<p class='story-map__label-description'>Получается редко, но Катя и Ярик любят здесь 3D-кинопремьеры в IMAX и хороший звук, а еще нельзя недооценивать здесь недорогой попкорн! 😊</p>",
+      "category": "favorite",
+      "image": "yalta-imax.jpg",
+      "lat": 44.498902,
+      "lng": 34.167996
+    }, {
+      "title": "Вареничная \"Победа\", ныне кафе \"ProTesto\"",
+      "description": "<p class='story-map__label-description'>Здесь, а так же напротив (в кафе \"Борщок\") частые перекусы после работы и посиделки с театралами в самом начале отношений Ярика и Кати</p>",
+      "category": "favorite",
+      "image": "pobeda.jpg",
+      "lat": 44.612707,
+      "lng": 33.520462
+    }, {
+      "title": "Спортивный зал Safari Sport",
+      "description": "<p class='story-map__label-description'>Потому что Катя и Ярик решили стать сильными и худенькими, взяв абонемент сразу на год. Они стараются, хоть и любят покушать 😊</p>",
+      "category": "favorite",
+      "image": "safari-sport.jpg",
+      "lat": 44.588237,
+      "lng": 33.461587
+    }, {
+      "title": "Кофейня на Одесской",
+      "description": "<p class='story-map__label-description'>Кофейня произвела особенное впечатление на Катю после уютнейшего зимнего вечера вдвоем в декабре 2014-го, в свете огоньков под стук холодного дождика за окном, не без капучино конечно</p>",
+      "category": "favorite",
+      "image": "na-odesskoi.jpg",
+      "lat": 44.611934,
+      "lng": 33.516953
+    }, {
+      "title": "Кофе на вынос \"Coffeteria\" в \"Детском мире\"",
+      "description": "<p class='story-map__label-description'>Может это и не лучшая кофейня в Севастополе, но здесь суперкласнный любимый у Ярика и Кати капучино, не это ли главное ?</p>",
+      "category": "favorite",
+      "image": "coffeteria.jpg",
+      "lat": 44.611945,
+      "lng": 33.520493
+    }, {
+      "title": "Пляж \"Васили\", Балаклава",
+      "description": "<p class='story-map__label-description'>В отдаленном уголке \"Василей\" пожалуй одно из самых уединенных и красивых местечек у моря. Здесь в одну из жарких ночей, выйдя из палатки Ярик впервые лицезрел цветущий планктон и не мог поверить глазам, так это было прекрасно. Когда нет никакого света, кроме отражения звезд в воде и ярких искр от крошечных микроорганизмов в темных полночных водах</p>",
+      "category": "favorite",
+      "image": "vasili.jpg",
+      "lat": 44.491763,
+      "lng": 33.575305
+    }, {
+      "title": "Торговый центр Metro",
+      "description": "<p class='story-map__label-description'>Торговый центр неразрывно связан с нашей традиционной, можно сказать церемониальной подготовкой к празднованию Нового года 😁 Здесь бывают самые красивые игрушки, гирлянды и дождики, и Катя здесь может провести целый день, выбирая всякие штуки. А еще отсюда к нам приехал огромный плюшевый Жора, его купил Дед Мороз 🎅</p>",
+      "category": "favorite",
+      "image": "metro-bear.jpg",
+      "lat": 44.569501,
+      "lng": 33.458835
+    }, {
+      "title": "Кафе \"Грасс\"",
+      "description": "<p class='story-map__label-description'>В этом месте у Кати и Ярика было много хороших встреч с друзьями. Пожалуй, тут лучший вид на Южную бухту Севастополя, а от ассортимента пирожных разбегаются глаза</p>",
+      "category": "favorite",
+      "image": "grass.jpg",
+      "lat": 44.599870,
+      "lng": 33.524204
+    }, {
+      "title": "Площадь Нахимова",
+      "description": "<p class='story-map__label-description'>Это место становится особенным в новогодние праздники. Катя обожает илюминацию и множество огоньков и гирлянд, которые здесь бывают перед Новым годом. Здесь бывает волшебно погулять вместе</p>",
+      "category": "favorite",
+      "image": "nahimova.jpg",
+      "lat": 44.616783,
+      "lng": 33.525487
+    }, {
+      "title": "Пляж Любимовка",
+      "description": "<p class='story-map__label-description'>По крайней мере раз за лето Катя и Ярик выезжают сюда с ночевкой в палатке. Только шум моря, звездное небо и вид тлеющих угольков на песчаном пляже</p>",
+      "category": "favorite",
+      "image": "lubimovka.jpg",
+      "lat": 44.673075,
+      "lng": 33.546720
+    }, {
+      "title": "Парк Львов \"Тайган\", Белогорск",
+      "description": "<p class='story-map__label-description'>Потому что это место произвело большое впечатление на Катю и Ярика. Очаровательный зоопарк, в котором можно потеряться на целый день. Прекрасная атмосфера, большая территория и огромный дружелюбный жираф!</p>",
+      "category": "travel",
+      "image": "taigan.jpg",
+      "lat": 45.036229,
+      "lng": 34.563551
+    }, {
+      "title": "г. Москва",
+      "description": "<p class='story-map__label-description'>И это не только Старый и Новый Арбат. Это Третьяковка и Охотный ряд, Парк Музеон и Измайловский крмель, ВДНХ и Храм Христа Спасителя, Патриаршие пруды и еще много-много всего. Самые большие и веселые каникулы в столице для Ярика с Катей в мае 2015-го, которые между делом очень сильно повлияли на жизненный выбор Ярика</p>",
+      "category": "travel",
+      "image": "patriarshi.jpg",
+      "lat": 55.751542,
+      "lng": 37.597169
+    }, {
+      "title": "Гостиница \"Кремень\", Кременчуг",
+      "description": "<p class='story-map__label-description'>Одно из немногих мест, отложившихся в памяти Ярика и Кати со времен гастролей театра танца по Украине в хорошем смысле слова. Далеко не самая комфортная гостиница в лучших традициях совдепа, но это было интересным приключением. Стены \"Кремня\" видели, пожалуй лучшие партии настольной \"Мафии\" среди севастопольских артистов 😊</p>",
+      "category": "travel",
+      "image": "kremen.jpg",
+      "lat": 49.063667,
+      "lng": 33.402750
+    }, {
+      "title": "Концертный зал \"Листопад\", Полтава",
+      "description": "<p class='story-map__label-description'>Место на карте Украины, оставившее осенью 2013-го в памяти Кати и Ярика неприятные эмоции. Концерт, который должен был проходить здесь, скоротечно сорвался, и коллективу пришлось оперативно убираться из Полтавы. Всё потому что полтическая акция, выведшая толпу на улицы в тот день, не предполагала за собой никакой любви и уважения к населению Севастополя и Крыма. Бесславный день, который стал отправной точкой в разочаровании современной Украиной 😔</p>",
+      "category": "travel",
+      "image": "listopad.jpg",
+      "lat": 49.595716,
+      "lng": 34.540050
+    }, {
+      "title": "Генуэзская крепость, Судак",
+      "description": "<p class='story-map__label-description'>Просто хорошие, запоминающиеся выходные в Судаке с прогулкой по древним руинам. Может, всё потому что Ярик и Катя почувствовали себя героями любимой \"Игры престолов\" в мрачных стенах средневековой крепости ? 😊</p>",
+      "category": "travel",
+      "image": "sudak.jpg",
+      "lat": 44.842044,
+      "lng": 34.957803
+    }, {
+      "title": "Ресторан грузинской кухни \"Метехи\"",
+      "description": "<p class='story-map__label-description'>Кажется, это место, где Ярик и Катя пробовали лучшие в жизни хинкали и хачапури</p>",
+      "category": "travel",
+      "image": "metehi.jpg",
+      "lat": 55.650808,
+      "lng": 37.559827
+    }, {
+      "title": "Олимпийский парк, Сочи",
+      "description": "<p class='story-map__label-description'>Это произошло в рабочей поездке по югу России, когда заселиться в гостиницу Сочи пришлось в 6 утра. Так как на Сочи отводился один день пребывания, единственной возможностью увидеть Олимпийский парк и успеть к вечернему коцерту было реализуемо только поспав 2 часа. Конечно, Ярик и Катя именно так и поступили, иначе они бы не были сами собой 😊</p>",
+      "category": "travel",
+      "image": "olimp-park.jpg",
+      "lat": 43.409481,
+      "lng": 39.971392
+    }, {
+      "title": "Крепость Мангуп-Кале",
+      "description": "<p class='story-map__label-description'>Знакомство Ярика и Кати с этим местом напрямую связано уже со свадебной подготовкой и предсвадебной фотосессией в частности. Но между делом, вершина Мангуп просто поразила остатками цивилизации, которая расположились, кажется, в самом труднодоступном, но суперкрасивом месте на полуострове. А поднятие на вершину на полноприводном УАЗе - еще то приключение!</p>",
+      "category": "travel",
+      "image": "mangup.jpg",
+      "lat": 44.594674,
+      "lng": 33.807546
+    }, {
+      "title": "Кафе-музей \"Йоськин Кот\", Евпатория",
+      "description": "<p class='story-map__label-description'>Так сложилось, что Катя с большим трепетом любит место Малый Иерусалим в Евпатории, и \"Йоськин кот\" - конечно, его неотъемлемая часть. Ярик впервые в жизни попробовал здесь израильскую кухню (хумус, привет), и это вкусно!</p>",
+      "category": "travel",
+      "image": "yoskin-kot.jpg",
+      "lat": 45.198355,
+      "lng": 33.376340
+    }, {
+      "title": "Кофейня \"Кезлев Къавеси\", Евпатория",
+      "description": "<p class='story-map__label-description'>Многие говорят, что это самая лучшая кофейня в Крыму, и Катя может это подтвердить. Про сам кофе Ярик ничего сказать не может, шеф-напиток \"султан къавеси\" его впечатлил лишь своей кислостью, однако разнообразие выпечки и сама атмосфера внутри исторческой средневековой башни определенно заставят вернуться сюда при посещении Евпатории и попредставлять себя ханом Кезлева.</p>",
+      "category": "travel",
+      "image": "kezlev.jpg",
+      "lat": 45.198621,
+      "lng": 33.379839
+    }, {
+      "title": "Рыбный ресторан 吞云小莳日月光店, Huangpu Qu, Шанхай",
+      "description": "<p class='story-map__label-description'>Пожалуй, это пока что лучший гастрономический сеанс, который до сих пор довелось испытать Ярику и Кате. Депозит в 220 юаней приоткрыл возможность попробовать в одном месте то, что найти на местных прилавках скорее всего невозможно. Разумеется, помимо классической европейской и американской кухни со всеми ее видами птицы, пиццы и гарниров, главное, ради чего здесь стоило быть - разновидности морской живности Охотского, Японского и Южно-Китайского морей. Камчатские крабы с клешней размером по локоть, мидии, рапаны и красная рыба - всего этого и в таком количестве Ярику и Кате никогда не приходилось не то что есть, но и видеть! Еще мы с удовольствием впервые попробовали мраморное мясо и фуа-гру. К сожалению, этот ресторан полностью реорганизовали и нам не удалось попасть туда снова уже на следующий год. Но о боги, это был самый вкусный рыбный день Ярика и Кати</p>",
+      "category": "travel",
+      "image": "shanghai-fish.jpg",
+      "lat": 31.205983,
+      "lng": 121.468206
+    }, {
+      "title": "Старая улица 上海老街, Шанхай",
+      "description": "<p class='story-map__label-description'>Yuyuan - самая крутая улица для покупки сувениров. Здесь можно сделать суперские кадры на фоне крыш в китайской традиции и в общем-то провести прекрасную прогулку по пути на главную набережную. Ярик очень любит это место и как ни странно, знает его больше, чем какое-либо другое в Китае.</p>",
+      "category": "travel",
+      "image": "yuyuan.jpg",
+      "lat": 31.225317,
+      "lng": 121.496940
+    }, {
+      "title": "Набережная Вайтань, Шанхай",
+      "description": "<p class='story-map__label-description'>Полторакилометровая историческая набережная, открывающая обзор на самый живописный пейзаж мегаполиса, которым Ярик никогда не перестанет восхищаться. Катя и Ярик гуляли здесь в ночные сумерки (но в миллионе огоньков их таковыми не назовешь) и днем. И это место прекрасно всегда, в первую очередь квинтэссенцией богатой традиции и интернационалистического ультрамодерна.</p>",
+      "category": "travel",
+      "image": "shanghai-huangpu.jpg",
+      "lat": 31.236052,
+      "lng": 121.491083
+    }, {
+      "title": "Сверхвысокий небоскрёб Kingkey 100, Шэньчжэнь",
+      "description": "<p class='story-map__label-description'>С этим уникальным сверхстроением у Ярика и Кати связана очень интересная история 😏 Она пропитана мощнейшей скрытой мотивацией, доступной только русскому народу (\"халява\"), а еще сильным желанием Ярика показать Кате прекраснейший вид на Гонконг и Глубоководный (Шеньчженьский) залив, который уже успел увидеть ранее. Как итог - фотографии на вершине небоскреба высотой в 442 метра, знакомство с русскоязычными китайцами и эмоции, которые так важны авантюристам</p>",
+      "category": "travel",
+      "image": "kingkey.jpg",
+      "lat": 22.542248,
+      "lng": 114.106523
+    }, {
+      "title": "Рынок электроники Seg Electronics Market, Шэньчжэнь",
+      "description": "<p class='story-map__label-description'>Ярику с его фанатизмом к элетронным гаджетам просто не могло не запасть в душу это потрясающее место. На шеньчженьском рынке электроники, самом большом в мире, можно купить буквально всё, что работает от электричества и даже больше! Количество прилавков и масштабы здания (небоскреб в 356 метров, 71 этаж) просто впечатляют, а жизнь китайцев в подобных местах завораживает: кроме работы они здесь едят, болтают, курят, смеются, торгуются, шьют, бегают, шепчутся и смотрят за детьми. Конечно, единственное, что Ярик с Катей там приобрели - бракованный powerbank, но разве это может испортить впечатления от этой громадины ? 😌</p>",
+      "category": "travel",
+      "image": "seg-electronics.jpg",
+      "lat": 22.541530,
+      "lng": 114.087130
+    }, {
+      "title": "Великая Китайская стена, район Хуайжоу",
+      "description": "<p class='story-map__label-description'>Как сказал один современный философ, \"Ты не был на Китайской стене ? Ты не был в Китае\". Ярик с Катей были, и это стало лучшим завершением 2015-го года. Прикосновение с мировой архитектурной реликвии длиной в 8851 км - как чувство выполненного долга для авантюриста, что в поисках чего-то древнего и прекрасного. Но у Ярика и Кати еще много целей и неразгаданных мест!</p>",
+      "category": "travel",
+      "image": "great-wall.jpg",
+      "lat": 40.432006,
+      "lng": 116.570364
+    }, {
+      "title": "Небоскреб CCTV Headquarters, Пекин",
+      "description": "<p class='story-map__label-description'>Здание Central Chinese TeleVision или в простонародии небоскреб \"Штаны\", являясь чем-то вроде китайской Останскинской башни, представляется китайцам как уникально спроектированный европейцами символ стремительного экономического развития Поднебесной (построенный к Олимпийским играм 2008 в Пекине). Ярику и Кате конечно было просто анбеливэбл увидеть его изнутри и с театром танца попасть в главный китайский телик (CCTV) в прайм-тайм новогодней ночи. Глядя на масштабы происходящего, порою можно даже почуствовать себя супершишками 😊</p>",
+      "category": "travel",
+      "image": "headquarters.jpg",
+      "lat": 39.915456,
+      "lng": 116.464199
+    }, {
+      "title": "Ya Show Market или Русская пятиэтажка, Пекин",
+      "description": "<p class='story-map__label-description'>Абсолютно невероятное место для того, чтобы купить всё, что угодно в Пекине. Это царство бартера, в котором НЕ торговаться - просто противопоказано. Пожалуй, большая часть вещичек, которую Ярик и Катя привезли из Китая (от сувениров и одежды до чемодана и кошельков) были куплены здесь. Здесь были разыграны целые спектакли в погоне скинуть цену чуть ли не в 5-6 раз от начальной (и успешно!). Ya Show Market однозначно занимает особую позицию среди посещенных нами шопинг-мест</p>",
+      "category": "travel",
+      "image": "yashow.png",
+      "lat": 39.933941,
+      "lng": 116.453174
+    }, {
+      "title": "Гостиница Proud Way Hotel, Шэньчжэнь",
+      "description": "<p class='story-map__label-description'>Конечно, мы успели увидеть достаточно много комфортных китайских гостиниц, но почему-то эта запала в память Кати и Ярика по-особенному. Может, потому что неподалеку на вечерней уличной кухне Ярик взял попробовать в номер самые вкусные в мире устрицы ? 😊 Тогда мы устроили невероятно уютный вечер на двоих.</p>",
+      "category": "travel",
+      "image": "shenghen.jpg",
+      "lat": 22.546407,
+      "lng": 114.109456
+    }, {
+      "title": "Пешеходная улица Chunxi Road, Ченду",
+      "description": "<p class='story-map__label-description'>Обязательное место для посещения в Ченду, а для Ярика с Катей эдакий собирательный образ неисчислимого множества китайских рынков, базаров и торговых мест. Запомнить их все и отметить на карте практически невозможно, тем более, что почти каждый новый город - в малой степени внегласный скидочный марафон. Однако, отметим парочку, которые запомнились. Колоритный и ярко привлекающий Chunxi Road - один из них. </p>",
+      "category": "travel",
+      "image": "chunxi.jpg",
+      "lat": 30.653398,
+      "lng": 104.079939
+    }, {
+      "title": "Гранд-базар Carrefour, Урумчи",
+      "description": "<p class='story-map__label-description'>Этот город для Ярика и Кати попадает в список самых необычных, потому что он... самый не китайский город в Китае! Пропитанный мусульманской (уйгурской) культурой, о своей принадлежности к Поднебесной город напоминает только разрезом глаз его жителей 😌 Супернеобычное место с вплетением постсоветской, казахской, мусульмано-восточной и китайской культуры очень заинтересовал Ярика. Гранд-базар с красивыми мечетями очень заинтересовал Катю 😁</p>",
+      "category": "travel",
+      "image": "urumchi.jpg",
+      "lat": 43.779190,
+      "lng": 87.618253
+    }, {
+      "title": "Пешеходная улица Nanjing Road, Шанхай",
+      "description": "<p class='story-map__label-description'>Можно сказать, что это китайский Арбат: очень многолюдно, очень дорого и красиво. Здесь ощущается вся дороговизна современного развития Китая и пристуствие европейских инвестиций. Для Ярика Nanjing Road стал неотъемлемой частью впечатления, которое сформировалось после посещения Шанхая</p>",
+      "category": "travel",
+      "image": "nanjing.jpg",
+      "lat": 31.236060,
+      "lng": 121.479542
+    }, {
+      "title": "Отель Jomtien Thani, Паттайя",
+      "description": "<p class='story-map__label-description'>Это место, которого оказалось более, чем достаточно для Кати и Ярика, чтобы передохнуть от экскурсий по Тайланду и пляжной жары. Здесь в номере были впервые попробован весь ассортимент тайских фруктов (манго, драконий фрукт, гуава, мангустин, личи, маракуйя, лонган, джекфрут) и морепродуктов. Здесь мы также впервые увидели домашнего геккончика тинтьок, который сперва поверг Катю в ужас, но затем мы выяснили, что это наш первый друг от насекомых 😊</p>",
+      "category": "travel",
+      "image": "jomtien.jpg",
+      "lat": 12.896977,
+      "lng": 100.870629
+    }, {
+      "title": "Побережье реки Квай, Тайланд",
+      "description": "<p class='story-map__label-description'>Надо ли говорить, что здесь слегка присутствует ощущение, что ты герой фильма \"Анаконда\" ? 😁 Квай - одна из самых необычных и крутых эмоций в жизни, которую испытали Ярик и Катя. Казалось бы, тебя вывозят на плоту к устью и вместе с жилетами сплавляют по течению очень мутной зеленой реки посреди диковатых джунглей. Но ощущения не стоят слов, потому что трудно представить способ лучше в прямом смысле слова слиться с тайскими джунглями и вечерними звуками из их недр, под ногами - отсутствие дна и только пилинговые рыбки могут напомнить, что река - живая, а теплый стремительный поток несет твою бездвижную тушку и расслабляет мозг наулучшим образом</p>",
+      "category": "travel",
+      "image": "kvai.jpg",
+      "lat": 14.944890,
+      "lng": 99.194854
+    }, {
+      "title": "Храм изумрудного Будды и Королевский дворец, Бангкок",
+      "description": "<p class='story-map__label-description'>Катя и Ярик посетили это место во время национальной скорби по почившему королю Тайланда Раме IX, поэтому это место можно было назвать паломническим. Тайский Кремль, Мавзолей и Оружейная палата 😊</p>",
+      "category": "travel",
+      "image": "bangkok-hram.jpg",
+      "lat": 13.750153,
+      "lng": 100.491322
+    }, {
+      "title": "Смотровая площадка небоскреба Baiyoke Sky, Бангкок",
+      "description": "<p class='story-map__label-description'>Потому что тут одна из самых крутых смотровых площадок, на которой в солнечную погоду открывается прекрасный вид на весь Бангкок</p>",
+      "category": "travel",
+      "image": "baiyok.jpg",
+      "lat": 13.754241,
+      "lng": 100.540357
+    }, {
+      "title": "Национальный парк Кхауяй, Тайланд",
+      "description": "<p class='story-map__label-description'>Рафтинг-райд по сиамским джунглям</p>",
+      "category": "travel",
+      "image": "khaoyai.jpg",
+      "lat": 14.439187,
+      "lng": 101.372479
+    }, {
+      "title": "Водопад Erawan, Тайланд",
+      "description": "<p class='story-map__label-description'>Кате и Ярику еще не доводилось бывать в подобных местах. Главное воспоминание - цвет воды в источнике и просто огроменные пилинговые рыбища, которые больше смахивают на сомов 😅 Боящийся щекотки Ярик заценил 🙃</p>",
+      "category": "travel",
+      "image": "erawan.jpg",
+      "lat": 14.368731,
+      "lng": 99.143953
+    }, {
+      "title": "Слоновая ферма Taweechai, Тайланд",
+      "description": "<p class='story-map__label-description'>Ярчайшее жизненное воспоминание и впервые увиденные индийские слоны. В этих животных очень много первобытного, и прикоснуться к ним во всех смыслах стало большим открытием. Ярик и Катя даже умудрились поплескаться со слоником в речке 🐘</p>",
+      "category": "travel",
+      "image": "sloni.jpg",
+      "lat": 14.217066,
+      "lng": 99.223751
+    }, {
+      "title": "Плавучий рынок Amphawa, Самут Сонгкрам",
+      "description": "<p class='story-map__label-description'>Без шопинга никуда! И этот стал весьма необычным: с прилавками, доступными только в тесных мутных каналах из узкой азиатской лодки, смахивающей на каноэ. Купить по большей части можно было только сувениры, но Катя с собой прихватила один, на память.</p>",
+      "category": "travel",
+      "image": "amphawa.jpg",
+      "lat": 13.425792,
+      "lng": 99.955313
+    }, {
+      "title": "Радоновые источники Hin Dat, Канчанабури",
+      "description": "<p class='story-map__label-description'>Провели неизвестную доселе терапию в горячем термальном источнике с очень необычным цветом воды (продукт распада радия) по дороге на реку Квай. Оказалось, что слаборадиоактивные радоновые источники есть даже в Крыму. </p>",
+      "category": "travel",
+      "image": "rodon.jpg",
+      "lat": 14.624920,
+      "lng": 98.725881
+    }, {
+      "title": "Старый город, Анталья",
+      "description": "<p class='story-map__label-description'>Катя и Ярик никогда не были здесь вместе, но оба были по раздельности. Старый город Антальи есть на карте, потому что пожалуй косвенно он интересным образом сыграл свою роль на заре совместного семейного приключения Ярика и Кати. Для Кати координата неподалеку стала ключевой в изменении старых приоритетов (подробнее - при встрече). А турецкий рахат-лукум, купленный здесь для Ярика Катей стал единственным утешением, когда Ярику пришлось помахать рукой своему некоторому материальному прошлому, и в том числе как ни странно, украденному украинскиму паспорту. Ничего не случается случайно, правда ?</p>",
+      "category": "travel",
+      "image": "antalia.jpg",
+      "lat": 36.883857,
+      "lng": 30.705875
+    }]
+  };
 
-      if (!selectedItem.hasClass('selected')) {
-        var selectedTab = selectedItem.data('content'),
-            selectedContent = tabContentWrapper.find('li[data-content="' + selectedTab + '"]'),
-            selectedContentHeight = selectedContent.innerHeight();
-        tabItems.find('a.selected').removeClass('selected');
-        selectedItem.addClass('selected');
-        selectedContent.addClass('selected').siblings('li').removeClass('selected');
+  function mapInit() {
+    var centerCoord = new google.maps.LatLng(44.598591, 33.476324);
+    /* Если необходимо стилизовать карту (например, стили snazzymaps)
+     var styledMapType = new google.maps.StyledMapType([{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#6195a0"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"landscape","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#e6f3d6"},{"visibility":"on"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45},{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#f4d2c5"},{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"labels.text","stylers":[{"color":"#4e4e4e"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#f4f4f4"}]},{"featureType":"road.arterial","elementType":"labels.text.fill","stylers":[{"color":"#787878"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#eaf6f8"},{"visibility":"on"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#eaf6f8"}]}],
+     {name: 'Styled Map'});*/
+
+    var mapOptions = {
+      zoom: 13,
+      center: centerCoord,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      gestureHandling: 'greedy',
+      disableDefaultUI: true,
+      scaleControl: true,
+      zoomControl: true,
+      zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.LARGE
       }
-    }); //hide the .tabs::after element when tabbed navigation has scrolled to the end (mobile version)
+      /* для стилизации карты
+       mapTypeControlOptions: {
+       mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain',
+       'styled_map']
+       }*/
 
-    checkScrolling(tabNavigation);
-    tabNavigation.on('scroll', function () {
-      checkScrolling($(this));
-    });
-  });
-  $(window).on('resize', function () {
-    tabs.each(function () {
-      var tab = $(this);
-      checkScrolling(tab.find('nav'));
-      tab.find('.tabs__content').css('height', 'auto');
-    });
-  });
+    };
+    map = new google.maps.Map(document.getElementById("storyMap"), mapOptions);
+    /* применение стилизации карты
+     map.mapTypes.set('styled_map', styledMapType);
+     map.setMapTypeId('styled_map');
+     */
+    //Определяем область отображения меток на карте
 
-  function checkScrolling(tabs) {
-    var totalTabWidth = parseInt(tabs.children('.tabs__navigation').width()),
-        tabsViewport = parseInt(tabs.width());
+    var latlngbounds = new google.maps.LatLngBounds();
+    $.each(storyMap.places, function (i, item) {
+      $(".story-map__content-" + item.category + " .story-map__places").append('<li class="story-map__place-item"><a data-href="' + i + '"><img class="story-map__place-thumb later-lazy" data-src="img/thumb-' + item.image + '">' + item.title + '</a></li>');
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(item.lat, item.lng),
+        map: map,
+        title: item.title,
+        icon: "img/place-icon.png",
+        index: i
+      }); //Добавляем координаты меток
 
-    if (tabs.scrollLeft() >= totalTabWidth - tabsViewport) {
-      tabs.parent('.tabs').addClass('is-ended');
-    } else {
-      tabs.parent('.tabs').removeClass('is-ended');
-    }
+      latlngbounds.extend(new google.maps.LatLng(item.lat, item.lng));
+      arrMarkers[i] = marker;
+      var infowindow = new google.maps.InfoWindow({
+        content: "<h3 class='story-map__label-title'>" + item.title + "</h3>" + item.description + "<img class='story-map__label-image' data-src='img/" + item.image + "' data-index='" + i + "'>"
+      });
+      arrInfoWindows[i] = infowindow;
+      google.maps.event.addListener(marker, 'click', function () {
+        for (var x = 0; x < arrInfoWindows.length; x++) {
+          arrInfoWindows[x].close();
+          infowindow.open(map, marker); // Lazy-загружаем изображение балуна
+
+          $('.story-map__label-image').lazy();
+        }
+
+        $(".story-map__place--active").removeClass('story-map__place--active');
+        $($("a[data-href=\"" + marker.index + "\"]")[0]).addClass('story-map__place--active');
+      });
+      $('.story-map__overlay').click(function () {
+        $('.later-lazy').lazy();
+        $('.story-map').removeClass('story-map--minimized');
+        $('.story-map__content').scroll(function () {
+          $('.later-lazy').lazy();
+        });
+        $('.story-map__close-trigger').click(function () {
+          for (var x = 0; x < arrInfoWindows.length; x++) {
+            arrInfoWindows[x].close();
+          }
+
+          $('.story-map').addClass('story-map--minimized');
+        });
+      });
+    }); //Центрируем и масштабируем карту так, чтобы были видны все метки
+    //map.setCenter(latlngbounds.getCenter(), map.fitBounds(latlngbounds));
   }
+
+  $(function () {
+    //Определяем карту (добавляем маркеры, балуны и список со ссылками)
+    mapInit(); // "live" отслеживает событие клика по ссылке
+
+    $(".story-map__places a").on("click", function (e) {
+      e.preventDefault();
+      var i = $(this).attr("data-href");
+      $(".story-map__place--active").removeClass('story-map__place--active');
+      $(".story-map__mobile-list-trigger").html('<svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.5538 0.0523258C19.4442 -0.014174 19.3076 -0.017097 19.1947 0.0424604L13.1538 3.24066L7.11328 0.0424604C7.10853 0.0399027 7.10305 0.0391719 7.0983 0.0369796C7.08076 0.0285758 7.06286 0.0223643 7.04459 0.0168836C7.03436 0.0139605 7.02449 0.0106721 7.01426 0.00847978C6.99416 0.00446056 6.9737 0.00299904 6.95288 0.00226828C6.94374 0.00190289 6.93461 0.000806736 6.92511 0.00117212C6.90538 0.00226827 6.88601 0.00592209 6.86665 0.0103067C6.85568 0.012499 6.84472 0.0139605 6.83413 0.017249C6.83157 0.0179798 6.82901 0.0179797 6.82682 0.0187105L0.249922 2.21101C0.10048 2.2607 0 2.40028 0 2.55776V18.2692C0 18.3865 0.056269 18.4969 0.151999 18.5659C0.214845 18.6109 0.289749 18.6346 0.365383 18.6346C0.404114 18.6346 0.44321 18.6284 0.480844 18.6156L6.9284 16.4664L13.0146 18.9726C13.0197 18.9748 13.0255 18.9741 13.0307 18.9759C13.0709 18.9901 13.1118 19 13.1538 19C13.1867 19 13.2192 18.9945 13.251 18.9858C13.2612 18.9828 13.2707 18.9781 13.2809 18.9744C13.2956 18.9689 13.3109 18.9649 13.3248 18.9576L19.5363 15.6692C19.6558 15.606 19.7307 15.4814 19.7307 15.3462V0.365459C19.7307 0.23721 19.6635 0.11846 19.5538 0.0523258ZM0.730766 2.8212L6.5769 0.872611V10.735C6.41978 10.7635 6.26486 10.7957 6.11505 10.8351C5.91994 10.887 5.80375 11.0869 5.85563 11.282C5.89911 11.4457 6.04673 11.5539 6.20859 11.5539C6.23928 11.5539 6.27107 11.5498 6.30249 11.5418C6.39019 11.5184 6.48592 11.5067 6.5769 11.4877V15.8139L0.730766 17.7621V2.8212ZM7.30766 11.3854C7.42495 11.3763 7.53859 11.3613 7.6588 11.3587C7.86049 11.3544 8.02053 11.1874 8.01651 10.9857C8.01212 10.7866 7.84953 10.628 7.65112 10.628C7.64857 10.628 7.64564 10.628 7.64309 10.628C7.52982 10.6305 7.41837 10.6367 7.30766 10.6444V0.972361L12.7884 3.87387V11.6178C12.5275 11.6065 12.2623 11.5758 11.9842 11.5221C11.7854 11.483 11.5943 11.613 11.556 11.8111C11.5176 12.0091 11.6473 12.201 11.8454 12.2393C12.1691 12.3022 12.4833 12.3329 12.7888 12.3449V18.0891L7.30766 15.8321V11.3854ZM18.9999 15.1258L13.5192 18.0274V12.3055C13.6551 12.2437 13.7457 12.1049 13.7337 11.9474C13.7231 11.8107 13.6354 11.7011 13.5192 11.6474V3.87387L18.9999 0.972361V15.1258Z" fill="#24262D"/><path d="M4.0193 2.92316C3.01194 2.92316 2.19238 3.74271 2.19238 4.75007C2.19238 5.63247 2.82121 6.37018 3.65392 6.54008V7.30775C3.65392 7.50981 3.81761 7.67314 4.0193 7.67314C4.22099 7.67314 4.38468 7.50981 4.38468 7.30775V6.54008C5.21739 6.37018 5.84621 5.63247 5.84621 4.75007C5.84621 3.74271 5.02666 2.92316 4.0193 2.92316ZM4.0193 5.84622C3.41495 5.84622 2.92315 5.35442 2.92315 4.75007C2.92315 4.14573 3.41495 3.65392 4.0193 3.65392C4.62364 3.65392 5.11545 4.14573 5.11545 4.75007C5.11545 5.35442 4.62364 5.84622 4.0193 5.84622Z"fill="#24262D"/><path d="M16.4679 9.74593C16.5117 9.7631 16.5566 9.77077 16.6009 9.77077C16.747 9.77077 16.8848 9.68272 16.9414 9.53839C17.1131 9.10029 17.2509 8.60557 17.3517 8.06809C17.389 7.87005 17.2582 7.67932 17.0598 7.64169C16.8603 7.6088 16.6706 7.73559 16.6334 7.93399C16.5413 8.42653 16.416 8.87668 16.2611 9.27239C16.1876 9.45983 16.2801 9.67212 16.4679 9.74593Z"fill="#24262D"/><path d="M4.67867 11.4519C4.23765 11.7285 3.84011 12.0749 3.49665 12.4823C3.36658 12.6365 3.38631 12.867 3.5405 12.9971C3.60919 13.0548 3.69286 13.083 3.77581 13.083C3.87994 13.083 3.98298 13.0388 4.05532 12.9533C4.34982 12.604 4.68999 12.3069 5.0667 12.0712C5.2377 11.9638 5.28922 11.7384 5.18217 11.5674C5.07511 11.3964 4.8493 11.3445 4.67867 11.4519Z"fill="#24262D"/><path d="M3.15215 13.6201C2.96872 13.5361 2.75169 13.6153 2.66728 13.7988C2.2924 14.6121 2.19959 15.2687 2.19557 15.2965C2.16817 15.4963 2.30775 15.6801 2.50761 15.7075C2.52442 15.7101 2.54159 15.7112 2.55803 15.7112C2.73744 15.7112 2.89382 15.5789 2.91976 15.3966C2.92049 15.3907 3.00417 14.8131 3.33082 14.1053C3.41522 13.9215 3.3352 13.7049 3.15215 13.6201Z"fill="#24262D"/> <path d="M14.77 11.9587C14.8259 11.9587 14.8829 11.9459 14.9359 11.9189C15.4079 11.6774 15.8241 11.3346 16.1723 10.9009C16.2988 10.7434 16.2735 10.5132 16.1161 10.3872C15.9589 10.2619 15.7288 10.2863 15.6023 10.4435C15.3188 10.7968 14.9826 11.0741 14.603 11.2681C14.4232 11.3602 14.352 11.5802 14.4441 11.7599C14.5091 11.886 14.6374 11.9587 14.77 11.9587Z"fill="#24262D"/><path d="M10.6583 11.1194C10.4972 11.0518 10.4029 11.005 10.3967 11.0018C10.373 10.9897 10.3477 10.9798 10.3218 10.9733C9.92609 10.8717 9.53623 10.7913 9.16244 10.7343C8.96331 10.7029 8.77659 10.8406 8.7459 11.0401C8.71558 11.2396 8.85259 11.4263 9.05209 11.4567C9.39044 11.5085 9.74376 11.5809 10.1033 11.6722C10.1523 11.6956 10.2458 11.7398 10.3766 11.7943C10.4226 11.8136 10.4705 11.8224 10.5173 11.8224C10.6601 11.8224 10.7961 11.7384 10.8545 11.5981C10.9324 11.411 10.8447 11.1969 10.6583 11.1194Z"fill="#24262D"/><path d="M17.145 6.91716C17.153 6.91752 17.1607 6.91789 17.1687 6.91789C17.3598 6.91789 17.5206 6.76954 17.533 6.57552C17.5557 6.22439 17.567 5.8528 17.567 5.47207C17.567 5.34528 17.5659 5.21666 17.5634 5.08549C17.5597 4.88343 17.3843 4.72997 17.1914 4.72668C16.9897 4.73034 16.8289 4.89695 16.8326 5.09864C16.8348 5.22543 16.8362 5.35003 16.8362 5.47207C16.8362 5.83745 16.8253 6.19297 16.8037 6.52912C16.7909 6.73045 16.9437 6.904 17.145 6.91716Z"fill="#24262D"/><path d="M3.03024 10.1238C3.10149 10.195 3.19503 10.2308 3.28857 10.2308C3.38211 10.2308 3.47565 10.195 3.5469 10.1238L4.01934 9.65131L4.49178 10.1238C4.56303 10.195 4.65656 10.2308 4.7501 10.2308C4.84364 10.2308 4.93718 10.195 5.00843 10.1238C5.15129 9.98089 5.15129 9.74997 5.00843 9.6071L4.53599 9.13466L5.00843 8.66222C5.15129 8.51936 5.15129 8.28844 5.00843 8.14557C4.86556 8.00271 4.63464 8.00271 4.49178 8.14557L4.01934 8.61801L3.5469 8.14557C3.40403 8.00271 3.17311 8.00271 3.03024 8.14557C2.88738 8.28844 2.88738 8.51936 3.03024 8.66222L3.50268 9.13466L3.03024 9.6071C2.88738 9.7496 2.88738 9.98089 3.03024 10.1238Z"fill="#24262D"/> </svg> Открыть список');
+      $(".story-map").removeClass("story-map--content-active");
+      $(this).addClass('story-map__place--active'); // Эта строка кода, закрывает все открытые балуны, для открытия выбранного
+
+      for (var x = 0; x < arrInfoWindows.length; x++) {
+        arrInfoWindows[x].close();
+      }
+
+      arrInfoWindows[i].open(map, arrMarkers[i]); // Lazy-загружаем изображение балуна
+
+      $('.story-map__label-image').lazy();
+    });
+  });
+  $(".story-map__mobile-list-trigger").click(function () {
+    $(".story-map").toggleClass("story-map--content-active");
+
+    if ($(".story-map").hasClass("story-map--content-active")) {
+      $(this).html('<svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.5538 0.0523258C19.4442 -0.014174 19.3076 -0.017097 19.1947 0.0424604L13.1538 3.24066L7.11328 0.0424604C7.10853 0.0399027 7.10305 0.0391719 7.0983 0.0369796C7.08076 0.0285758 7.06286 0.0223643 7.04459 0.0168836C7.03436 0.0139605 7.02449 0.0106721 7.01426 0.00847978C6.99416 0.00446056 6.9737 0.00299904 6.95288 0.00226828C6.94374 0.00190289 6.93461 0.000806736 6.92511 0.00117212C6.90538 0.00226827 6.88601 0.00592209 6.86665 0.0103067C6.85568 0.012499 6.84472 0.0139605 6.83413 0.017249C6.83157 0.0179798 6.82901 0.0179797 6.82682 0.0187105L0.249922 2.21101C0.10048 2.2607 0 2.40028 0 2.55776V18.2692C0 18.3865 0.056269 18.4969 0.151999 18.5659C0.214845 18.6109 0.289749 18.6346 0.365383 18.6346C0.404114 18.6346 0.44321 18.6284 0.480844 18.6156L6.9284 16.4664L13.0146 18.9726C13.0197 18.9748 13.0255 18.9741 13.0307 18.9759C13.0709 18.9901 13.1118 19 13.1538 19C13.1867 19 13.2192 18.9945 13.251 18.9858C13.2612 18.9828 13.2707 18.9781 13.2809 18.9744C13.2956 18.9689 13.3109 18.9649 13.3248 18.9576L19.5363 15.6692C19.6558 15.606 19.7307 15.4814 19.7307 15.3462V0.365459C19.7307 0.23721 19.6635 0.11846 19.5538 0.0523258ZM0.730766 2.8212L6.5769 0.872611V10.735C6.41978 10.7635 6.26486 10.7957 6.11505 10.8351C5.91994 10.887 5.80375 11.0869 5.85563 11.282C5.89911 11.4457 6.04673 11.5539 6.20859 11.5539C6.23928 11.5539 6.27107 11.5498 6.30249 11.5418C6.39019 11.5184 6.48592 11.5067 6.5769 11.4877V15.8139L0.730766 17.7621V2.8212ZM7.30766 11.3854C7.42495 11.3763 7.53859 11.3613 7.6588 11.3587C7.86049 11.3544 8.02053 11.1874 8.01651 10.9857C8.01212 10.7866 7.84953 10.628 7.65112 10.628C7.64857 10.628 7.64564 10.628 7.64309 10.628C7.52982 10.6305 7.41837 10.6367 7.30766 10.6444V0.972361L12.7884 3.87387V11.6178C12.5275 11.6065 12.2623 11.5758 11.9842 11.5221C11.7854 11.483 11.5943 11.613 11.556 11.8111C11.5176 12.0091 11.6473 12.201 11.8454 12.2393C12.1691 12.3022 12.4833 12.3329 12.7888 12.3449V18.0891L7.30766 15.8321V11.3854ZM18.9999 15.1258L13.5192 18.0274V12.3055C13.6551 12.2437 13.7457 12.1049 13.7337 11.9474C13.7231 11.8107 13.6354 11.7011 13.5192 11.6474V3.87387L18.9999 0.972361V15.1258Z" fill="#24262D"/><path d="M4.0193 2.92316C3.01194 2.92316 2.19238 3.74271 2.19238 4.75007C2.19238 5.63247 2.82121 6.37018 3.65392 6.54008V7.30775C3.65392 7.50981 3.81761 7.67314 4.0193 7.67314C4.22099 7.67314 4.38468 7.50981 4.38468 7.30775V6.54008C5.21739 6.37018 5.84621 5.63247 5.84621 4.75007C5.84621 3.74271 5.02666 2.92316 4.0193 2.92316ZM4.0193 5.84622C3.41495 5.84622 2.92315 5.35442 2.92315 4.75007C2.92315 4.14573 3.41495 3.65392 4.0193 3.65392C4.62364 3.65392 5.11545 4.14573 5.11545 4.75007C5.11545 5.35442 4.62364 5.84622 4.0193 5.84622Z"fill="#24262D"/><path d="M16.4679 9.74593C16.5117 9.7631 16.5566 9.77077 16.6009 9.77077C16.747 9.77077 16.8848 9.68272 16.9414 9.53839C17.1131 9.10029 17.2509 8.60557 17.3517 8.06809C17.389 7.87005 17.2582 7.67932 17.0598 7.64169C16.8603 7.6088 16.6706 7.73559 16.6334 7.93399C16.5413 8.42653 16.416 8.87668 16.2611 9.27239C16.1876 9.45983 16.2801 9.67212 16.4679 9.74593Z"fill="#24262D"/><path d="M4.67867 11.4519C4.23765 11.7285 3.84011 12.0749 3.49665 12.4823C3.36658 12.6365 3.38631 12.867 3.5405 12.9971C3.60919 13.0548 3.69286 13.083 3.77581 13.083C3.87994 13.083 3.98298 13.0388 4.05532 12.9533C4.34982 12.604 4.68999 12.3069 5.0667 12.0712C5.2377 11.9638 5.28922 11.7384 5.18217 11.5674C5.07511 11.3964 4.8493 11.3445 4.67867 11.4519Z"fill="#24262D"/><path d="M3.15215 13.6201C2.96872 13.5361 2.75169 13.6153 2.66728 13.7988C2.2924 14.6121 2.19959 15.2687 2.19557 15.2965C2.16817 15.4963 2.30775 15.6801 2.50761 15.7075C2.52442 15.7101 2.54159 15.7112 2.55803 15.7112C2.73744 15.7112 2.89382 15.5789 2.91976 15.3966C2.92049 15.3907 3.00417 14.8131 3.33082 14.1053C3.41522 13.9215 3.3352 13.7049 3.15215 13.6201Z"fill="#24262D"/> <path d="M14.77 11.9587C14.8259 11.9587 14.8829 11.9459 14.9359 11.9189C15.4079 11.6774 15.8241 11.3346 16.1723 10.9009C16.2988 10.7434 16.2735 10.5132 16.1161 10.3872C15.9589 10.2619 15.7288 10.2863 15.6023 10.4435C15.3188 10.7968 14.9826 11.0741 14.603 11.2681C14.4232 11.3602 14.352 11.5802 14.4441 11.7599C14.5091 11.886 14.6374 11.9587 14.77 11.9587Z"fill="#24262D"/><path d="M10.6583 11.1194C10.4972 11.0518 10.4029 11.005 10.3967 11.0018C10.373 10.9897 10.3477 10.9798 10.3218 10.9733C9.92609 10.8717 9.53623 10.7913 9.16244 10.7343C8.96331 10.7029 8.77659 10.8406 8.7459 11.0401C8.71558 11.2396 8.85259 11.4263 9.05209 11.4567C9.39044 11.5085 9.74376 11.5809 10.1033 11.6722C10.1523 11.6956 10.2458 11.7398 10.3766 11.7943C10.4226 11.8136 10.4705 11.8224 10.5173 11.8224C10.6601 11.8224 10.7961 11.7384 10.8545 11.5981C10.9324 11.411 10.8447 11.1969 10.6583 11.1194Z"fill="#24262D"/><path d="M17.145 6.91716C17.153 6.91752 17.1607 6.91789 17.1687 6.91789C17.3598 6.91789 17.5206 6.76954 17.533 6.57552C17.5557 6.22439 17.567 5.8528 17.567 5.47207C17.567 5.34528 17.5659 5.21666 17.5634 5.08549C17.5597 4.88343 17.3843 4.72997 17.1914 4.72668C16.9897 4.73034 16.8289 4.89695 16.8326 5.09864C16.8348 5.22543 16.8362 5.35003 16.8362 5.47207C16.8362 5.83745 16.8253 6.19297 16.8037 6.52912C16.7909 6.73045 16.9437 6.904 17.145 6.91716Z"fill="#24262D"/><path d="M3.03024 10.1238C3.10149 10.195 3.19503 10.2308 3.28857 10.2308C3.38211 10.2308 3.47565 10.195 3.5469 10.1238L4.01934 9.65131L4.49178 10.1238C4.56303 10.195 4.65656 10.2308 4.7501 10.2308C4.84364 10.2308 4.93718 10.195 5.00843 10.1238C5.15129 9.98089 5.15129 9.74997 5.00843 9.6071L4.53599 9.13466L5.00843 8.66222C5.15129 8.51936 5.15129 8.28844 5.00843 8.14557C4.86556 8.00271 4.63464 8.00271 4.49178 8.14557L4.01934 8.61801L3.5469 8.14557C3.40403 8.00271 3.17311 8.00271 3.03024 8.14557C2.88738 8.28844 2.88738 8.51936 3.03024 8.66222L3.50268 9.13466L3.03024 9.6071C2.88738 9.7496 2.88738 9.98089 3.03024 10.1238Z"fill="#24262D"/> </svg> Закрыть список');
+    } else {
+      $(this).html('<svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.5538 0.0523258C19.4442 -0.014174 19.3076 -0.017097 19.1947 0.0424604L13.1538 3.24066L7.11328 0.0424604C7.10853 0.0399027 7.10305 0.0391719 7.0983 0.0369796C7.08076 0.0285758 7.06286 0.0223643 7.04459 0.0168836C7.03436 0.0139605 7.02449 0.0106721 7.01426 0.00847978C6.99416 0.00446056 6.9737 0.00299904 6.95288 0.00226828C6.94374 0.00190289 6.93461 0.000806736 6.92511 0.00117212C6.90538 0.00226827 6.88601 0.00592209 6.86665 0.0103067C6.85568 0.012499 6.84472 0.0139605 6.83413 0.017249C6.83157 0.0179798 6.82901 0.0179797 6.82682 0.0187105L0.249922 2.21101C0.10048 2.2607 0 2.40028 0 2.55776V18.2692C0 18.3865 0.056269 18.4969 0.151999 18.5659C0.214845 18.6109 0.289749 18.6346 0.365383 18.6346C0.404114 18.6346 0.44321 18.6284 0.480844 18.6156L6.9284 16.4664L13.0146 18.9726C13.0197 18.9748 13.0255 18.9741 13.0307 18.9759C13.0709 18.9901 13.1118 19 13.1538 19C13.1867 19 13.2192 18.9945 13.251 18.9858C13.2612 18.9828 13.2707 18.9781 13.2809 18.9744C13.2956 18.9689 13.3109 18.9649 13.3248 18.9576L19.5363 15.6692C19.6558 15.606 19.7307 15.4814 19.7307 15.3462V0.365459C19.7307 0.23721 19.6635 0.11846 19.5538 0.0523258ZM0.730766 2.8212L6.5769 0.872611V10.735C6.41978 10.7635 6.26486 10.7957 6.11505 10.8351C5.91994 10.887 5.80375 11.0869 5.85563 11.282C5.89911 11.4457 6.04673 11.5539 6.20859 11.5539C6.23928 11.5539 6.27107 11.5498 6.30249 11.5418C6.39019 11.5184 6.48592 11.5067 6.5769 11.4877V15.8139L0.730766 17.7621V2.8212ZM7.30766 11.3854C7.42495 11.3763 7.53859 11.3613 7.6588 11.3587C7.86049 11.3544 8.02053 11.1874 8.01651 10.9857C8.01212 10.7866 7.84953 10.628 7.65112 10.628C7.64857 10.628 7.64564 10.628 7.64309 10.628C7.52982 10.6305 7.41837 10.6367 7.30766 10.6444V0.972361L12.7884 3.87387V11.6178C12.5275 11.6065 12.2623 11.5758 11.9842 11.5221C11.7854 11.483 11.5943 11.613 11.556 11.8111C11.5176 12.0091 11.6473 12.201 11.8454 12.2393C12.1691 12.3022 12.4833 12.3329 12.7888 12.3449V18.0891L7.30766 15.8321V11.3854ZM18.9999 15.1258L13.5192 18.0274V12.3055C13.6551 12.2437 13.7457 12.1049 13.7337 11.9474C13.7231 11.8107 13.6354 11.7011 13.5192 11.6474V3.87387L18.9999 0.972361V15.1258Z" fill="#24262D"/><path d="M4.0193 2.92316C3.01194 2.92316 2.19238 3.74271 2.19238 4.75007C2.19238 5.63247 2.82121 6.37018 3.65392 6.54008V7.30775C3.65392 7.50981 3.81761 7.67314 4.0193 7.67314C4.22099 7.67314 4.38468 7.50981 4.38468 7.30775V6.54008C5.21739 6.37018 5.84621 5.63247 5.84621 4.75007C5.84621 3.74271 5.02666 2.92316 4.0193 2.92316ZM4.0193 5.84622C3.41495 5.84622 2.92315 5.35442 2.92315 4.75007C2.92315 4.14573 3.41495 3.65392 4.0193 3.65392C4.62364 3.65392 5.11545 4.14573 5.11545 4.75007C5.11545 5.35442 4.62364 5.84622 4.0193 5.84622Z"fill="#24262D"/><path d="M16.4679 9.74593C16.5117 9.7631 16.5566 9.77077 16.6009 9.77077C16.747 9.77077 16.8848 9.68272 16.9414 9.53839C17.1131 9.10029 17.2509 8.60557 17.3517 8.06809C17.389 7.87005 17.2582 7.67932 17.0598 7.64169C16.8603 7.6088 16.6706 7.73559 16.6334 7.93399C16.5413 8.42653 16.416 8.87668 16.2611 9.27239C16.1876 9.45983 16.2801 9.67212 16.4679 9.74593Z"fill="#24262D"/><path d="M4.67867 11.4519C4.23765 11.7285 3.84011 12.0749 3.49665 12.4823C3.36658 12.6365 3.38631 12.867 3.5405 12.9971C3.60919 13.0548 3.69286 13.083 3.77581 13.083C3.87994 13.083 3.98298 13.0388 4.05532 12.9533C4.34982 12.604 4.68999 12.3069 5.0667 12.0712C5.2377 11.9638 5.28922 11.7384 5.18217 11.5674C5.07511 11.3964 4.8493 11.3445 4.67867 11.4519Z"fill="#24262D"/><path d="M3.15215 13.6201C2.96872 13.5361 2.75169 13.6153 2.66728 13.7988C2.2924 14.6121 2.19959 15.2687 2.19557 15.2965C2.16817 15.4963 2.30775 15.6801 2.50761 15.7075C2.52442 15.7101 2.54159 15.7112 2.55803 15.7112C2.73744 15.7112 2.89382 15.5789 2.91976 15.3966C2.92049 15.3907 3.00417 14.8131 3.33082 14.1053C3.41522 13.9215 3.3352 13.7049 3.15215 13.6201Z"fill="#24262D"/> <path d="M14.77 11.9587C14.8259 11.9587 14.8829 11.9459 14.9359 11.9189C15.4079 11.6774 15.8241 11.3346 16.1723 10.9009C16.2988 10.7434 16.2735 10.5132 16.1161 10.3872C15.9589 10.2619 15.7288 10.2863 15.6023 10.4435C15.3188 10.7968 14.9826 11.0741 14.603 11.2681C14.4232 11.3602 14.352 11.5802 14.4441 11.7599C14.5091 11.886 14.6374 11.9587 14.77 11.9587Z"fill="#24262D"/><path d="M10.6583 11.1194C10.4972 11.0518 10.4029 11.005 10.3967 11.0018C10.373 10.9897 10.3477 10.9798 10.3218 10.9733C9.92609 10.8717 9.53623 10.7913 9.16244 10.7343C8.96331 10.7029 8.77659 10.8406 8.7459 11.0401C8.71558 11.2396 8.85259 11.4263 9.05209 11.4567C9.39044 11.5085 9.74376 11.5809 10.1033 11.6722C10.1523 11.6956 10.2458 11.7398 10.3766 11.7943C10.4226 11.8136 10.4705 11.8224 10.5173 11.8224C10.6601 11.8224 10.7961 11.7384 10.8545 11.5981C10.9324 11.411 10.8447 11.1969 10.6583 11.1194Z"fill="#24262D"/><path d="M17.145 6.91716C17.153 6.91752 17.1607 6.91789 17.1687 6.91789C17.3598 6.91789 17.5206 6.76954 17.533 6.57552C17.5557 6.22439 17.567 5.8528 17.567 5.47207C17.567 5.34528 17.5659 5.21666 17.5634 5.08549C17.5597 4.88343 17.3843 4.72997 17.1914 4.72668C16.9897 4.73034 16.8289 4.89695 16.8326 5.09864C16.8348 5.22543 16.8362 5.35003 16.8362 5.47207C16.8362 5.83745 16.8253 6.19297 16.8037 6.52912C16.7909 6.73045 16.9437 6.904 17.145 6.91716Z"fill="#24262D"/><path d="M3.03024 10.1238C3.10149 10.195 3.19503 10.2308 3.28857 10.2308C3.38211 10.2308 3.47565 10.195 3.5469 10.1238L4.01934 9.65131L4.49178 10.1238C4.56303 10.195 4.65656 10.2308 4.7501 10.2308C4.84364 10.2308 4.93718 10.195 5.00843 10.1238C5.15129 9.98089 5.15129 9.74997 5.00843 9.6071L4.53599 9.13466L5.00843 8.66222C5.15129 8.51936 5.15129 8.28844 5.00843 8.14557C4.86556 8.00271 4.63464 8.00271 4.49178 8.14557L4.01934 8.61801L3.5469 8.14557C3.40403 8.00271 3.17311 8.00271 3.03024 8.14557C2.88738 8.28844 2.88738 8.51936 3.03024 8.66222L3.50268 9.13466L3.03024 9.6071C2.88738 9.7496 2.88738 9.98089 3.03024 10.1238Z"fill="#24262D"/> </svg> Открыть список');
+    }
+  });
 });

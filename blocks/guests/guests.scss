@@ -1,0 +1,21 @@
+// В этом файле должны быть стили для БЭМ-блока guests, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/mixins.scss";
+
+.guests {
+	@include container;
+	padding-top: 50px;
+}
+
+.guests__title {
+	@include section-title;
+	padding: 0 8px;
+	margin-bottom: 20px;
+}
+
+.guests__section-title {
+	font-size: 22px;
+	padding: 0 8px;
+	margin-bottom: 25px;
+}

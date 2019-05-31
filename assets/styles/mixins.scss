@@ -15,6 +15,7 @@ $media-direction: max !default;
 		#{$property}: $value;
 	}
 }
+
 @function splitScreens($string, $seperator) {
 	$string: inspect(quote($string));
 	$sepId: str-index(quote($string), $seperator);
@@ -159,11 +160,21 @@ $media-direction: max !default;
 
 // Миксин для кроссбраузерной стилизации placeholder
 @mixin input-placeholder {
-	&.placeholder { @content; }
-	&:-moz-placeholder { @content; }
-	&::-moz-placeholder { @content; }
-	&:-ms-input-placeholder { @content; }
-	&::-webkit-input-placeholder { @content; }
+	&.placeholder {
+		@content;
+	}
+	&:-moz-placeholder {
+		@content;
+	}
+	&::-moz-placeholder {
+		@content;
+	}
+	&:-ms-input-placeholder {
+		@content;
+	}
+	&::-webkit-input-placeholder {
+		@content;
+	}
 }
 
 // Миксин для подчеркивания элемента с background-image, требует указания background-position
@@ -177,7 +188,29 @@ $media-direction: max !default;
 // Миксин для ограничения контейнера блока
 @mixin container {
 	width: 100%;
-	max-width: 1280px;
+	max-width: 1140px;
 	margin: 0 auto;
+	padding: 0 10px;
 	box-sizing: border-box;
+}
+
+@mixin section-title {
+	font-weight: 700;
+	font-size: 48px;
+	line-height: 1.4;
+	color: $color-accent-dark;
+	max-width: 900px;
+	display: inline-block;
+	margin-bottom: 28px;
+
+	@supports (background-clip: text) {
+		background-image: linear-gradient(to right, $color-accent-dark, $color-accent); /* Standard syntax; must be last */
+		color: transparent;
+		-webkit-background-clip: text;
+		background-clip: text;
+	}
+
+	@media (max-width: 768px) {
+		font-size: 28px;
+	}
 }

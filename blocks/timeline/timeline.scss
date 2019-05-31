@@ -1,0 +1,142 @@
+// В этом файле должны быть стили для БЭМ-блока timeline, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/mixins.scss";
+
+.timeline {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-top: 44px;
+	padding-bottom: 80px;
+	font-size: 18px;
+	line-height: 1.4;
+}
+
+.timeline__axis {
+	position: relative;
+	display: flex;
+	transform: translateY(50px);
+	transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+	transition-delay: 0.75s;
+}
+
+.timeline__axis:after {
+	position: absolute;
+	left: 131px;
+	content: ' ';
+	width: 2px;
+	height: 100%;
+	margin-right: 16px;
+	background: $color-accent-dark;
+	border-radius: 100px;
+}
+
+.timeline__elements {
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+}
+
+.timeline__element {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: left;
+	margin-bottom: 22px;
+}
+
+.timeline__element-date {
+	z-index: 1;
+	min-width: 100px;
+	max-width: 100px;
+	color: $color-accent-dark;
+	font-weight: 300;
+	text-align: right;
+	transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+	transition-delay: 1.5s;
+	position: relative;
+	top: 50px;
+}
+
+.timeline__element-dot {
+	margin-left: 20px;
+	background: $color-accent-dark;
+	min-width: 25px;
+	min-height: 25px;
+	max-width: 25px;
+	max-height: 25px;;
+	border-radius: 100%;
+	border: 6px white solid;
+	transform: translateY(50px);
+	transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+	transition-delay: 1.25s;
+}
+
+.timeline__element-label {
+	z-index: 1;
+	position: relative;
+	top: 59px;
+	width: 100%;
+	line-height: 1.2;
+	padding-left: 20px;
+	color: $color-accent-dark;
+	font-weight: 300;
+	transition: transform 0.5s ease-out 1.5s, opacity 0.5s ease-out 1.5s, color 0.25s ease-out 0s;
+}
+
+.timeline__element-label strong {
+	display: block;
+	color: $secondary-text;
+	font-size: 36px;
+	font-weight: 500;
+	transition: color 0.25s ease-out;
+}
+
+.timeline__element-separator {
+	z-index: 1;
+	padding-top: 4px;
+	padding-bottom: 8px;
+	margin-left: -19px;
+	margin-bottom: 22px;
+	background: white;
+	transform: translateY(50px);
+	transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+	transition-delay: 1s;
+}
+
+.timeline__element-separator-dot {
+	background: $color-accent-dark;
+	margin-top: 4px;
+	margin-left: 149px;
+	min-width: 4px;
+	min-height: 4px;
+	max-width: 4px;
+	max-height: 4px;
+	border-radius: 100px;
+}
+
+@media (max-width: 768px) {
+	.timeline {
+		font-size: 14px;
+	}
+	.timeline__element-label {
+		line-height: 1.3;
+	}
+	.timeline__element-label strong {
+		font-size: 24px;
+		line-height: 1.2;
+		margin-top: 3px;
+	}
+	.timeline__element-date {
+		min-width: 51px;
+		max-width: 51px;
+	}
+	.timeline__axis:after {
+		left: 82px;
+	}
+	.timeline__element-separator {
+		margin-left: -68px;
+	}
+}

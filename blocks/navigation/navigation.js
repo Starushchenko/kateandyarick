@@ -5,7 +5,7 @@
  *
  * Licensed under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
- * 
+ *
  * Copyright 2017, Codrops
  * http://www.codrops.com
  */
@@ -36,13 +36,13 @@ class ShapeOverlays {
 	}
 	open() {
 		this.isOpened = true;
-		this.elm.classList.add('is-opened');
+		this.elm.classList.add('shape-overlays--opened');
 		this.timeStart = Date.now();
 		this.renderLoop();
 	}
 	close() {
 		this.isOpened = false;
-		this.elm.classList.remove('is-opened');
+		this.elm.classList.remove('shape-overlays--opened');
 		this.timeStart = Date.now();
 		this.renderLoop();
 	}
@@ -103,13 +103,21 @@ class ShapeOverlays {
 		if (overlay.isOpened === true) {
 			elmHamburger.classList.add('is-opened-navi');
 			for (var i = 0; i < gNavItems.length; i++) {
-				gNavItems[i].classList.add('is-opened');
+				gNavItems[i].classList.add('global-menu__item--opened');
 			}
 		} else {
 			elmHamburger.classList.remove('is-opened-navi');
 			for (var i = 0; i < gNavItems.length; i++) {
-				gNavItems[i].classList.remove('is-opened');
+				gNavItems[i].classList.remove('global-menu__item--opened');
 			}
 		}
 	});
+
+	for (var i = 0; i < gNavItems.length; i++) {
+		gNavItems[i].addEventListener('click', () => {
+			overlay.close();
+			elmHamburger.classList.remove('is-opened-navi');
+			$(".global-menu__item--opened").removeClass('global-menu__item--opened');
+		});
+	}
 }());

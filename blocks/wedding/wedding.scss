@@ -1,0 +1,442 @@
+// В этом файле должны быть стили для БЭМ-блока wedding, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/mixins.scss";
+
+.wedding {
+	@include container;
+	padding-top: 70px;
+	position: relative;
+	text-align: center;
+}
+
+.wedding__title {
+	@include section-title;
+	text-align: center;
+}
+
+.wedding__date {
+	display: flex;
+	align-items: baseline;
+	overflow: visible;
+	padding-top: 20px;
+	margin-bottom: 70px;
+	justify-content: center;
+}
+
+.wedding__date-day {
+	height: 40px;
+	margin-right: 10px;
+}
+
+.wedding__date-month {
+	vertical-align: text-bottom;
+	display: inline-block;
+	font-size: 24px;
+	font-weight: 500;
+	color: $secondary-text;
+	opacity: 0;
+}
+
+.wedding__date-year {
+	height: 40px;
+	margin-left: 12px;
+}
+
+.wedding__date-bg {
+	position: absolute;
+	z-index: -1;
+	width: 220px;
+	top: 90px;
+	left: 50%;
+	transform: translateX(-50%);
+	opacity: .2;
+	transition: 0.3s;
+}
+
+.wedding__date-bg {
+	animation: baloon-bounce 8s linear infinite;
+	animation-delay: 0.4s;
+}
+
+.wedding__date-day {
+	path {
+		stroke-width: 10px;
+		stroke-dasharray: 500;
+		stroke-dashoffset: 800;
+	}
+}
+
+.wedding__date-year {
+	path {
+		stroke-width: 10px;
+		stroke-dasharray: 500;
+		stroke-dashoffset: 800;
+	}
+}
+
+.wedding__title[style="visibility: visible; animation-name: fadeInUp;"] ~ .wedding__date {
+	.wedding__date-month {
+		animation: fadeIn 0.5s linear forwards;
+		animation-delay: 2.3s;
+	}
+
+	#wedding-date9 {
+		stroke-dasharray: 500;
+		stroke-dashoffset: 800;
+		animation: dash 5s linear forwards;
+		animation-delay: 0s;
+	}
+
+	#wedding-2019-1 {
+		stroke-dasharray: 500;
+		stroke-dashoffset: 800;
+		animation: dash 5s linear forwards;
+		animation-delay: 0.4s;
+	}
+
+	#wedding-2019-2 {
+		stroke-dasharray: 500;
+		stroke-dashoffset: 800;
+		animation: dash 5s linear forwards;
+		animation-delay: 0.8s;
+	}
+
+	#wedding-2019-3 {
+		stroke-dasharray: 500;
+		stroke-dashoffset: 800;
+		animation: dash 5s linear forwards;
+		animation-delay: 1s;
+	}
+
+	#wedding-2019-4 {
+		stroke-dasharray: 500;
+		stroke-dashoffset: 800;
+		animation: dash 5s linear forwards;
+		animation-delay: 1.2s;
+	}
+}
+
+.wedding__places {
+	background: #fff;
+}
+
+.wedding__place-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 60px;
+	min-height: calc(100vh - 368px);
+}
+
+.wedding__arch-icon {
+	height: 410px;
+	margin-bottom: 25px;
+}
+
+.wedding__place-item-event {
+	display: block;
+	color: $color-accent-dark;
+	font-weight: 300;
+	font-size: 22px;
+	margin-bottom: 6px;
+}
+
+.wedding__place-item-title {
+	color: $secondary-text;
+	font-weight: 700;
+	font-size: 44px;
+}
+
+.wedding__arch-rose-path:nth-of-type(odd) {
+	transform-origin: center;
+	animation: spin-to-right 4s linear infinite;
+	animation-delay: 0s;
+	transform-box: fill-box;
+}
+
+.wedding__arch-rose-path:nth-of-type(even) {
+	transform-origin: center;
+	animation: spin-to-left 4s linear infinite;
+	animation-delay: 0s;
+	transform-box: fill-box;
+}
+
+#arch-rose13 {
+	animation: spin-to-right 4s linear infinite;
+	animation-delay: 0s;
+}
+
+.wedding__colors-title {
+	color: $color-accent-dark;
+	font-size: 22px;
+	margin-bottom: 20px;
+}
+
+.wedding__colors-list {
+	display: flex;
+	justify-content: center;
+}
+
+.wedding__color {
+	width: 60px;
+	height: 60px;
+	margin-right: 20px;
+	background: #000;
+
+	/*&:nth-of-type(1) {
+		background: linear-gradient(45deg, #3d708d 25%, rgba(61, 112, 141, 0.68) 100%);
+	}*/
+
+	&:nth-of-type(1) {
+		background: linear-gradient(45deg, #00a3bb 25%, rgba(0, 163, 187, 0.34) 100%);
+	}
+	
+	&:nth-of-type(2) {
+		background: linear-gradient(45deg, #4dd3d7 25%, rgba(77, 211, 215, 0.42) 100%);
+	}
+
+	&:nth-of-type(3) {
+		background: linear-gradient(45deg, #cdf4ee 25%, rgba(205, 244, 238, 0.32) 100%);
+	}
+
+	&:nth-of-type(4) {
+		background: linear-gradient(45deg, #FFF6D5 25%, rgba(255, 246, 213, 0.33) 100%);
+	}
+
+	&:nth-of-type(5) {
+		background: linear-gradient(45deg, #E7E6FF 25%, rgba(238, 230, 255, 0.35) 100%);
+	}
+
+	/*&:nth-of-type(5) {
+		background: linear-gradient(45deg, #ffbb9e 25%, rgba(255, 187, 158, 0.43) 100%);
+	}*/
+
+	&:last-of-type {
+		margin-right: 0;
+	}
+}
+
+.wedding__color-palette {
+	margin-bottom: 80px;
+}
+
+.wedding__colors-caption {
+	color: $secondary-text;
+	display: block;
+	font-size: 14px;
+	max-width: 310px;
+	text-align: left;
+	margin: 15px auto 0;
+	position: relative;
+
+	&:first-of-type::before {
+		content: '*';
+		position: absolute;
+		top: 0;
+		left: -7px;
+	}
+}
+
+.wedding__schedule {
+	display: flex;
+	justify-content: space-around;
+}
+
+.wedding__schedule-item {
+	max-width: 300px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&:not(:last-of-type) {
+		margin-right: 30px;
+	}
+}
+.wedding__schedule-event {
+	color: $secondary-text;
+	font-weight: 300;
+	width: 200px;
+	line-height: 1.2;
+	font-size: 16px;
+	display: block;
+}
+
+.wedding__schedule-item-time {
+	width: 200px;
+	font-size: 18px;
+	line-height: 1.1;
+	color: $color-accent-dark;
+	margin-bottom: 4px;
+	font-weight: 500;
+	margin-top: 4px;
+}
+
+.wedding__dress-icon {
+	height: 150px;
+	margin-bottom: 15px;
+}
+
+.wedding__winge-glasses-icon {
+	width: 130px;
+	height: 150px;
+	margin-bottom: 15px;
+}
+
+.wedding__rings-icon {
+	height: 150px;
+	width: 160px;
+	margin-bottom: 15px;
+}
+
+.wedding__pie-icon {
+	height: 150px;
+	width: 140px;
+	margin-bottom: 15px;
+}
+
+.wedding__schedule-title {
+	color: $secondary-text;
+	font-size: 32px;
+	margin-bottom: 36px;
+}
+
+.wedding__schedule-wrapper {
+	margin-bottom: 60px;
+}
+
+.wedding__notices {
+	margin-left: 110px;
+
+	p {
+		max-width: 500px;
+		margin: 0 auto 25px;
+		font-size: 16px;
+		text-align: left;
+		color: $notice-text;
+		position: relative;
+
+		&:first-of-type::before {
+			content: '*';
+			position: absolute;
+			top: 0;
+			left: -9px;
+		}
+
+		&:nth-of-type(2)::before {
+			content: '**';
+			position: absolute;
+			top: 0;
+			left: -18px;
+		}
+	}
+}
+
+@media (max-height: 991px) {
+	.wedding__schedule-wrapper {
+		margin-bottom: 40px;
+	}
+	.wedding__schedule {
+		flex-wrap: wrap;
+		justify-content: center;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+	.wedding__schedule-item {
+		width: calc(50% - 30px);
+		margin-bottom: 35px;
+		margin-right: 0;
+
+		&.wedding__schedule-item:not(:last-of-type) {
+			margin-right: 0;
+		}
+	}
+}
+
+@media (max-height: 768px) {
+	.wedding__date-day, .wedding__date-year {
+		height: 30px;
+	}
+	.wedding__date-month {
+		font-size: 18px;
+	}
+	.wedding__date-bg {
+		width: 180px;
+	}
+	.wedding__place-item-event, .wedding__colors-title {
+		font-size: 15px;
+		margin-bottom: 10px;
+	}
+	.wedding__color-palette {
+		margin-bottom: 50px;
+	}
+	.wedding__place-item {
+		margin-bottom: 50px;
+	}
+	.wedding__place-item-title {
+		font-size: 33px;
+		line-height: 1.1;
+		display: block;
+	}
+	.wedding__color {
+		width: 44px;
+		height: 44px;
+	}
+	.wedding__colors-caption {
+		font-size: 13px;
+		text-align: left;
+		margin-left: 7px;
+	}
+	.wedding__schedule-wrapper {
+		margin-bottom: 20px;
+	}
+	.wedding__schedule-title {
+		font-size: 24px;
+	}
+	.wedding__schedule-item {
+		width: 100%;
+	}
+	.wedding__notices {
+		margin-left: 20px;
+	}
+}
+
+@media (max-height: 800px) {
+	.wedding {
+		padding-top: 40px;
+	}
+	.wedding__arch-icon {
+		height: 320px;
+	}
+}
+
+@keyframes baloon-bounce {
+	0% {
+		transform: translateY(-15px) translateX(-50%);
+	}
+	50% {
+		transform: translateY(15px) translateX(-50%);
+	}
+	100% {
+		transform: translateY(-15px) translateX(-50%);
+		opacity: 0.2;
+	}
+}
+
+@keyframes spin-to-right {
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes spin-to-left {
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+		transform: rotate(-360deg);
+	}
+}

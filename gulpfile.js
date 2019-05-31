@@ -121,7 +121,7 @@ gulp.task("style", function () {
 
 // compiles blocks scss in css separately
 // then puts minified css into build/blocks-css
-gulp.task('block-css', function() {
+gulp.task('block-css', function () {
 	return gulp.src('blocks/**/*.scss')
 	.pipe(sass())
 	.pipe(postcss([
@@ -190,7 +190,7 @@ let svgConfig = {
 	mode: {
 		view: { // Makes scss-sprite
 			dest: ".",
-			sprite : "build/img/svgsprite.css.svg",
+			sprite: "build/img/svgsprite.css.svg",
 			bust: false,
 			prefix: "._svg-icon-%s",
 			render: {
@@ -223,6 +223,13 @@ gulp.task("watch", ["style"], function () {
 	});
 
 	gulp.watch(["assets/styles/**/*.{scss,sass}", "blocks/**/*.{scss,sass}"], ["style"]);
+	gulp.watch(["blocks/**/*.js"]).on("change", function () {
+		del("build/js/script.min.js");
+		del("build/js/script.js");
+		run("concat");
+		run("jsmin");
+		server.reload();
+	});
 	gulp.watch(["./pages/*.html", "./blocks/**/*.html"]).on("change", function () {
 		del("build/*.html");
 		run("htmlimport");

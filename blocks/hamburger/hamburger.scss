@@ -41,7 +41,7 @@
 	position: fixed;
 	top: 2.25em;
 	right: 2.25em;
-	z-index: 2;
+	z-index: 5;
 	border-radius: 50%;
 	background-color: var(--button-bg);
 	pointer-events: auto;
@@ -57,7 +57,7 @@
 	top: 0;
 	left: 0;
 	pointer-events: none;
-	border: 1px solid var(--button-circle);
+	border: 1px solid $color-accent-dark;
 	border-radius: 50%;
 	animation-duration: 2.2s;
 	animation-name: intervalHamburgerBorder;
@@ -88,7 +88,7 @@
 	display: block;
 	position: absolute;
 	top: 0;
-	background-color: var(--button-line);
+	background-color: $color-accent-dark;
 }
 
 .hamburger__line-in::before {

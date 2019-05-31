@@ -1,0 +1,31 @@
+// В этом файле должны быть стили для БЭМ-блока about, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/mixins.scss";
+
+.about {
+	@include container;
+	padding: 70px 15px 30px;
+
+	p {
+		font-size: 18px;
+		margin-bottom: 0.8em;
+		line-height: 1.5;
+		max-width: 900px;
+		background: #fff;
+	}
+}
+
+.about__title {
+	@include section-title;
+}
+
+@media (max-width: 768px) {
+	.about {
+		padding-top: 25px;
+
+		p {
+			font-size: 16px;
+		}
+	}
+}
