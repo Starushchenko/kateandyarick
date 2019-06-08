@@ -332,7 +332,25 @@
 	}
 }
 
-@media (max-height: 991px) {
+@media (max-width: 1100px) {
+	.wedding__schedule {
+		flex-wrap: wrap;
+		justify-content: center;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+	.wedding__schedule-item {
+		 width: calc(50% - 30px);
+		 margin-bottom: 35px;
+		 margin-right: 0;
+
+		 &.wedding__schedule-item:nth-of-type(even) {
+			 margin-right: 0;
+		 }
+	 }
+}
+
+@media (max-width: 991px) {
 	.wedding__schedule-wrapper {
 		margin-bottom: 40px;
 	}
@@ -353,51 +371,55 @@
 	}
 }
 
-@media (max-height: 768px) {
-	.wedding__date-day, .wedding__date-year {
-		height: 30px;
-	}
-	.wedding__date-month {
-		font-size: 18px;
-	}
-	.wedding__date-bg {
-		width: 180px;
-	}
-	.wedding__place-item-event, .wedding__colors-title {
-		font-size: 15px;
-		margin-bottom: 10px;
-	}
-	.wedding__color-palette {
-		margin-bottom: 50px;
-	}
-	.wedding__place-item {
-		margin-bottom: 50px;
-	}
-	.wedding__place-item-title {
-		font-size: 33px;
-		line-height: 1.1;
-		display: block;
-	}
-	.wedding__color {
-		width: 44px;
-		height: 44px;
-	}
-	.wedding__colors-caption {
-		font-size: 13px;
-		text-align: left;
-		margin-left: 7px;
-	}
-	.wedding__schedule-wrapper {
-		margin-bottom: 20px;
-	}
-	.wedding__schedule-title {
-		font-size: 24px;
-	}
-	.wedding__schedule-item {
-		width: 100%;
-	}
-	.wedding__notices {
-		margin-left: 20px;
+@media (max-width: 768px) {
+	.wedding {
+		.wedding__schedule-item {
+			width: 100%;
+		}
+		.wedding__date-day, .wedding__date-year {
+			height: 30px;
+		}
+		.wedding__date-month {
+			font-size: 18px;
+		}
+		.wedding__date-bg {
+			width: 180px;
+		}
+		.wedding__place-item-event, .wedding__colors-title {
+			font-size: 15px;
+			margin-bottom: 10px;
+		}
+		.wedding__color-palette {
+			margin-bottom: 50px;
+		}
+		.wedding__place-item {
+			margin-bottom: 50px;
+		}
+		.wedding__place-item-title {
+			font-size: 33px;
+			line-height: 1.1;
+			display: block;
+		}
+		.wedding__color {
+			width: 44px;
+			height: 44px;
+		}
+		.wedding__colors-caption {
+			font-size: 13px;
+			text-align: left;
+		}
+		.wedding__schedule-wrapper {
+			margin-bottom: 20px;
+		}
+		.wedding__schedule-title {
+			font-size: 24px;
+		}
+		.wedding__schedule-item {
+			width: 100%;
+		}
+		.wedding__notices {
+			margin-left: 20px;
+		}
 	}
 }
 
