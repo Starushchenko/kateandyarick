@@ -2,9 +2,29 @@
 	background: url("../img/svgsprite.css.svg") no-repeat;
 }
 
+._svg-icon-bow-tie {
+	@extend %svg-common;
+	background-position: 0 36.61538461538461%;
+}
+
+._svg-icon-bow-tie-dims {
+	width: 32px;
+	height: 32px;
+}
+
+._svg-icon-bridal-shoe {
+	@extend %svg-common;
+	background-position: 0 99.15384615384616%;
+}
+
+._svg-icon-bridal-shoe-dims {
+	width: 32px;
+	height: 32px;
+}
+
 ._svg-icon-question {
 	@extend %svg-common;
-	background-position: 21.35483870967742% 96.96969696969697%;
+	background-position: 99.92380952380951% 0;
 }
 
 ._svg-icon-question-dims {
@@ -14,7 +34,7 @@
 
 ._svg-icon-story-map--img--map-places {
 	@extend %svg-common;
-	background-position: 65.60194174757281% 83.11688311688312%;
+	background-position: 91.23478260869564% 93.12820512820512%;
 }
 
 ._svg-icon-story-map--img--map-places-dims {
@@ -24,7 +44,7 @@
 
 ._svg-icon-story-map--img--story-back {
 	@extend %svg-common;
-	background-position: 99.11650485436893% 0;
+	background-position: 91.23478260869564% 68.36363636363636%;
 }
 
 ._svg-icon-story-map--img--story-back-dims {
@@ -34,7 +54,7 @@
 
 ._svg-icon-wedding--img--arch {
 	@extend %svg-common;
-	background-position: 0 50%;
+	background-position: 73.3569530558016% 0;
 }
 
 ._svg-icon-wedding--img--arch-dims {
@@ -44,7 +64,7 @@
 
 ._svg-icon-wedding--img--ornament1 {
 	@extend %svg-common;
-	background-position: 24.285714285714285% 39.210881019482905%;
+	background-position: 49.33980582524272% 43.63878465076867%;
 }
 
 ._svg-icon-wedding--img--ornament1-dims {
@@ -54,7 +74,7 @@
 
 ._svg-icon-wedding--img--ornament2 {
 	@extend %svg-common;
-	background-position: 24.285714285714285% 53.108185460789926%;
+	background-position: 0 63.15789473684211%;
 }
 
 ._svg-icon-wedding--img--ornament2-dims {
@@ -64,7 +84,7 @@
 
 ._svg-icon-wedding--img--wedding-car-icon {
 	@extend %svg-common;
-	background-position: 77.02197802197803% 0;
+	background-position: 0 0;
 }
 
 ._svg-icon-wedding--img--wedding-car-icon-dims {
@@ -74,7 +94,7 @@
 
 ._svg-icon-wedding--img--wedding-hearts {
 	@extend %svg-common;
-	background-position: 0 0;
+	background-position: 27.650565972522248% 99.15384615384616%;
 }
 
 ._svg-icon-wedding--img--wedding-hearts-dims {
@@ -84,7 +104,7 @@
 
 ._svg-icon-wedding--img--wedding-pie {
 	@extend %svg-common;
-	background-position: 0 100%;
+	background-position: 44.528400208441894% 99.15384615384616%;
 }
 
 ._svg-icon-wedding--img--wedding-pie-dims {
@@ -94,7 +114,7 @@
 
 ._svg-icon-wedding--img--wedding-rings {
 	@extend %svg-common;
-	background-position: 77.02197802197803% 48.47491448118587%;
+	background-position: 49.33980582524272% 14.347948285553684%;
 }
 
 ._svg-icon-wedding--img--wedding-rings-dims {
@@ -104,7 +124,7 @@
 
 ._svg-icon-wedding--img--wedding2019 {
 	@extend %svg-common;
-	background-position: 77.02197802197803% 27.742161091036255%;
+	background-position: 49.33980582524272% 0;
 }
 
 ._svg-icon-wedding--img--wedding2019-dims {
@@ -114,7 +134,7 @@
 
 ._svg-icon-wedding--img--wedding9 {
 	@extend %svg-common;
-	background-position: 47.35492449425397% 87.24100327153762%;
+	background-position: 89.45349134623582% 40.34427111350188%;
 }
 
 ._svg-icon-wedding--img--wedding9-dims {
@@ -124,7 +144,7 @@
 
 ._svg-icon-wedding--img--wedding__dress {
 	@extend %svg-common;
-	background-position: 49.212900748704165% 0;
+	background-position: 27.543467033912894% 0;
 }
 
 ._svg-icon-wedding--img--wedding__dress-dims {
@@ -134,7 +154,7 @@
 
 ._svg-icon-wedding--img--wine-glasses {
 	@extend %svg-common;
-	background-position: 21.175824175824175% 0;
+	background-position: 69.05825242718447% 98.78908645003067%;
 }
 
 ._svg-icon-wedding--img--wine-glasses-dims {

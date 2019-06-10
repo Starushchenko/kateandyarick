@@ -9,8 +9,8 @@ $(document).ready(function () {
 
 	setTimeout(function () {
 		$('.intro').addClass('intro--darked');
-		$('.intro__names-svg').addClass('intro__names-svg--js-ready');
-	}, 1500);
+		$('.intro__anim-svg').addClass('intro__anim-svg--js-ready');
+	}, 1700);
 
 	setTimeout(function () {
 		$('.intro').addClass('intro--rendered');
@@ -44,7 +44,7 @@ $(document).ready(function () {
 
 // document.documentMode - свойство, доступное только на IE. Выключаем анимацию svg в IE
 if (document.documentMode) {
-	$('.intro__names-svg path[id]').css({
+	$('.intro__anim-svg path[id]').css({
 		strokeDasharray: 0
 	})
 }

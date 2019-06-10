@@ -1,0 +1,80 @@
+// В этом файле должны быть стили для БЭМ-блока hashtag, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/mixins.scss";
+
+.hashtag {
+	@include container;
+	padding: 100px 0 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background: url(../img/hashtag-bg.png) center / 95% no-repeat;
+}
+
+.hashtag__title {
+	@include section-title;
+	margin: 0 auto 60px;
+}
+
+.hashtag__main {
+	display: flex;
+	font-size: 100px;
+	color: $secondary-text;
+	font-weight: 500;
+}
+
+.hashtag__description {
+	max-width: 924px;
+	margin-top: 70px;
+	font-size: 14px;
+	position: relative;
+	font-weight: 500;
+
+	&::before {
+		content: '*';
+		position: absolute;
+		top: -4px;
+		left: -14px;
+		font-size: 24px;
+	}
+}
+
+.hashtag__desc-accent {
+	color: $color-accent-dark;
+	font-weight: 700;
+}
+
+@media (max-width: 1100px) {
+	.hashtag__main {
+		font-size: 80px;
+	}
+	.hashtag__description {
+		max-width: 739px;
+	}
+}
+
+@media (max-width: 991px) {
+	.hashtag__main {
+		font-size: 70px;
+	}
+	.hashtag__description {
+		max-width: 647px;
+	}
+}
+
+@media (max-width: 768px) {
+	.hashtag {
+		.hashtag__main {
+			font-size: 50px;
+		}
+		.hashtag__description {
+			max-width: 462px;
+			margin-top: 40px;
+			font-size: 13px;
+			line-height: 1.5;
+		}
+	}
+}

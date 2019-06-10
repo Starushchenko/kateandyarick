@@ -109,6 +109,7 @@
 	right: 0;
 	bottom: 0;
 	z-index: 2;
+	background: rgba(0,0,0,0.1);
 }
 
 .grid__item-title {
@@ -159,7 +160,7 @@
 .grid .grid__sizer {
 	width: calc(20% - 24px);
 	min-width: 260px;
-	margin: 0 10px 20px;
+	margin: 0 15px 30px;
 }
 
 @media (max-width: 1200px) {
@@ -182,10 +183,10 @@
 }
 
 @media (max-width: 860px) {
-	div.grid__wrapper {
-		width: 540px;
+	.grid__wrapper {
+		width: 522px;
 	}
-	div.grid {
+	.grid {
 
 		.grid__item,
 		.grid__sizer {
@@ -195,7 +196,7 @@
 		}
 
 		.grid__item-caption {
-			bottom: -5px;
+			bottom: 0px;
 		}
 
 		.grid__item-title {
