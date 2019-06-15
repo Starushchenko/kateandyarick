@@ -5,13 +5,29 @@
 
 .hashtag {
 	@include container;
-	padding: 100px 0 100px;
+	padding: 100px 15px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
-	background: url(../img/hashtag-bg.png) center / 95% no-repeat;
+	max-width: 100%;
+	position: relative;
+	overflow: hidden;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: url(../img/hashtag-bg2.png) center / 95% no-repeat;
+		opacity: 0.1;
+		z-index: -1;
+
+		//transform: rotate(90deg) scale(1.7) translateX(-23%);
+	}
 }
 
 .hashtag__title {
@@ -57,24 +73,204 @@
 }
 
 @media (max-width: 991px) {
+	.hashtag {
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: url(../img/hashtag-bg2.png) 45% 55% / 120% no-repeat;
+			opacity: 0.1;
+			transform: rotate(15deg);
+		}
+	}
+	.hashtag__title {
+		font-size: 36px;
+		margin-bottom: 50px;
+	}
 	.hashtag__main {
 		font-size: 70px;
 	}
 	.hashtag__description {
 		max-width: 647px;
+		margin-top: 50px;
 	}
 }
 
 @media (max-width: 768px) {
 	.hashtag {
-		.hashtag__main {
-			font-size: 50px;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: url(../img/hashtag-bg2.png) 45% 55%/95% no-repeat;
+			opacity: 0.2;
+			transform: rotate(15deg) scale(1.6);
 		}
-		.hashtag__description {
-			max-width: 462px;
-			margin-top: 40px;
-			font-size: 13px;
-			line-height: 1.5;
+	}
+
+	.hashtag__main {
+		font-size: 60px;
+	}
+	.hashtag__title {
+		font-size: 30px;
+		margin-bottom: 40px;
+	}
+	.hashtag__description {
+		max-width: 554px;
+		margin-top: 40px;
+		font-size: 13px;
+		line-height: 1.5;
+	}
+}
+
+@media (max-width: 600px) {
+	.hashtag {
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: url(../img/hashtag-bg2.png) 45% 55%/95% no-repeat;
+			opacity: 0.2;
+			transform: rotate(25deg) scale(1.6);
+		}
+	}
+	.hashtag__main {
+		font-size: 50px;
+	}
+	.hashtag__description {
+		line-height: 1.3;
+		max-width: 464px;
+	}
+}
+
+@media (max-width: 520px) {
+	.hashtag {
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: url(../img/hashtag-bg2.png) 45% 53%/95% no-repeat;
+			opacity: 0.2;
+			transform: rotate(25deg) scale(1.7);
+		}
+	}
+	.hashtag__main {
+		font-size: 40px;
+	}
+	.hashtag__description {
+		line-height: 1.4;
+		max-width: 410px;
+		margin-left: 10px;
+	}
+}
+
+@media (max-width: 450px) {
+	.hashtag {
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: url(../img/hashtag-bg2.png) 45% 53%/95% no-repeat;
+			opacity: 0.2;
+			transform: rotate(25deg) scale(1.9);
+		}
+	}
+	.hashtag__title {
+		font-size: 24px;
+		margin-bottom: 30px;
+	}
+	.hashtag__main {
+		font-size: 34px;
+	}
+	.hashtag__description {
+		line-height: 1.4;
+		max-width: 310px;
+		margin-left: 20px;
+		margin-top: 30px;
+	}
+}
+
+@media (max-width: 400px) {
+	.hashtag {
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: url(../img/hashtag-bg2.png) center/95% no-repeat;
+			opacity: 0.2;
+			transform: rotate(15deg) scale(2);
+		}
+	}
+	.hashtag__title {
+		font-size: 24px;
+		margin-bottom: 30px;
+	}
+	.hashtag__main {
+		font-size: 34px;
+	}
+	.hashtag__description {
+		line-height: 1.4;
+		max-width: 310px;
+		margin-left: 20px;
+		margin-top: 30px;
+	}
+}
+
+@media (max-width: 360px) {
+	.hashtag {
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: url(../img/hashtag-bg2.png) center/95% no-repeat;
+			opacity: 0.2;
+			transform: rotate(15deg) scale(2.2);
+		}
+	}
+	.hashtag__title {
+		font-size: 24px;
+		margin-bottom: 30px;
+	}
+	.hashtag__main {
+		font-size: 28px;
+	}
+	.hashtag__description {
+		line-height: 1.4;
+		max-width: 100%;
+		margin-top: 30px;
+		margin-left: 10px;
+		font-size: 12px;
+
+		&::before {
+			display: none;
 		}
 	}
 }

@@ -1,0 +1,55 @@
+// В этом файле должны быть стили для БЭМ-блока wedding-team, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/mixins.scss";
+
+.wedding-team {
+	@include container;
+	padding-bottom: 100px;
+}
+
+.wedding-team__title {
+	@include section-title;
+}
+
+@media (max-width: 1200px) {
+	.wedding-team {
+		text-align: center;
+
+		.grid__wrapper {
+			width: 840px;
+			margin: 0 auto;
+		}
+	}
+}
+
+@media (max-width: 860px) {
+	.wedding-team {
+		.grid__wrapper {
+			width: 660px;
+		}
+	}
+	.wedding-team__image-logo {
+		position: relative;
+		top: 21px;
+	}
+}
+
+@media (max-width: 660px) {
+	.wedding-team {
+		.grid__wrapper {
+			width: 435px;
+		}
+	}
+}
+
+@media (max-width: 460px) {
+	.wedding-team {
+		.grid__wrapper {
+			width: 300px;
+		}
+		.wedding-team__image-logo {
+			object-fit: contain;
+		}
+	}
+}

@@ -56,7 +56,6 @@ $(document).ready(function () {
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
 		gestureHandling: 'greedy',
 		scrollwheel: false,
-		draggable: false,
 		disableDefaultUI: true,
 		scaleControl: true,
 		zoomControl: true,

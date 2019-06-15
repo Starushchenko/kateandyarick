@@ -31,7 +31,7 @@
 	text-align: left;
 	column-count: 3;
 	max-width: 800px;
-	margin: 0 auto 35px;
+	margin: 0 auto 55px;
 }
 
 .guests__list-title {
@@ -76,7 +76,8 @@
 
 .guests__map-container {
 	width: 100%;
-	min-height: 500px;
+	height: 500px;
+	max-height: 80vh;
 }
 
 @media (max-width: 860px) {

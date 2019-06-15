@@ -146,6 +146,13 @@ eclint fix "./blocks/**"          # - исправит ошибки формат
 ```
 
 
+
+## Встраивание критического CSS для index.html (тестирование)
+
+В ходе выполнения команды ` npm run build ` в head файла index.html инлайново встраиваются стили, необходимые для отрисовки первого экрана, при этом основной style.min.css загружается асинхронно, не задерживая рендеринг контента. Используется модуль [Critical](https://github.com/addyosmani/critical) от [Эдди Османи](https://github.com/addyosmani).
+
+
+
 ## Использование svg-спрайта (тестирование)
 
 Из используемых в проекте svg-изображений собирается два svg-спрайта: вида symbol и вида view. 
@@ -164,3 +171,9 @@ eclint fix "./blocks/**"          # - исправит ошибки формат
 [Подробнее о способах подключения svg-спрайтов](https://uwebdesign.ru/svg-sprites/).
 
 [Подробнее о способе symbols и use xlink](http://dreamhelg.ru/2017/02/symbol-svg-sprite-detail-guide/)
+
+
+
+## Исправления и доработки
+
+Был добавлен пользовательский [метод сортировки стилей](https://www.npmjs.com/package/sort-css-media-queries) (mobile-first / desktop-first) для css-mqpacker Олега Дутченко, таким образом исправлена ошибка с переопределением стилей при разработке dekstop first. Если проект разрабатывается в методологии mobile first, необходимо заменить строки 112 и 140 в gulpfile.js на "sort: sortCSSmq"

@@ -25,6 +25,7 @@ let copy = require('gulp-copy');
 let htmlbeautify = require('gulp-html-beautify');
 let wait = require('gulp-wait');
 let critical = require('critical');
+let sortCSSmq = require('sort-css-media-queries');
 
 
 // cleans build-directory
@@ -108,7 +109,7 @@ gulp.task("style", function () {
 			]
 		}),
 		mqpacker({
-			sort: true
+			sort: sortCSSmq.desktopFirst
 		})
 	]))
 	.pipe(gulp.dest("build/css"))
@@ -136,7 +137,7 @@ gulp.task('block-css', function () {
 			]
 		}),
 		mqpacker({
-			sort: true
+			sort: sortCSSmq.desktopFirst
 		})
 	]))
 	.pipe(minify())
@@ -248,16 +249,20 @@ gulp.task("criticalCSS", function () {
 		dest: 'index.html',
 		dimensions: [
 			{
-				height: 320,
-				width: 660,
+				width: 320,
+				height: 660,
 			},
 			{
-				height: 768,
-				width: 1024,
-			},
-			{
-				height: 1280,
 				width: 768,
+				height: 1024,
+			},
+			{
+				width: 1280,
+				height: 768,
+			},
+			{
+				width: 1920,
+				height: 1024,
 			},
 		],
 	});

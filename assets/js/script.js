@@ -6,6 +6,7 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+$(document).ready(function () {});
 $(document).ready(function () {
   var guestsMap;
   var arrMarkers = [];
@@ -52,7 +53,6 @@ $(document).ready(function () {
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     gestureHandling: 'greedy',
     scrollwheel: false,
-    draggable: false,
     disableDefaultUI: true,
     scaleControl: true,
     zoomControl: true,
@@ -85,8 +85,7 @@ $(document).ready(function () {
       }
     });
   });
-});
-$(document).ready(function () {}); //
+}); //
 // these easing functions are based on the code of glsl-easing module.
 // https://github.com/glslify/glsl-easings
 //
