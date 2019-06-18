@@ -1,7 +1,6 @@
 // assets and script style addons
 @import "libs/animate.scss";
-@import "libs/magnific-popup.scss";
-@import "libs/jquery.mCustomScrollbar.scss";
+@import "libs/slick.scss";
 
 // global styles
 @import "reset.scss";
@@ -9,10 +8,12 @@
 @import "mixins.scss";
 @import "scaffolding.scss";
 @import "fonts.scss";
-@import "svg_sprite.scss";
 
 // BEM blocks
 @import "../../blocks/about/about.scss";
+@import "../../blocks/comments/comments.scss";
+@import "../../blocks/footer/footer.scss";
+@import "../../blocks/gallery/gallery.scss";
 @import "../../blocks/global-menu/global-menu.scss";
 @import "../../blocks/grid/grid.scss";
 @import "../../blocks/guests/guests.scss";

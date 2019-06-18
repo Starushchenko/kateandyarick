@@ -40,14 +40,46 @@ $(document).ready(function () {
 
 	// Инициализация вращения плиток js-tilt на ховере
 	$('.js-tilt').tilt();
-});
 
-// document.documentMode - свойство, доступное только на IE. Выключаем анимацию svg в IE
-if (document.documentMode) {
-	$('.intro__anim-svg path[id]').css({
-		strokeDasharray: 0
-	})
-}
+	// Дополнительный класс для корневого элемента, если браузер - IE или Edge
+	if (/MSIE 9/i.test(navigator.userAgent) || /MSIE 10/i.test(navigator.userAgent) ||
+			/rv:11.0/i.test(navigator.userAgent)) {
+
+		document.documentElement.className += ' old-browser';
+
+		$('.intro__anim-svg path, .wedding__date-day path, .wedding__date-year path').css({
+			strokeDasharray: "0"
+		})
+	} else if (/Edge\/\d./i.test(navigator.userAgent)) {
+		document.documentElement.className += ' edge-browser';
+	}
+
+	// Добавление класса к блоку wedding, когда он в области видимости
+	var weddingSection = document.querySelector('.wedding');
+	$(document).scroll(function () {
+		if (isElementInViewport(weddingSection)) {
+			weddingSection.classList.add('wedding--visible')
+		}
+	});
+
+	// Переход по ссылке на члена команды по второму клику на мобильных
+	if ($(document).width() <= 860) {
+		$('a.grid__inner').one("click", function (event) {
+			event.preventDefault();
+		})
+	}
+
+	// Lazy-load загрузка виджета для комментариев ВК
+	$(window).scroll(function () {
+		if ($(window).scrollTop() + $(window).height() >= $('#vk_comments').offset().top) {
+			if (!$('#vk_comments').attr('loaded')) {
+
+				$('#vk_comments').attr('loaded', true);
+				VK.Widgets.Comments("vk_comments", {limit: 15, width: "700", attach: "graffiti"});
+			}
+		}
+	});
+});
 
 // Проверка, попал ли элемент во вьюпорт
 function isElementInViewport(el) {

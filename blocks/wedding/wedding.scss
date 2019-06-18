@@ -20,12 +20,14 @@
 	align-items: baseline;
 	overflow: visible;
 	padding-top: 20px;
-	margin-bottom: 70px;
+	margin: 0 auto 70px;
 	justify-content: center;
+	max-width: 340px;
 }
 
 .wedding__date-day {
 	height: 40px;
+	width: 32px;
 	margin-right: 10px;
 }
 
@@ -43,6 +45,15 @@
 	margin-left: 12px;
 }
 
+.old-browser {
+	.wedding__date-day {
+		width: 32px;
+	}
+	.wedding__date-year {
+		width: 125px;
+	}
+}
+
 .wedding__date-bg {
 	position: absolute;
 	z-index: -1;
@@ -54,28 +65,36 @@
 	transition: 0.3s;
 }
 
-.wedding__date-bg {
+html:not(.edge-browser) .wedding__date-bg {
 	animation: baloon-bounce 8s linear infinite;
 	animation-delay: 0.4s;
 }
 
 .wedding__date-day {
+	opacity: 0;
 	path {
 		stroke-width: 10px;
-		stroke-dasharray: 500;
 		stroke-dashoffset: 800;
 	}
 }
 
 .wedding__date-year {
+	opacity: 0;
 	path {
 		stroke-width: 10px;
-		stroke-dasharray: 500;
 		stroke-dashoffset: 800;
 	}
 }
 
-.wedding__title[style="visibility: visible; animation-name: fadeInUp;"] ~ .wedding__date {
+.wedding--visible {
+
+	.wedding__date-day {
+		opacity: 1;
+	}
+
+	.wedding__date-year {
+		opacity: 1;
+	}
 	.wedding__date-month {
 		animation: fadeIn 0.5s linear forwards;
 		animation-delay: 2.3s;
@@ -117,6 +136,13 @@
 	}
 }
 
+.old-browser .wedding__date {
+	.wedding__date-month {
+		animation: none;
+		opacity: 1;
+	}
+}
+
 .wedding__places {
 	background: #fff;
 }
@@ -148,23 +174,26 @@
 	font-size: 44px;
 }
 
-.wedding__arch-rose-path:nth-of-type(odd) {
-	transform-origin: center;
-	animation: spin-to-right 4s linear infinite;
-	animation-delay: 0s;
-	transform-box: fill-box;
-}
+html:not(.edge-browser) {
 
-.wedding__arch-rose-path:nth-of-type(even) {
-	transform-origin: center;
-	animation: spin-to-left 4s linear infinite;
-	animation-delay: 0s;
-	transform-box: fill-box;
-}
+	.wedding__arch-rose-path:nth-of-type(odd) {
+		transform-origin: center;
+		animation: spin-to-right 4s linear infinite;
+		animation-delay: 0s;
+		transform-box: fill-box;
+	}
 
-#arch-rose13 {
-	animation: spin-to-right 4s linear infinite;
-	animation-delay: 0s;
+	.wedding__arch-rose-path:nth-of-type(even) {
+		transform-origin: center;
+		animation: spin-to-left 4s linear infinite;
+		animation-delay: 0s;
+		transform-box: fill-box;
+	}
+
+	#arch-rose13 {
+		animation: spin-to-right 4s linear infinite;
+		animation-delay: 0s;
+	}
 }
 
 .wedding__colors-title {
@@ -331,6 +360,14 @@
 			left: -18px;
 		}
 	}
+}
+
+.wedding__family-ready {
+	width: 400px;
+	max-width: 100%;
+	margin: 70px auto 10px;
+	position: relative;
+	left: -30px;
 }
 
 @media (max-width: 1100px) {

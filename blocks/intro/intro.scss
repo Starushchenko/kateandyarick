@@ -10,8 +10,7 @@
 	flex-direction: column;
 	height: 100vh;
 	width: 100vw;
-	background: #2c2d31 url('../img/intro.jpg') center no-repeat;
-	background-size: cover;
+	background: #2c2d31 center no-repeat;
 	padding: 50px;
 	position: relative;
 
@@ -25,19 +24,98 @@
 		background: rgba(255, 255, 255, 0);
 		transition: 2s;
 	}
+
+	@media (min-width: 1920px) {
+		background: #2c2d31 url('../img/intro.jpg') center / cover no-repeat;
+	}
+
+	@media (max-width: 1920px) {
+		background: #2c2d31 url('../img/intro1920x1080.jpg') center / cover no-repeat;
+	}
+
+	@media (max-width: 1366px) {
+		background: #2c2d31 url('../img/intro1366x768.jpg') center / cover no-repeat;
+	}
+
+	@media (max-width: 1280px) {
+		background: #2c2d31 url('../img/intro1280x1024.jpg') center / cover no-repeat;
+	}
+
+	@media (max-width: 768px) {
+		background: #2c2d31 url('../img/intro768x1024.jpg') center / cover no-repeat;
+	}
+
+	@media (max-width: 415px) {
+		background: #2c2d31 url('../img/intro414x736.jpg') center / cover no-repeat;
+	}
+
+	@media (max-width: 375px) {
+		background: #2c2d31 url('../img/intro375x667.jpg') center / cover no-repeat;
+	}
+
+	@media (max-width: 375px) and (min-width: 740px) {
+		background: #2c2d31 url('../img/intro375x812.jpg') center / cover no-repeat;
+	}
+
+	@media (max-width: 360px) {
+		background: #2c2d31 url('../img/intro360x640.jpg') center / cover no-repeat;
+	}
 }
 
-.intro__3d-background {
-	width: calc(100vw - 5px);
-	height: 100vh;
-	left: 0;
-	top: 0;
-	position: absolute;
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3),
+only screen and (-o-min-device-pixel-ratio: 13/10),
+only screen and (min-resolution: 120dpi) {
+
+	div.intro {
+		@media (min-width: 1920px) {
+			background: #2c2d31 url('../img/original.jpg') center / cover no-repeat;
+		}
+
+		@media (max-width: 1920px) {
+			background: #2c2d31 url('../img/intro1920x1080@2x.jpg') center / cover no-repeat;
+		}
+
+		@media (max-width: 1366px) {
+			background: #2c2d31 url('../img/intro1366x768@2x.jpg') center / cover no-repeat;
+		}
+
+		@media (max-width: 1280px) {
+			background: #2c2d31 url('../img/intro1280x1024@2x.jpg') center / cover no-repeat;
+		}
+
+		@media (max-width: 768px) {
+			background: #2c2d31 url('../img/intro768x1024@2x.jpg') center / cover no-repeat;
+		}
+
+		@media (max-width: 415px) {
+			background: #2c2d31 url('../img/intro414x736@2x.jpg') center / cover no-repeat;
+		}
+
+		@media (max-width: 375px) {
+			background: #2c2d31 url('../img/intro375x667@2x.jpg') center / cover no-repeat;
+		}
+
+		@media (max-width: 375px) and (min-width: 740px) {
+			background: #2c2d31 url('../img/intro375x812@2x.jpg') center / cover no-repeat;
+		}
+
+		@media (max-width: 360px) {
+			background: #2c2d31 url('../img/intro360x640@2x.jpg') center / cover no-repeat;
+		}
+
+		/* Swap higher DPI images */
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+	}
 }
 
 .intro--darked {
 	&::after {
 		background: rgba(0, 0, 0, 0.4);
+	}
+
+	.intro__anim-svg {
+		opacity: 1;
 	}
 }
 
@@ -51,11 +129,9 @@
 	z-index: 2;
 	position: relative;
 	top: 100px;
-
-	path {
-		stroke-dasharray: 1500;
-		stroke-dashoffset: 1600;
-	}
+	opacity: 0;
+	transition: 2s;
+	max-height: 205px;
 }
 
 .intro__slogan {
@@ -74,201 +150,6 @@
 	animation: fadeIn 2s linear forwards;
 	animation-delay: 8.2s;
 }
-
-/*.intro__anim-svg.intro__anim-svg--js-ready {
-
-	#yar-1 {
-		stroke-dasharray: 1300;
-		stroke-dashoffset: 1400;
-		animation: dash 3s linear forwards;
-		-webkit-animation-delay: 1s; !* Chrome, Safari, Opera *!
-		animation-delay: 0.5s;
-	}
-
-	#yar-1-1 {
-		stroke-dasharray: 500;
-		stroke-dashoffset: 700;
-		animation: dash 2s linear forwards;
-		animation-delay: 0.6s;
-	}
-
-	#yar-2-1 {
-		stroke-dasharray: 1200;
-		stroke-dashoffset: 1300;
-		animation: dash 3s linear forwards;
-		animation-delay: 0.7s;
-	}
-
-	#yar-2-2 {
-		stroke-dasharray: 800;
-		stroke-dashoffset: 900;
-		animation: dash 3s linear forwards;
-		animation-delay: 0.8s;
-	}
-
-	#yar-3-1 {
-		stroke-dasharray: 500;
-		stroke-dashoffset: 600;
-		animation: dash 3s linear forwards;
-		animation-delay: 0.9s;
-	}
-
-	#yar-3-2 {
-		stroke-dasharray: 500;
-		stroke-dashoffset: 700;
-		animation: dash 3s linear forwards;
-		animation-delay: 1s;
-	}
-
-	#yar-4 {
-		stroke-dasharray: 700;
-		stroke-dashoffset: 800;
-		animation: dash 3s linear forwards;
-		animation-delay: 1.1s;
-	}
-
-	#yar-5 {
-		stroke-dasharray: 700;
-		stroke-dashoffset: 800;
-		animation: dash 3s linear forwards;
-		animation-delay: 1.2s;
-	}
-
-	#yar-6 {
-		stroke-dasharray: 700;
-		stroke-dashoffset: 800;
-		animation: dash 3s linear forwards;
-		animation-delay: 1.4s;
-	}
-
-	#yar-7 {
-		stroke-dasharray: 1000;
-		stroke-dashoffset: 1300;
-		animation: dash 3s linear forwards;
-		animation-delay: 1.6s;
-	}
-
-	#and-1 {
-		stroke-dasharray: 1200;
-		stroke-dashoffset: 1300;
-		animation: dash 3s linear forwards;
-		animation-delay: 1.7s;
-		transition: 6s;
-		opacity: 1;
-	}
-
-	#kate-1-1 {
-		stroke-dasharray: 1600;
-		stroke-dashoffset: 1700;
-		animation: dash 3s linear forwards;
-		animation-delay: 1.9s;
-	}
-
-	#kate-1-2 {
-		stroke-dasharray: 1700;
-		stroke-dashoffset: 1900;
-		animation: dash 3s linear forwards;
-		animation-delay: 2.1s;
-	}
-
-	#kate-1-3 {
-		stroke-dasharray: 1700;
-		stroke-dashoffset: 1800;
-		animation: dash 3s linear forwards;
-		animation-delay: 2.3s;
-	}
-
-	#kate-1-4 {
-		stroke-dasharray: 1600;
-		stroke-dashoffset: 1700;
-		animation: dash 3s linear forwards;
-		animation-delay: 2.4s;
-	}
-
-	#kate-2-1 {
-		stroke-dasharray: 1900;
-		stroke-dashoffset: 2000;
-		animation: dash 3s linear forwards;
-		animation-delay: 2.5s;
-	}
-
-	#kate-2-2 {
-		stroke-dasharray: 1500;
-		stroke-dashoffset: 1700;
-		animation: dash 3s linear forwards;
-		animation-delay: 2.6s;
-	}
-
-	#kate-3 {
-		stroke-dasharray: 1500;
-		stroke-dashoffset: 1800;
-		animation: dash 3s linear forwards;
-		animation-delay: 2.7s;
-	}
-
-	#kate-4-1 {
-		stroke-dasharray: 1500;
-		stroke-dashoffset: 1600;
-		animation: dash 3s linear forwards;
-		animation-delay: 2.8s;
-	}
-
-	#kate-4-2 {
-		stroke-dasharray: 1500;
-		stroke-dashoffset: 1700;
-		animation: dash 3s linear forwards;
-		animation-delay: 2.9s;
-	}
-
-	#kate-4-3 {
-		stroke-dasharray: 1500;
-		stroke-dashoffset: 1600;
-		animation: dash 3s linear forwards;
-		animation-delay: 3s;
-	}
-
-	#kate-5 {
-		stroke-dasharray: 1700;
-		stroke-dashoffset: 1800;
-		animation: dash 3s linear forwards;
-		animation-delay: 3.1s;
-	}
-
-	#kate-6-1 {
-		stroke-dasharray: 1500;
-		stroke-dashoffset: 1600;
-		animation: dash 3s linear forwards;
-		animation-delay: 3.2s;
-	}
-
-	#kate-6-2 {
-		stroke-dasharray: 1200;
-		stroke-dashoffset: 1400;
-		animation: dash 3s linear forwards;
-		animation-delay: 3.3s;
-	}
-
-	#kate-7 {
-		stroke-dasharray: 1200;
-		stroke-dashoffset: 1300;
-		animation: dash 3s linear forwards;
-		animation-delay: 3.4s;
-	}
-
-	#kate-8-1, #kate-8-2, #kate-8-3, #kate-8-4, #kate-8-5, #kate-8-6, #kate-8-7, #kate-8-8 {
-		stroke-dasharray: 1500;
-		stroke-dashoffset: 1600;
-		animation: dash 3s linear forwards;
-		animation-delay: 3.6s;
-	}
-
-	#kate-9 {
-		stroke-dasharray: 1200;
-		stroke-dashoffset: 1400;
-		animation: dash 3s linear forwards;
-		animation-delay: 3.7s;
-	}
-}*/
 
 .intro__anim-svg.intro__anim-svg--js-ready {
 	#intro-with1 {

@@ -14,20 +14,17 @@
 	max-width: 100%;
 	position: relative;
 	overflow: hidden;
+}
 
-	&::before {
-		content: "";
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background: url(../img/hashtag-bg2.png) center / 95% no-repeat;
-		opacity: 0.1;
-		z-index: -1;
-
-		//transform: rotate(90deg) scale(1.7) translateX(-23%);
-	}
+.hashtag__bg-block {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: center / 95% no-repeat;
+	opacity: 0.1;
+	z-index: -1;
 }
 
 .hashtag__title {
@@ -73,19 +70,15 @@
 }
 
 @media (max-width: 991px) {
-	.hashtag {
-
-		&::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background: url(../img/hashtag-bg2.png) 45% 55% / 120% no-repeat;
-			opacity: 0.1;
-			transform: rotate(15deg);
-		}
+	.hashtag__bg-block {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: 45% 55% / 120% no-repeat;
+		opacity: 0.1;
+		transform: rotate(15deg);
 	}
 	.hashtag__title {
 		font-size: 36px;
@@ -101,19 +94,15 @@
 }
 
 @media (max-width: 768px) {
-	.hashtag {
-
-		&::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background: url(../img/hashtag-bg2.png) 45% 55%/95% no-repeat;
-			opacity: 0.2;
-			transform: rotate(15deg) scale(1.6);
-		}
+	.hashtag__bg-block {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: 45% 55%/95% no-repeat;
+		opacity: 0.2;
+		transform: rotate(15deg) scale(1.6);
 	}
 
 	.hashtag__main {
@@ -132,19 +121,15 @@
 }
 
 @media (max-width: 600px) {
-	.hashtag {
-
-		&::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background: url(../img/hashtag-bg2.png) 45% 55%/95% no-repeat;
-			opacity: 0.2;
-			transform: rotate(25deg) scale(1.6);
-		}
+	.hashtag__bg-block {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: 45% 55%/95% no-repeat;
+		opacity: 0.2;
+		transform: rotate(25deg) scale(1.6);
 	}
 	.hashtag__main {
 		font-size: 50px;
@@ -156,19 +141,16 @@
 }
 
 @media (max-width: 520px) {
-	.hashtag {
 
-		&::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background: url(../img/hashtag-bg2.png) 45% 53%/95% no-repeat;
-			opacity: 0.2;
-			transform: rotate(25deg) scale(1.7);
-		}
+	.hashtag__bg-block {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: 45% 53%/95% no-repeat;
+		opacity: 0.2;
+		transform: rotate(25deg) scale(1.7);
 	}
 	.hashtag__main {
 		font-size: 40px;
@@ -181,19 +163,15 @@
 }
 
 @media (max-width: 450px) {
-	.hashtag {
-
-		&::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background: url(../img/hashtag-bg2.png) 45% 53%/95% no-repeat;
-			opacity: 0.2;
-			transform: rotate(25deg) scale(1.9);
-		}
+	.hashtag__bg-block {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: 45% 53%/95% no-repeat;
+		opacity: 0.2;
+		transform: rotate(25deg) scale(1.9);
 	}
 	.hashtag__title {
 		font-size: 24px;
@@ -211,19 +189,16 @@
 }
 
 @media (max-width: 400px) {
-	.hashtag {
-
-		&::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background: url(../img/hashtag-bg2.png) center/95% no-repeat;
-			opacity: 0.2;
-			transform: rotate(15deg) scale(2);
-		}
+	.hashtag__bg-block {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: center/95% no-repeat;
+		opacity: 0.2;
+		transform: rotate(15deg) scale(2);
 	}
 	.hashtag__title {
 		font-size: 24px;
@@ -241,19 +216,16 @@
 }
 
 @media (max-width: 360px) {
-	.hashtag {
-
-		&::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background: url(../img/hashtag-bg2.png) center/95% no-repeat;
-			opacity: 0.2;
-			transform: rotate(15deg) scale(2.2);
-		}
+	.hashtag__bg-block {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: center/95% no-repeat;
+		opacity: 0.2;
+		transform: rotate(15deg) scale(2.2);
 	}
 	.hashtag__title {
 		font-size: 24px;

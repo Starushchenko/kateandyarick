@@ -1,0 +1,20 @@
+// В этом файле должны быть стили для БЭМ-блока comments, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/mixins.scss";
+
+.comments {
+	@include container;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.comments__title {
+	@include section-title;
+}
+
+.js_vk-comments {
+	width: 100% !important;
+	height: 600px !important;
+	background: rgba(72, 208, 213, 0.38823529411764707)!important;
+}

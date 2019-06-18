@@ -5,11 +5,16 @@
 
 .wedding-team {
 	@include container;
+	padding-top: 60px;
 	padding-bottom: 100px;
 }
 
 .wedding-team__title {
 	@include section-title;
+}
+
+.wedding-team__mobile-desc {
+	display: none;
 }
 
 @media (max-width: 1200px) {
@@ -32,6 +37,13 @@
 	.wedding-team__image-logo {
 		position: relative;
 		top: 21px;
+	}
+	.wedding-team__title {
+		margin-bottom: 5px;
+	}
+	.wedding-team__mobile-desc {
+		display: block;
+		margin-bottom: 25px;
 	}
 }
 

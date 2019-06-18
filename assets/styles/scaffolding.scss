@@ -19,6 +19,7 @@ html {
 *, *::before, *::after {
 	box-sizing: inherit;
 	font-family: 'Museo Cyrl', Arial, sans-serif;
+	-webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -39,7 +40,7 @@ body {
 
 *::-webkit-scrollbar
 {
-	width: 5px;
+	width: 8px;
 	background-color: $main-hover;
 }
 
@@ -191,8 +192,6 @@ textarea {
 		fill: $secondary-text
 	}
 }
-
-
 
 @keyframes animLoader {
 	to {

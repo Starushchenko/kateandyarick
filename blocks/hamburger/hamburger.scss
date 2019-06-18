@@ -39,10 +39,11 @@
 	position: fixed;
 	top: 2.25em;
 	right: 2.25em;
-	z-index: 5;
+	z-index: 6;
 	border-radius: 50%;
 	background-color: var(--button-bg);
 	pointer-events: auto;
+	transform: translateZ(30px);
 }
 
 .hamburger::after {
@@ -257,7 +258,7 @@
 		position: fixed;
 		top: 0.5em;
 		right: 0.5em;
-		transform: scale(0.75);
+		transform: scale(0.75) translateZ(30px);
 	}
 }
 

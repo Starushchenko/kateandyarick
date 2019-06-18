@@ -104,7 +104,7 @@ pages/                     # - html-страницы проекта
 ```bash
 .class{
     @include media((
-        height: (lg: 800px, md: 600px, sm: 300px)
+        height: (lg: 800px, md: 600px, sm: 300px),
     ));
 }
 ```
