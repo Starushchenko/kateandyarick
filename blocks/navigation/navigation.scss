@@ -17,6 +17,10 @@
 		color: $color-accent-dark;
 		outline: none;
 	}
+
+	&.navigation--hidden {
+		display: none;
+	}
 }
 
 .shape-overlays {

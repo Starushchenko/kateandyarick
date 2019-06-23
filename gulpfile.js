@@ -311,12 +311,12 @@ gulp.task("criticalCSS", function () {
 
 //start
 gulp.task("serve", function () {
-	run("clean", "concat", "htmlimport", "htmlbeautify", "copyAssets", "copybemimages", "jsmin", "svgsprite", "style", "watch" /*, "images", "svgimages"*/)
+	run("clean", "concat", "htmlimport", "htmlbeautify", "copyAssets", "copybemimages", "jsmin", "svgsprite", "style-prod", "watch" /*, "images", "svgimages"*/)
 });
 
 
 // build
 gulp.task("build", function () {
-	run("clean", "concat", "htmlimport", "htmlbeautify", "copyAssets", "copybemimages", "concat-vendors", "svgsprite", "style-prod", "images", "svgimages", "criticalCSS")
+	run("clean", "concat", "htmlimport", "htmlbeautify", "copyAssets", "style-prod", "copybemimages", "svgsprite",  /*"images", "svgimages",*/ "criticalCSS", "concat-vendors")
 });
 

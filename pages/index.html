@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description"
 		      content="Сайт о главном событии Ярослава и Екатерины, а также небольшой эксурс в наши счастливые будни. Здесь будут все детали для наших дорогих гостей!">
+		<meta name="keywords" content="создание семьи старущенко, событие в крыму, стобойтакблизко">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 
 		<!--DEV Фавиконки -->
@@ -38,7 +39,7 @@
 		<meta name="twitter:url" content="https://kateandyarick.ru/">
 		<meta name="twitter:title" content="Романтическая феерия Ярослава и Екатерины">
 		<meta name="twitter:description"
-		      content="Сайт о главном событии сентября 2019, + небольшой эксурс в наши счастливые будни">
+		      content="Сайт о нашей свадьбе - главном событии сентября 2019, + небольшой эксурс в наши счастливые будни">
 		<!-- Twitter card изображение 120х120 -->
 		<meta name="twitter:image" content="https://kateandyarick.ru/img/twitter-card.jpg">
 
@@ -47,21 +48,24 @@
 		<meta property="og:type" content="website"/>
 		<meta property="og:title" content="Романтическая феерия Ярослава и Екатерины"/>
 		<meta property="og:description"
-		      content="Сайт о главном событии сентября 2019, + небольшой эксурс в наши счастливые будни"/>
-		<!-- OpenGraph изображение 600x600 -->
+		      content="Сайт о нашей свадьбе - главном событии сентября 2019, + небольшой эксурс в наши счастливые будни"/>
+		<!-- OpenGraph изображение 1200x630 -->
 		<meta property="og:image"
-		      content="https://kateandyarick.ru/img/opengraph.jpg"/>
+		      content="https://kateandyarick.ru/img/opengraph-big.jpg"/>
 		<meta property="fb:app_id"
 		      content="315265806066841"/>
+		<meta name="og:locale" content="ru_RU">
 
 		<link rel="stylesheet" href="css/style.min.css">
-		<link rel="prefetch" href="img/intro.jpg">
+		<link rel="preload" href="fonts/MuseoSansCyrl-300.woff" as="font" type="font/woff" crossorigin>
+		<link rel="preload" href="fonts/MuseoSansCyrl-700.woff" as="font" type="font/woff" crossorigin>
+		<link rel="preload" href="fonts/museosanscyrl-500.ttf" as="font" type="font/ttf" crossorigin>
 
 		<script>document.documentElement.className = 'js';</script>
 	</head>
 
-	<body class="loading">
-		<div class="intro">
+	<body class="loading" itemscope itemtype="http://schema.org/Event">
+		<div class="intro" role="banner">
 
 			<!-- Анимированное svg -->
 			<svg class="intro__anim-svg" id="intro-anim-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1154.24 206.37">
@@ -421,70 +425,89 @@
 			<!-- // Анимированное svg -->
 
 			<h1 class="intro__slogan">Романтическая феерия Ярослава&nbsp;и&nbsp;Екатерины</h1>
-
+			<meta itemprop="name" content="Свадьба Ярослава и Екатерины 💑">
 		</div>
 
-		<nav class="navigation">
-			<div class="hamburger js-hover">
-				<span class="hamburger__line hamburger__line--01">
-					<span class="hamburger__line-in hamburger__line-in--01"></span>
-				</span>
+		<div class="navigation">
+			<div class="hamburger js-hover" tabindex="0">
+					<span class="hamburger__line hamburger__line--01">
+						<span class="hamburger__line-in hamburger__line-in--01"></span>
+					</span>
 				<span class="hamburger__line hamburger__line--02">
-					<span class="hamburger__line-in hamburger__line-in--02"></span>
-				</span>
+						<span class="hamburger__line-in hamburger__line-in--02"></span>
+					</span>
 				<span class="hamburger__line hamburger__line--03">
-					<span class="hamburger__line-in hamburger__line-in--03"></span>
-				</span>
+						<span class="hamburger__line-in hamburger__line-in--03"></span>
+					</span>
 				<span class="hamburger__line hamburger__line--cross01">
-					<span class="hamburger__line-in hamburger__line-in--cross01"></span>
-				</span>
+						<span class="hamburger__line-in hamburger__line-in--cross01"></span>
+					</span>
 				<span class="hamburger__line hamburger__line--cross02">
-					<span class="hamburger__line-in hamburger__line-in--cross02"></span>
-				</span>
+						<span class="hamburger__line-in hamburger__line-in--cross02"></span>
+					</span>
 			</div>
 			<div class="global-menu">
-				<div class="global-menu__wrap">
-					<a class="global-menu__item global-menu__item--big" href="#about-section">О Ярике и Кате</a>
-					<a class="global-menu__item global-menu__item--big" href="#wedding-section">Наша свадьба</a>
-					<a class="global-menu__item global-menu__item--big" href="#guests-section">Гости</a>
-					<a class="global-menu__item global-menu__item--big" href="#hashtag-section">Хэштег</a>
-					<a class="global-menu__item global-menu__item--big" href="#team-section">Команда</a>
-					<a class="global-menu__item global-menu__item--big" href="#story-map-section">География нашей любви</a>
-					<a class="global-menu__item global-menu__item--big" href="#gallery-section">Галерея</a>
-					<a class="global-menu__item global-menu__item--big" href="#comments-section">Обсуждение</a>
-				</div>
+				<nav class="global-menu__wrap">
+					<a class="global-menu__item global-menu__item--big" tabindex="-1" href="#about-section">О
+						Ярике и
+						Кате</a>
+					<a class="global-menu__item global-menu__item--big" tabindex="-1" href="#wedding-section">Наша
+						свадьба</a>
+					<a class="global-menu__item global-menu__item--big" tabindex="-1" href="#guests-section">Гости
+					</a>
+					<a class="global-menu__item global-menu__item--big" tabindex="-1"
+					   href="#hashtag-section">Хэштег
+					</a>
+					<a class="global-menu__item global-menu__item--big" tabindex="-1" href="#team-section">Команда
+					</a>
+					<a class="global-menu__item global-menu__item--big" tabindex="-1"
+					   href="#story-map-section">География
+						нашей
+						любви</a>
+					<a class="global-menu__item global-menu__item--big" tabindex="-1"
+					   href="#gallery-section">Галерея
+					</a>
+					<a class="global-menu__item global-menu__item--big" tabindex="-1"
+					   href="#comments-section">Обсуждение
+					</a>
+				</nav>
 			</div>
 			<svg class="shape-overlays" viewBox="0 0 100 100" preserveAspectRatio="none">
 				<path class="shape-overlays__path" d=""></path>
 				<path class="shape-overlays__path" d=""></path>
 				<path class="shape-overlays__path" d=""></path>
 			</svg>
-		</nav>
+		</div>
 
 		<section class="about" id="about-section">
 			<h2 class="about__title fadeInUp wow" data-wow-offset="50">О Ярике и Кате</h2>
-			<p class="fadeIn wow" data-wow-delay="0.1s" data-wow-offset="50">Катя и&nbsp;Ярослав познакомились в&nbsp;стенах
-				Севастопольского
-				Академического театра танца в&nbsp;период
-				новогодней сказочной кампании для детей, в&nbsp;то&nbsp;время, когда Ярик заканчивал школу и&nbsp;переезжал жить
-				в&nbsp;Севастополь. В&nbsp;периоды совместного времяпрепровождения между спектаклями, рабочими поездками и&nbsp;шумными
-				творческими вечеринками Ярик и&nbsp;Катя некоторое время оставались очень хорошими друзьями.</p>
-			<p class="fadeIn wow" data-wow-delay="0.3s" data-wow-offset="50">Так было до&nbsp;тех пор, пока в&nbsp;один из&nbsp;веселых
-				осенних вечеров в&nbsp;компании друзей Ярик и&nbsp;Катя
-				не&nbsp;признались себе, что помимо творческих интересов, дружеского взаимопонимания и&nbsp;неутолимого
-				перфекционизма в&nbsp;любых начинаниях, Катю и&nbsp;Ярика связывает нежная и&nbsp;робкая симпатия. Как раз в&nbsp;тот
-				день Ярик впервые поцеловал Катю и&nbsp;с&nbsp;тех пор они неразлучны.
-			</p>
-			<p class="fadeIn wow" data-wow-delay="0.5s" data-wow-offset="50">Прошло ровно 3&nbsp;года совместных приключений
-				и&nbsp;поездок,
-				эмоциональных творческих брейнштормов, настольных игр, серий «Игры престолов» и&nbsp;прослушанных джазовых
-				композиций, прежде чем Ярик в&nbsp;корзине
-				огромного воздушного шара сделал Кате предложение. И&nbsp;вот, спустя год ожидания возлюбленного с&nbsp;военной
-				службы на&nbsp;Черноморском флоте, Катя и&nbsp;Ярик с&nbsp;нетерпением и&nbsp;трепетом ждут
-				одно из&nbsp;самых главных событий в&nbsp;жизни&nbsp;— создание семьи, которое состоится в&nbsp;сентябре 2019&nbsp;года.
-			</p>
+			<a class="keyboard-section-anchor" onclick="javascript:void(0);" tabindex="0" aria-hidden="true"></a>
+			<div itemprop="description">
+				<p class="fadeIn wow" data-wow-delay="0.1s" data-wow-offset="50">Катя и&nbsp;Ярослав познакомились в&nbsp;стенах
+					Севастопольского
+					Академического театра танца в&nbsp;период
+					новогодней сказочной кампании для детей, в&nbsp;то&nbsp;время, когда Ярик заканчивал школу и&nbsp;переезжал
+					жить
+					в&nbsp;Севастополь. В&nbsp;периоды совместного времяпрепровождения между спектаклями, рабочими поездками и&nbsp;шумными
+					творческими вечеринками Ярик и&nbsp;Катя некоторое время оставались очень хорошими друзьями.</p>
+				<p class="fadeIn wow" data-wow-delay="0.3s" data-wow-offset="50">Так было до&nbsp;тех пор, пока в&nbsp;один из&nbsp;веселых
+					осенних вечеров в&nbsp;компании друзей Ярик и&nbsp;Катя
+					не&nbsp;признались себе, что помимо творческих интересов, дружеского взаимопонимания и&nbsp;неутолимого
+					перфекционизма в&nbsp;любых начинаниях, Катю и&nbsp;Ярика связывает нежная и&nbsp;робкая симпатия. Как раз в&nbsp;тот
+					день Ярик впервые поцеловал Катю и&nbsp;с&nbsp;тех пор они неразлучны.
+				</p>
+				<p class="fadeIn wow" data-wow-delay="0.5s" data-wow-offset="50">Прошло ровно 3&nbsp;года совместных приключений
+					и&nbsp;поездок,
+					эмоциональных творческих брейнштормов, настольных игр, серий «Игры престолов» и&nbsp;прослушанных джазовых
+					композиций, прежде чем Ярик в&nbsp;корзине
+					огромного воздушного шара сделал Кате предложение. И&nbsp;вот, спустя год ожидания возлюбленного с&nbsp;военной
+					службы на&nbsp;Черноморском флоте, Катя и&nbsp;Ярик с&nbsp;нетерпением и&nbsp;трепетом ждут
+					одно из&nbsp;самых главных событий в&nbsp;жизни&nbsp;— создание семьи, которое состоится в&nbsp;сентябре 2019&nbsp;года.
+				</p>
+			</div>
 
 			<div class="timeline">
+				<a class="keyboard-section-anchor" onclick="javascript:void(0);" tabindex="0" aria-hidden="true"></a>
 				<div class="timeline__axis"></div>
 				<div class="timeline__elements">
 					<div class="timeline__element">
@@ -551,7 +574,7 @@
 			</div>
 		</section>
 
-		<div class="section-spacer zoomIn wow" data-wow-delay="0.5s" data-wow-offset="50">
+		<div class="section-spacer zoomIn wow" aria-hidden="true" data-wow-delay="0.5s" data-wow-offset="50">
 			<svg class="section-spacer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 172.97">
 				<title>Разделение секций</title>
 				<symbol id="section-spacer-icon">
@@ -563,7 +586,14 @@
 		</div>
 
 		<section class="wedding" id="wedding-section">
-			<h2 class="wedding__title wow fadeInUp" data-wow-offset="50">Наша свадьба</h2>
+			<h2 class="wedding__title wow fadeInUp" data-wow-offset="50" tabindex="0">Наша свадьба</h2>
+
+			<div class="hidden">
+				<div itemscope itemprop="performer" itemtype="http://schema.org/Person"><span
+					itemprop="name">Ярослав Старущенко</span></div>
+				<div itemscope itemprop="performer" itemtype="http://schema.org/Person"><span
+					itemprop="name">Екатерина Подбелло</span></div>
+			</div>
 
 			<div class="wedding__date-bg">
 				<svg id="wedding-hearts" data-name="wedding-hearts"
@@ -589,6 +619,11 @@
 			</div>
 
 			<div class="wedding__date">
+				<meta itemprop="startDate" content="2019-09-09T15:30">
+				<meta itemprop="endDate" content="2019-09-10T00:00">
+				<meta itemprop="image" content="img/opengraph.jpg">
+				<meta itemprop="maximumAttendeeCapacity" content="50">
+
 				<svg class="wedding__date-day" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.71 22.64">
 					<title>9</title>
 					<defs>
@@ -606,7 +641,6 @@
 						      stroke-width="10" fill="none" stroke="#3d718e"/>
 					</g>
 				</svg>
-
 				<span class="wedding__date-month" data-wow-delay="1.9s">сентября</span>
 				<svg class="wedding__date-year" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75.59 24.11">
 					<title>2019</title>
@@ -657,7 +691,7 @@
 			</div>
 
 			<div class="wedding__places">
-				<div class="wedding__place-item wow fadeIn">
+				<div class="wedding__place-item wow fadeIn" itemprop="location" itemscope itemtype="http://schema.org/Place">
 					<svg class="wedding__arch-icon" id="arch-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 97.42 141.05">
 						<title>wedding arch</title>
 						<g id="arch-main">
@@ -1054,12 +1088,24 @@
 						</g>
 					</svg>
 					<div class="wedding__place-item-info">
-						<span class="wedding__place-item-event wow fadeInUp" data-wow-offset="50">Выездная церемония <span
-							class="wedding__event-linebreak"></span> и свадебный
-							банкет</span>
-						<span class="wedding__place-item-title wow fadeInUp" data-wow-offset="50">Alma Park Resort, Песчаное</span>
+							<span class="wedding__place-item-event wow fadeInUp" data-wow-offset="50">Выездная церемония <span
+								class="wedding__event-linebreak"></span> и свадебный
+								банкет</span>
+						<span class="wedding__place-item-title wow fadeInUp" data-wow-offset="50" itemprop="name"><a itemprop="url" href="http://alma-park.ru" target="_blank">Alma Park Resort, Песчаное</a></span>
+						<div class="hidden" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+							<span itemprop="addressLocality">с. Песчаное</span>,
+							<span itemprop="addressRegion">Республика Крым, Россия</span>
+						</div>
+						<meta itemprop="telephone" content="+7 (978) 950-88-88">
 					</div>
 				</div>
+			</div>
+
+			<div class="wedding__dresscode">
+				<h3 class="wedding__dresscode-title wow fadeInUp" data-wow-offset="50" tabindex="0">Дресс-код</h3>
+				<p class="wedding__dresscode-description wow fadeInUp" data-wow-offset="50" data-wow-delay="0.3s">
+					<strong>Мужчины</strong>&nbsp;— классический костюм или смокинг, рубашка с&nbsp;длинным рукавом.
+					<strong>Девушки</strong>&nbsp;— платье в&nbsp;пол или вечерний наряд.</p>
 			</div>
 
 			<div class="wedding__color-palette">
@@ -1075,7 +1121,7 @@
 			</div>
 
 			<div class="wedding__schedule-wrapper">
-				<h3 class="wedding__schedule-title wow fadeInUp">Расписание мероприятий</h3>
+				<h3 class="wedding__schedule-title wow fadeInUp" tabindex="0">Расписание мероприятий</h3>
 				<div class="wedding__schedule">
 					<div class="wedding__schedule-item wow fadeIn" data-wow-delay="0.2s" data-wow-offset="50">
 						<svg class="wedding__dress-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70.33 119.57">
@@ -1394,7 +1440,7 @@
 			</div>
 		</section>
 
-		<div class="section-spacer zoomIn wow" data-wow-delay="0.5s" data-wow-offset="50">
+		<div class="section-spacer zoomIn wow" aria-hidden="true" data-wow-delay="0.5s" data-wow-offset="50">
 			<svg class="section-spacer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 172.97">
 				<title>Разделение секций</title>
 				<use xlink:href="#section-spacer-icon"></use>
@@ -1403,6 +1449,7 @@
 
 		<section class="guests" id="guests-section">
 			<h2 class="guests__title fadeIn wow" data-wow-offset="50">Гости</h2>
+			<a class="keyboard-section-anchor" onclick="javascript:void(0);" tabindex="0" aria-hidden="true"></a>
 			<h3 class="guests__section-title fadeIn wow" data-wow-delay="0.2s" data-wow-offset="50">Подружки невесты и друзья
 				жениха</h3>
 
@@ -1461,7 +1508,7 @@
 						</div>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-offset="50">
+					<div class="grid__item fadeIn wow" data-wow-delay="0.2s" data-wow-offset="50">
 						<div class="grid__inner js-tilt">
 							<img class="grid__img grid__img--front lazy" src="img/image-loader.gif" data-src="img/lera-light-1.jpg"
 							     alt="Лера Сачук" width="260"
@@ -1477,7 +1524,7 @@
 						</div>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-delay="0.2s" data-wow-offset="50">
+					<div class="grid__item fadeIn wow" data-wow-offset="50">
 						<div class="grid__inner js-tilt">
 							<img class="grid__img grid__img--front lazy" src="img/image-loader.gif"
 							     data-src="img/veronika-light-1.jpg"
@@ -1509,7 +1556,39 @@
 						</div>
 					</div>
 
+					<div class="grid__item fadeIn wow" data-wow-delay="0.2s" data-wow-offset="50">
+						<div class="grid__inner js-tilt">
+							<img class="grid__img grid__img--front lazy" src="img/image-loader.gif" data-src="img/lesya-light-1.jpg"
+							     alt="Леся Падалка"
+							     width="260"
+							     height="280"/>
+							<img class="grid__img grid__img--back lazy" src="img/image-loader.gif" data-src="img/lesya-light-2.jpg"
+							     alt="Леся Падалка" width="260"
+							     height="280"/>
+							<span class="grid__item-caption-bg"></span>
+							<div class="grid__item-caption">
+								<span class="grid__item-title">Леся</span>
+								<span class="grid__item-desc">Подружка невесты</span>
+							</div>
+						</div>
+					</div>
+
 					<div class="grid__item fadeIn wow" data-wow-offset="50">
+						<div class="grid__inner js-tilt">
+							<img class="grid__img grid__img--front lazy" src="img/image-loader.gif"
+							     data-src="img/katya-light-1.jpg"
+							     alt="Катя Татарникова" width="260" height="300"/>
+							<img class="grid__img grid__img--back lazy" src="img/image-loader.gif" data-src="img/katya-light-2.jpg"
+							     alt="Катя Татарникова" width="260" height="300"/>
+							<span class="grid__item-caption-bg"></span>
+							<div class="grid__item-caption">
+								<span class="grid__item-title">Катя</span>
+								<span class="grid__item-desc">Подружка невесты</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="grid__item fadeIn wow" data-wow-delay="0.4s" data-wow-offset="50">
 						<div class="grid__inner js-tilt">
 							<img class="grid__img grid__img--front lazy" src="img/image-loader.gif" data-src="img/danil-light-1.jpg"
 							     alt="Данил Родин"
@@ -1528,38 +1607,21 @@
 
 					<div class="grid__item fadeIn wow" data-wow-delay="0.2s" data-wow-offset="50">
 						<div class="grid__inner js-tilt">
-							<img class="grid__img grid__img--front lazy" src="img/image-loader.gif" data-src="img/phil-light-1.jpg"
-							     alt="Фил Елизаров"
+							<img class="grid__img grid__img--front lazy" src="img/image-loader.gif" data-src="img/andrei-light-1.jpg"
+							     alt="Андрей Журавлев"
 							     width="260"
-							     height="300"/>
-							<img class="grid__img grid__img--back lazy" src="img/image-loader.gif" data-src="img/phil-light-2.jpg"
-							     alt="Фил Елизаров" width="260"
-							     height="300"/>
+							     height="310"/>
+							<img class="grid__img grid__img--back lazy" src="img/image-loader.gif" data-src="img/andrei-light-2.jpg"
+							     alt="Андрей Журавлев"
+							     width="260"
+							     height="310"/>
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
-								<span class="grid__item-title">Фил</span>
+								<span class="grid__item-title">Андрей</span>
 								<span class="grid__item-desc">Друг жениха</span>
 							</div>
 						</div>
 					</div>
-
-					<!--<div class="grid__item fadeIn wow" data-wow-delay="0.4s" data-wow-offset="50">
-						<div class="grid__inner js-tilt">
-							<img class="grid__img grid__img--front lazy" src="img/image-loader.gif" data-src="img/sergei-light-1.jpg"
-							     alt="Серега Красницкий"
-							     width="260"
-							     height="310"/>
-							<img class="grid__img grid__img--back lazy" src="img/image-loader.gif" data-src="img/sergei-light-2.jpg"
-							     alt="Серега Красницкий"
-							     width="260"
-							     height="310"/>
-							<span class="grid__item-caption-bg"></span>
-							<div class="grid__item-caption">
-								<span class="grid__item-title">Сергей</span>
-								<span class="grid__item-desc">Друг жениха</span>
-							</div>
-						</div>
-					</div>-->
 
 					<div class="grid__item fadeIn wow" data-wow-delay="0.4s" data-wow-offset="50">
 						<div class="grid__inner js-tilt">
@@ -1597,25 +1659,60 @@
 						</div>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-delay="0.2s" data-wow-offset="50">
+					<!--DEV<div class="grid__item fadeIn wow" data-wow-delay="0.4s" data-wow-offset="50">
 						<div class="grid__inner js-tilt">
-							<img class="grid__img grid__img--front lazy" src="img/image-loader.gif" data-src="img/andrei-light-1.jpg"
-							     alt="Андрей Журавлев"
-							     width="260"
-							     height="280"/>
-							<img class="grid__img grid__img--back lazy" src="img/image-loader.gif" data-src="img/andrei-light-2.jpg"
-							     alt="Андрей Журавлев"
-							     width="260"
-							     height="280"/>
+							<img class="grid__img grid__img--front lazy" src="img/image-loader.gif" data-src="img/sergei-light-1.jpg"
+									 alt="Серега Красницкий"
+									 width="260"
+									 height="310"/>
+							<img class="grid__img grid__img--back lazy" src="img/image-loader.gif" data-src="img/sergei-light-2.jpg"
+									 alt="Серега Красницкий"
+									 width="260"
+									 height="310"/>
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
-								<span class="grid__item-title">Андрей</span>
+								<span class="grid__item-title">Сергей</span>
+								<span class="grid__item-desc">Друг жениха</span>
+							</div>
+						</div>
+					</div>-->
+
+					<!--DEV <div class="grid__item fadeIn wow" data-wow-delay="0.4s" data-wow-offset="50">
+						<div class="grid__inner js-tilt">
+							<img class="grid__img grid__img&#45;&#45;front lazy" src="img/image-loader.gif" data-src="img/maks-light-1.jpg"
+									 alt="Макс Ульянинский"
+									 width="260"
+									 height="270"/>
+							<img class="grid__img grid__img&#45;&#45;back lazy" src="img/image-loader.gif" data-src="img/maks-light-2.jpg"
+									 alt="Макс Ульянинский"
+									 width="260"
+									 height="270"/>
+							<span class="grid__item-caption-bg"></span>
+							<div class="grid__item-caption">
+								<span class="grid__item-title">Макс</span>
+								<span class="grid__item-desc">Друг жениха</span>
+							</div>
+						</div>
+					</div>-->
+
+					<div class="grid__item fadeIn wow" data-wow-delay="0.2s" data-wow-offset="50">
+						<div class="grid__inner js-tilt">
+							<img class="grid__img grid__img--front lazy" src="img/image-loader.gif" data-src="img/phil-light-1.jpg"
+							     alt="Фил Елизаров"
+							     width="260"
+							     height="300"/>
+							<img class="grid__img grid__img--back lazy" src="img/image-loader.gif" data-src="img/phil-light-2.jpg"
+							     alt="Фил Елизаров" width="260"
+							     height="300"/>
+							<span class="grid__item-caption-bg"></span>
+							<div class="grid__item-caption">
+								<span class="grid__item-title">Фил</span>
 								<span class="grid__item-desc">Друг жениха</span>
 							</div>
 						</div>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-delay="0.4s" data-wow-offset="50">
+					<div class="grid__item fadeIn wow" data-wow-offset="50">
 						<div class="grid__inner js-tilt">
 							<img class="grid__img grid__img--front lazy" src="img/image-loader.gif" data-src="img/sachuk-light-1.jpg"
 							     alt="Андрей Сачук"
@@ -1632,96 +1729,134 @@
 							</div>
 						</div>
 					</div>
-
-					<!--DEV <div class="grid__item fadeIn wow" data-wow-delay="0.4s" data-wow-offset="50">
-						<div class="grid__inner js-tilt">
-							<img class="grid__img grid__img&#45;&#45;front lazy" src="img/image-loader.gif" data-src="img/maks-light-1.jpg"
-							     alt="Макс Ульянинский"
-							     width="260"
-							     height="270"/>
-							<img class="grid__img grid__img&#45;&#45;back lazy" src="img/image-loader.gif" data-src="img/maks-light-2.jpg"
-							     alt="Макс Ульянинский"
-							     width="260"
-							     height="270"/>
-							<span class="grid__item-caption-bg"></span>
-							<div class="grid__item-caption">
-								<span class="grid__item-title">Макс</span>
-								<span class="grid__item-desc">Друг жениха</span>
-							</div>
-						</div>
-					</div>-->
 				</div>
 			</div>
 
 			<div class="guests__lists">
 				<h3 class="guests__list-title fadeIn wow" data-wow-offset="50">Родственники</h3>
+				<a class="keyboard-section-anchor" onclick="javascript:void(0);" tabindex="0" aria-hidden="true"></a>
 
 				<ul class="guests__list">
-					<li class="guests__name fadeIn wow" data-wow-delay="0.1s" data-wow-offset="50">Татьяна Подбелло</li>
-					<li class="guests__name fadeIn wow" data-wow-delay="0.2s" data-wow-offset="50">Алёна Старущенко</li>
-					<li class="guests__name fadeIn wow" data-wow-delay="0.3s" data-wow-offset="50">Татьяна Александрова</li>
-					<li class="guests__name fadeIn wow" data-wow-delay="0.4s" data-wow-offset="50">Владимир Александров</li>
-					<li class="guests__name fadeIn wow" data-wow-delay="0.5s" data-wow-offset="50">Валентина Лобанова</li>
-					<li class="guests__name fadeIn wow" data-wow-delay="0.6s" data-wow-offset="50">Ольга Пискова</li>
-					<li class="guests__name fadeIn wow" data-wow-delay="0.7s" data-wow-offset="50">Елена Подбелло</li>
-					<li class="guests__name fadeIn wow" data-wow-delay="0.8s" data-wow-offset="50">Юлия Александрова</li>
-					<li class="guests__name fadeIn wow" data-wow-delay="0.9s" data-wow-offset="50">София Огурцова</li>
-					<li class="guests__name fadeIn wow" data-wow-delay="1s" data-wow-offset="50">Яна Подкладышева</li>
+					<li class="guests__name fadeIn wow" data-wow-delay="0.1s" data-wow-offset="50" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Татьяна Подбелло</span></li>
+					<li class="guests__name fadeIn wow" data-wow-delay="0.2s" data-wow-offset="50" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Алёна Старущенко</span></li>
+					<li class="guests__name fadeIn wow" data-wow-delay="0.3s" data-wow-offset="50" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Татьяна Александрова</span></li>
+					<li class="guests__name fadeIn wow" data-wow-delay="0.4s" data-wow-offset="50" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Владимир Александров</span></li>
+					<li class="guests__name fadeIn wow" data-wow-delay="0.5s" data-wow-offset="50" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Валентина Лобанова</span></li>
+					<li class="guests__name fadeIn wow" data-wow-delay="0.6s" data-wow-offset="50" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Ольга Пискова</span></li>
+					<li class="guests__name fadeIn wow" data-wow-delay="0.7s" data-wow-offset="50" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Елена Подбелло</span></li>
+					<li class="guests__name fadeIn wow" data-wow-delay="0.8s" data-wow-offset="50" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Юлия Александрова</span></li>
+					<li class="guests__name fadeIn wow" data-wow-delay="0.9s" data-wow-offset="50" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">София Огурцова</span></li>
+					<li class="guests__name fadeIn wow" data-wow-delay="1s" data-wow-offset="50" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Яна Подкладышева</span></li>
 				</ul>
 
 				<h3 class="guests__list-title fadeIn wow">Друзья, коллеги</h3>
+				<a class="keyboard-section-anchor" onclick="javascript:void(0);" tabindex="0" aria-hidden="true"></a>
 
 				<ol class="guests__list">
-					<li class="guests__name guests__name--bridesmaid fadeIn wow">Лиза Подкладышева</li>
-					<li class="guests__name guests__name--groomsman fadeIn wow">Фил Елизаров</li>
-					<li class="guests__name guests__name--groomsman guests__name--groomsman fadeIn wow">Андрей Сачук</li>
-					<li class="guests__name guests__name--bridesmaid fadeIn wow">Лера Сачук</li>
-					<li class="guests__name guests__name--bridesmaid fadeIn wow">Вероника Исправникова</li>
-					<li class="guests__name fadeIn wow">Ярик Исправников</li>
-					<li class="guests__name guests__name--bridesmaid fadeIn wow">Лена Славная</li>
-					<li class="guests__name fadeIn wow">Саша Славный</li>
-					<li class="guests__name guests__name--groomsman fadeIn wow">Андрей Журавлев</li>
-					<li class="guests__name fadeIn wow">Аня Журавлева</li>
-					<li class="guests__name guests__name--groomsman fadeIn wow">Даня Родин</li>
-					<li class="guests__name fadeIn wow">Вика Сосновская</li>
-					<li class="guests__name guests__name--bridesmaid fadeIn wow">Марина Супрунова</li>
-					<li class="guests__name guests__name--groomsman fadeIn wow">Игорь Минько</li>
-					<li class="guests__name guests__name--bridesmaid fadeIn wow">Аня Наумова</li>
-					<li class="guests__name guests__name--bridesmaid fadeIn wow">Леся Падалка</li>
-					<li class="guests__name fadeIn wow">Дима Лапашниченко</li>
-					<li class="guests__name fadeIn wow">Аня Рейзмир</li>
-					<li class="guests__name fadeIn wow">Катя Истомина</li>
-					<li class="guests__name fadeIn wow">Кирилл Истомин</li>
-					<li class="guests__name guests__name--groomsman fadeIn wow">Дима Нестеров</li>
-					<li class="guests__name fadeIn wow">Катя Хухрянская</li>
-					<li class="guests__name fadeIn wow">Ярик Титаренко</li>
-					<li class="guests__name guests__name--bridesmaid fadeIn wow">Катя Татарникова</li>
-					<li class="guests__name fadeIn wow">Андрей Татарников</li>
-					<li class="guests__name fadeIn wow">Леонид Олейниченко</li>
-					<li class="guests__name fadeIn wow">Марина Шереко</li>
-					<li class="guests__name fadeIn wow">Лиза Бакулина</li>
-					<li class="guests__name fadeIn wow">Вова Грошев</li>
-					<li class="guests__name fadeIn wow">Макс Чорный</li>
-					<li class="guests__name fadeIn wow">Полина Ермакова</li>
-					<li class="guests__name fadeIn wow">Александр Елизаров</li>
-					<li class="guests__name fadeIn wow">Наталья Иванова</li>
-					<li class="guests__name fadeIn wow">Игорь Горохов</li>
-					<li class="guests__name fadeIn wow">Жанна Горохова</li>
-					<li class="guests__name fadeIn wow">Степан Чельцов</li>
-					<li class="guests__name fadeIn wow">Виталий Королев</li>
-					<li class="guests__name fadeIn wow">Елена Фердман</li>
-					<li class="guests__name fadeIn wow">Валентина Шушко</li>
-					<li class="guests__name fadeIn wow">Андрей Шушко</li>
+					<li class="guests__name guests__name--bridesmaid fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Лиза Подкладышева</span></li>
+					<li class="guests__name guests__name--groomsman fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Фил Елизаров</span></li>
+					<li class="guests__name guests__name--groomsman guests__name--groomsman fadeIn wow" itemscope
+					    itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Андрей Сачук</span></li>
+					<li class="guests__name guests__name--bridesmaid fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Лера Сачук</span></li>
+					<li class="guests__name guests__name--bridesmaid fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Вероника Исправникова</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Ярик Исправников</span></li>
+					<li class="guests__name guests__name--bridesmaid fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Лена Славная</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Саша Славный</span></li>
+					<li class="guests__name guests__name--groomsman fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Андрей Журавлев</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Аня Журавлева</span></li>
+					<li class="guests__name guests__name--groomsman fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Даня Родин</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Вика Сосновская</span></li>
+					<li class="guests__name guests__name--bridesmaid fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Марина Супрунова</span></li>
+					<li class="guests__name guests__name--groomsman fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Игорь Минько</span></li>
+					<li class="guests__name guests__name--bridesmaid fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Аня Наумова</span></li>
+					<li class="guests__name guests__name--bridesmaid fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Леся Падалка</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Дима Лапашниченко</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Аня Рейзмир</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Катя Истомина</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Кирилл Истомин</span></li>
+					<li class="guests__name guests__name--groomsman fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Дима Нестеров</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Катя Хухрянская</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Ярик Титаренко</span></li>
+					<li class="guests__name guests__name--bridesmaid fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Катя Татарникова</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Андрей Татарников</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Леонид Олейниченко</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Марина Шереко</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Лиза Бакулина</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Вова Грошев</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Макс Чорный</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Полина Ермакова</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Александр Елизаров</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Наталья Иванова</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Игорь Горохов</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Жанна Горохова</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Степан Чельцов</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Виталий Королев</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Елена Фердман</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Валентина Шушко</span></li>
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Андрей Шушко</span></li>
 				</ol>
+
+				<p class="guests__note fadeInUp wow" data-wow-offset="50">*Список гостей может изменяться и&nbsp;дополняться</p>
 			</div>
 
 			<div class="guests__map">
-				<h3 class="guests__map-title">География наших гостей</h3>
+				<h3 class="guests__map-title fadeInUp wow" data-wow-offset="50">География наших гостей</h3>
+				<a class="keyboard-section-anchor" onclick="javascript:void(0);" tabindex="0" aria-hidden="true"></a>
 				<div class="guests__map-container" id="guests-map"></div>
 			</div>
 		</section>
 
-		<div class="section-spacer zoomIn wow" data-wow-delay="0.5s" data-wow-offset="50">
+		<div class="section-spacer zoomIn wow" aria-hidden="true" data-wow-delay="0.5s" data-wow-offset="50">
 			<svg class="section-spacer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 172.97">
 				<title>Разделение секций</title>
 				<use xlink:href="#section-spacer-icon"></use>
@@ -1731,35 +1866,44 @@
 		<section class="hashtag" id="hashtag-section">
 			<span class="hashtag__bg-block lazy" data-src="img/hashtag-bg2.png"></span>
 			<h2 class="hashtag__title fadeInUp wow" data-wow-offset="50">Хэштег</h2>
+			<a class="keyboard-section-anchor" onclick="javascript:void(0);" tabindex="0" aria-hidden="true"></a>
 			<a href="https://www.instagram.com/explore/tags/стобойтакблизко/" target="_blank">
 				<strong class="hashtag__main">
-					<span class="fadeIn wow" data-wow-delay="0.7s" data-wow-offset="50">#</span>
-					<span class="fadeIn wow" data-wow-delay="0.8s" data-wow-offset="50">c</span>
-					<span class="fadeIn wow" data-wow-delay="0.9s" data-wow-offset="50">т</span>
-					<span class="fadeIn wow" data-wow-delay="1s" data-wow-offset="50">о</span>
+					<span class="fadeIn wow" data-wow-delay="0.6s" data-wow-offset="50">#</span>
+					<span class="fadeIn wow" data-wow-delay="0.65s" data-wow-offset="50">c</span>
+					<span class="fadeIn wow" data-wow-delay="0.7s" data-wow-offset="50">т</span>
+					<span class="fadeIn wow" data-wow-delay="0.75s" data-wow-offset="50">о</span>
+					<span class="fadeIn wow" data-wow-delay="0.8s" data-wow-offset="50">б</span>
+					<span class="fadeIn wow" data-wow-delay="0.85s" data-wow-offset="50">о</span>
+					<span class="fadeIn wow" data-wow-delay="0.9s" data-wow-offset="50">й</span>
+					<span class="fadeIn wow" data-wow-delay="0.95s" data-wow-offset="50">т</span>
+					<span class="fadeIn wow" data-wow-delay="1s" data-wow-offset="50">а</span>
+					<span class="fadeIn wow" data-wow-delay="1.05s" data-wow-offset="50">к</span>
 					<span class="fadeIn wow" data-wow-delay="1.1s" data-wow-offset="50">б</span>
-					<span class="fadeIn wow" data-wow-delay="1.2s" data-wow-offset="50">о</span>
-					<span class="fadeIn wow" data-wow-delay="1.3s" data-wow-offset="50">й</span>
-					<span class="fadeIn wow" data-wow-delay="1.4s" data-wow-offset="50">т</span>
-					<span class="fadeIn wow" data-wow-delay="1.5s" data-wow-offset="50">а</span>
-					<span class="fadeIn wow" data-wow-delay="1.6s" data-wow-offset="50">к</span>
-					<span class="fadeIn wow" data-wow-delay="1.7s" data-wow-offset="50">б</span>
-					<span class="fadeIn wow" data-wow-delay="1.8s" data-wow-offset="50">л</span>
-					<span class="fadeIn wow" data-wow-delay="1.9s" data-wow-offset="50">и</span>
-					<span class="fadeIn wow" data-wow-delay="2s" data-wow-offset="50">з</span>
-					<span class="fadeIn wow" data-wow-delay="2.1s" data-wow-offset="50">к</span>
-					<span class="fadeIn wow" data-wow-delay="2.2s" data-wow-offset="50">о</span>
+					<span class="fadeIn wow" data-wow-delay="1.15s" data-wow-offset="50">л</span>
+					<span class="fadeIn wow" data-wow-delay="1.2s" data-wow-offset="50">и</span>
+					<span class="fadeIn wow" data-wow-delay="1.25s" data-wow-offset="50">з</span>
+					<span class="fadeIn wow" data-wow-delay="1.3s" data-wow-offset="50">к</span>
+					<span class="fadeIn wow" data-wow-delay="1.35s" data-wow-offset="50">о</span>
 				</strong>
 			</a>
-			<p class="hashtag__description fadeIn wow" data-wow-delay="2.5s" data-wow-offset="50">Все публикации
+			<p class="hashtag__description fadeIn wow" data-wow-delay="1.7s" data-wow-offset="50">Все публикации
 				в&nbsp;социальных сетях, связанные с&nbsp;подготовкой к&nbsp;свадьбе и&nbsp;ее&nbsp;проведением, будут отмечены
-				этим хэштегом. Наши дорогие друзья! В дни нашего долгожданного торжества мы будем наконец так близко даже с&nbsp;теми,
-				кто приедет к&nbsp;нам издалека. Будем признательны, если вы&nbsp;тоже будете использовать хэштег <span
-					class="hashtag__desc-accent">#стобойтакблизко</span> при публикациях, тогда найти и&nbsp;упорядочить
-				упоминания о&nbsp;нашей свадьбе будет очень просто для всех.</p>
+				этим хэштегом. Наши дорогие друзья! В дни нашего долгожданного торжества мы станем еще ближе друг к&nbsp;другу,
+				а&nbsp;также будем наконец так близко даже с&nbsp;теми, кто приедет к&nbsp;нам издалека. Будем признательны,
+				если вы&nbsp;тоже будете использовать хэштег <span class="hashtag__desc-accent">#стобойтакблизко</span> при
+				публикациях, тогда найти и&nbsp;упорядочить упоминания о&nbsp;нашей свадьбе будет очень просто для&nbsp;всех.
+			</p>
 		</section>
 
-		<div class="section-spacer zoomIn wow" data-wow-delay="0.5s" data-wow-offset="50">
+		<div class="instagram">
+			<h2 class="instagram__title fadeIn wow" data-wow-offset="50">Последние публикации #стобойтакблизко
+				в&nbsp;Instagram</h2>
+			<a class="keyboard-section-anchor" onclick="javascript:void(0);" tabindex="0" aria-hidden="true"></a>
+			<div class="instagram__stage"></div>
+		</div>
+
+		<div class="section-spacer zoomIn wow" aria-hidden="true" data-wow-delay="0.5s" data-wow-offset="50">
 			<svg class="section-spacer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 172.97">
 				<title>Разделение секций</title>
 				<use xlink:href="#section-spacer-icon"></use>
@@ -1768,14 +1912,17 @@
 
 		<div class="wedding-team" id="team-section">
 			<h2 class="wedding-team__title">Команда</h2>
+			<a class="keyboard-section-anchor" onclick="javascript:void(0);" tabindex="0" aria-hidden="true"></a>
 			<span class="wedding-team__mobile-desc">Нажмите на карточку два раза, чтобы перейти по ссылке</span>
 
 			<div class="grid__wrapper">
 				<div class="grid grid--landscape wedding-team__grid">
 					<div class="grid__sizer"></div>
 
-					<div class="grid__item fadeIn wow" data-wow-offset="50">
-						<a href="http://eventsuper.ru" target="_blank" class="grid__inner">
+					<div class="grid__item fadeIn wow" data-wow-offset="50" itemscope itemprop="organizer"
+					     itemtype="http://schema.org/Organization">
+						<span class="hidden" itemprop="name">«Супер» - Агентство событий Наталии Карамянц</span>
+						<a href="http://eventsuper.ru" itemprop="url" target="_blank" class="grid__inner">
 							<img class="grid__img wedding-team__image-logo lazy" src="img/image-loader.gif" data-src="img/super.jpg"
 							     alt="Агентство «Супер»"
 							     width="260"
@@ -1788,92 +1935,99 @@
 						</a>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-offset="50">
-						<a href="https://malahov-event.ru" target="_blank" class="grid__inner">
+					<div class="grid__item fadeIn wow" data-wow-offset="50" itemscope itemprop="contributor"
+					     itemtype="http://schema.org/Person">
+						<a href="https://malahov-event.ru" itemprop="url" target="_blank" class="grid__inner">
 							<img class="grid__img lazy" src="img/image-loader.gif" data-src="img/malakhov.jpg"
 							     alt="Дмитрий Малахов"
 							     width="260"
 							     height="190"/>
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
-								<span class="grid__item-title">Дмитрий Малахов</span>
+								<span class="grid__item-title" itemprop="name">Дмитрий Малахов</span>
 								<span class="grid__item-desc">Ведущий</span>
 							</div>
 						</a>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-offset="50">
-						<a href="https://www.instagram.com/supermama.shi/" target="_blank" class="grid__inner">
+					<div class="grid__item fadeIn wow" data-wow-offset="50" itemscope itemprop="contributor"
+					     itemtype="http://schema.org/Person">
+						<a href="https://www.instagram.com/supermama.shi/" itemprop="url" target="_blank" class="grid__inner">
 							<img class="grid__img lazy" src="img/image-loader.gif" data-src="img/karamyants.jpg"
 							     alt="Наталия Карамянц"
 							     width="260"
 							     height="190"/>
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
-								<span class="grid__item-title">Наталия Карамянц</span>
+								<span class="grid__item-title" itemprop="name">Наталия Карамянц</span>
 								<span class="grid__item-desc">Ведущая выездной церемонии</span>
 							</div>
 						</a>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-offset="50">
-						<a href="https://www.instagram.com/daria_podzigun/" target="_blank" class="grid__inner">
+					<div class="grid__item fadeIn wow" data-wow-offset="50" itemscope itemprop="contributor"
+					     itemtype="http://schema.org/Person">
+						<a href="https://www.instagram.com/daria_podzigun/" itemprop="url" target="_blank" class="grid__inner">
 							<img class="grid__img lazy" src="img/image-loader.gif" data-src="img/podzigun.jpg"
 							     alt="Дарья Подзигун"
 							     width="260"
 							     height="190"/>
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
-								<span class="grid__item-title">Дарья Подзигун</span>
+								<span class="grid__item-title" itemprop="name">Дарья Подзигун</span>
 								<span class="grid__item-desc">Свадебная координация</span>
 							</div>
 						</a>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-offset="50">
-						<a href="http://dimastrahov.com" target="_blank" class="grid__inner">
+					<div class="grid__item fadeIn wow" data-wow-offset="50" itemscope itemprop="contributor"
+					     itemtype="http://schema.org/Person">
+						<a href="http://dimastrahov.com" itemprop="url" target="_blank" class="grid__inner">
 							<img class="grid__img lazy" src="img/image-loader.gif" data-src="img/strakhov.jpg"
 							     alt="Дмитрий Страхов"
 							     width="260"
 							     height="190"/>
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
-								<span class="grid__item-title">Дмитрий Страхов</span>
+								<span class="grid__item-title" itemprop="name">Дмитрий Страхов</span>
 								<span class="grid__item-desc">Свадебное фото</span>
 							</div>
 						</a>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-offset="50">
-						<a href="https://vk.com/promax_studio" target="_blank" class="grid__inner">
+					<div class="grid__item fadeIn wow" data-wow-offset="50" itemscope itemprop="contributor"
+					     itemtype="http://schema.org/Organization">
+						<a href="https://vk.com/promax_studio" itemprop="url" target="_blank" class="grid__inner">
 							<img class="grid__img wedding-team__image-logo lazy" src="img/image-loader.gif" data-src="img/promax.jpg"
 							     alt="Студия «Promax»"
 							     width="260"
 							     height="190"/>
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
-								<span class="grid__item-title">«Promax»</span>
+								<span class="grid__item-title" itemprop="name">«Promax»</span>
 								<span class="grid__item-desc">Свадебное видео</span>
 							</div>
 						</a>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-offset="50">
-						<a href="https://alexandersanti.com" target="_blank" class="grid__inner">
+					<div class="grid__item fadeIn wow" data-wow-offset="50" itemscope itemprop="contributor"
+					     itemtype="http://schema.org/Organization">
+						<a href="https://alexandersanti.com" itemprop="url" target="_blank" class="grid__inner">
 							<img class="grid__img lazy" src="img/image-loader.gif" data-src="img/santi.jpg"
 							     alt="Александр и Марина Санти"
 							     width="260"
 							     height="190"/>
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
-								<span class="grid__item-title grid__item-title--medium">Александр и Марина Санти</span>
+								<span class="grid__item-title grid__item-title--medium" itemprop="name">Александр и Марина Санти</span>
 								<span class="grid__item-desc">Фото Lovestory</span>
 							</div>
 						</a>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-offset="50">
-						<a href="https://www.instagram.com/dolche_vita_decor/" target="_blank" class="grid__inner">
+					<div class="grid__item fadeIn wow" data-wow-offset="50" itemscope itemprop="contributor"
+					     itemtype="http://schema.org/Organization">
+						<a href="https://www.instagram.com/dolche_vita_decor/" itemprop="url" target="_blank" class="grid__inner">
 							<img class="grid__img wedding-team__image-logo lazy" src="img/image-loader.gif"
 							     data-src="img/dolcevita.jpg"
 							     alt="«Dolce Vita Decor»"
@@ -1881,14 +2035,15 @@
 							     height="190"/>
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
-								<span class="grid__item-title">«Dolce Vita Decor»</span>
+								<span class="grid__item-title" itemprop="name">«Dolce Vita Decor»</span>
 								<span class="grid__item-desc">Декорации и оформление</span>
 							</div>
 						</a>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-offset="50">
-						<a href="http://alma-park.ru" target="_blank" class="grid__inner">
+					<div class="grid__item fadeIn wow" data-wow-offset="50" itemscope itemprop="contributor"
+					     itemtype="http://schema.org/Organization">
+						<a href="http://alma-park.ru" itemprop="url" target="_blank" class="grid__inner">
 							<img class="grid__img wedding-team__image-logo lazy" src="img/image-loader.gif"
 							     data-src="img/alma-logo.jpg"
 							     alt="Alma Park Resort"
@@ -1896,42 +2051,45 @@
 							     height="190"/>
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
-								<span class="grid__item-title">Alma Park Resort</span>
+								<span class="grid__item-title" itemprop="name">Alma Park Resort</span>
 								<span class="grid__item-desc">Основная площадка</span>
 							</div>
 						</a>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-offset="50">
-						<a href="http://catering-fresh.com" target="_blank" class="grid__inner">
+					<div class="grid__item fadeIn wow" data-wow-offset="50" itemscope itemprop="contributor"
+					     itemtype="http://schema.org/Organization">
+						<a href="http://catering-fresh.com" itemprop="url" target="_blank" class="grid__inner">
 							<img class="grid__img wedding-team__image-logo lazy" src="img/image-loader.gif" data-src="img/fresh.jpg"
 							     alt="Кейтеринг «Fresh»"
 							     width="260"
 							     height="190"/>
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
-								<span class="grid__item-title">«Fresh»</span>
+								<span class="grid__item-title" itemprop="name">«Fresh»</span>
 								<span class="grid__item-desc">Гастроно&shy;мическое сопровождение</span>
 							</div>
 						</a>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-offset="50">
-						<a href="http://www.vivatshow.ru" target="_blank" class="grid__inner">
+					<div class="grid__item fadeIn wow" data-wow-offset="50" itemscope itemprop="contributor"
+					     itemtype="http://schema.org/Organization">
+						<a href="http://www.vivatshow.ru" itemprop="url" target="_blank" class="grid__inner">
 							<img class="grid__img wedding-team__image-logo lazy" src="img/image-loader.gif" data-src="img/vivat.jpg"
 							     alt="Jazz Band «Vivat Show»"
 							     width="260"
 							     height="190"/>
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
-								<span class="grid__item-title grid__item-title--medium">Jazz Band «Vivat Show»</span>
+								<span class="grid__item-title grid__item-title--medium" itemprop="name">Jazz Band «Vivat Show»</span>
 								<span class="grid__item-desc">Живая музыка, вокал</span>
 							</div>
 						</a>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-offset="50">
-						<a href="http://elenaborysova-style.com" target="_blank" class="grid__inner">
+					<div class="grid__item fadeIn wow" data-wow-offset="50" itemscope itemprop="contributor"
+					     itemtype="http://schema.org/Person">
+						<a href="http://elenaborysova-style.com" itemprop="url" target="_blank" class="grid__inner">
 							<img class="grid__img wedding-team__image-logo lazy" src="img/image-loader.gif"
 							     data-src="img/borysova.jpg"
 							     alt="Елена Борисова"
@@ -1939,114 +2097,125 @@
 							     height="190"/>
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
-								<span class="grid__item-title">Елена Борисова</span>
+								<span class="grid__item-title" itemprop="name">Елена Борисова</span>
 								<span class="grid__item-desc">Макияж невесты</span>
 							</div>
 						</a>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-offset="50">
-						<a href="http://domnevesty.com" target="_blank" class="grid__inner">
+					<div class="grid__item fadeIn wow" data-wow-offset="50" itemscope itemprop="contributor"
+					     itemtype="http://schema.org/Organization">
+						<a href="http://domnevesty.com" itemprop="url" target="_blank" class="grid__inner">
 							<img class="grid__img lazy" src="img/image-loader.gif" data-src="img/dom-nevesti.jpg"
 							     alt="Cалон «Дом невесты»"
 							     width="260"
 							     height="190"/>
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
-								<span class="grid__item-title">«Дом невесты»</span>
+								<span class="grid__item-title" itemprop="name">«Дом невесты»</span>
 								<span class="grid__item-desc">Образ невесты</span>
 							</div>
 						</a>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-offset="50">
-						<a href="https://www.instagram.com/weddingdresses_velvet/" target="_blank" class="grid__inner">
+					<div class="grid__item fadeIn wow" data-wow-offset="50" itemscope itemprop="contributor"
+					     itemtype="http://schema.org/Organization">
+						<a href="https://www.instagram.com/weddingdresses_velvet/" itemprop="url" target="_blank"
+						   class="grid__inner">
 							<img class="grid__img lazy" src="img/image-loader.gif" data-src="img/velvet.jpg"
 							     alt="Салон «Velvet» "
 							     width="260"
 							     height="190"/>
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
-								<span class="grid__item-title">«Velvet» </span>
+								<span class="grid__item-title" itemprop="name">«Velvet» </span>
 								<span class="grid__item-desc">Образ невесты</span>
 							</div>
 						</a>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-offset="50">
-						<a href="https://www.instagram.com/llo_manstyle/" target="_blank" class="grid__inner">
+					<div class="grid__item fadeIn wow" data-wow-offset="50" itemscope itemprop="contributor"
+					     itemtype="http://schema.org/Organization">
+						<a href="https://www.instagram.com/llo_manstyle/" itemprop="url" target="_blank" class="grid__inner">
 							<img class="grid__img lazy" src="img/image-loader.gif" data-src="img/llo.jpg"
 							     alt="«LLO-MAN»"
 							     width="260"
 							     height="190"/>
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
-								<span class="grid__item-title">«LLO-MAN»</span>
+								<span class="grid__item-title" itemprop="name">«LLO-MAN»</span>
 								<span class="grid__item-desc">Образ жениха</span>
 							</div>
 						</a>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-offset="50">
-						<a href="https://www.instagram.com/danielrizottofficial/" target="_blank" class="grid__inner">
+					<div class="grid__item fadeIn wow" data-wow-offset="50" itemscope itemprop="contributor"
+					     itemtype="http://schema.org/Organization">
+						<a href="https://www.instagram.com/danielrizottofficial/" itemprop="url" target="_blank"
+						   class="grid__inner">
 							<img class="grid__img wedding-team__image-logo lazy" src="img/image-loader.gif" data-src="img/rizotto.jpg"
 							     alt="«Daniel Rizotto»"
 							     width="260"
 							     height="190"/>
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
-								<span class="grid__item-title">«Daniel Rizotto»</span>
+								<span class="grid__item-title" itemprop="name">«Daniel Rizotto»</span>
 								<span class="grid__item-desc">Образ жениха</span>
 							</div>
 						</a>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-offset="50">
-						<a href="https://www.badgleymischka.com" target="_blank" class="grid__inner">
+					<div class="grid__item fadeIn wow" data-wow-offset="50" itemscope itemprop="contributor"
+					     itemtype="http://schema.org/Organization">
+						<a href="https://www.badgleymischka.com" itemprop="url" target="_blank" class="grid__inner">
 							<img class="grid__img wedding-team__image-logo lazy" src="img/image-loader.gif" data-src="img/mischka.jpg"
 							     alt="«Badgley Mischka»"
 							     width="260"
 							     height="190"/>
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
-								<span class="grid__item-title">«Badgley Mischka»</span>
+								<span class="grid__item-title" itemprop="name">«Badgley Mischka»</span>
 								<span class="grid__item-desc">Туфельки принцессы</span>
 							</div>
 						</a>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-offset="50">
-						<a href="https://www.instagram.com/golden_pearl_2004/" target="_blank" class="grid__inner">
+					<div class="grid__item fadeIn wow" data-wow-offset="50" itemscope itemprop="contributor"
+					     itemtype="http://schema.org/Organization">
+						<a href="https://www.instagram.com/golden_pearl_2004/" itemprop="url" target="_blank" class="grid__inner">
 							<img class="grid__img lazy" src="img/image-loader.gif" data-src="img/golden-pearl.jpg"
 							     alt="«Золотой жемчуг»"
 							     width="260"
 							     height="190"/>
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
-								<span class="grid__item-title">«Золотой жемчуг»</span>
+								<span class="grid__item-title" itemprop="name">«Золотой жемчуг»</span>
 								<span class="grid__item-desc">Обручальные кольца</span>
 							</div>
 						</a>
 					</div>
 
-					<div class="grid__item fadeIn wow" data-wow-offset="50">
-						<a href="https://www.instagram.com/glasstoneberry/" target="_blank" class="grid__inner">
+					<div class="grid__item fadeIn wow" data-wow-offset="50" itemscope itemprop="contributor"
+					     itemtype="http://schema.org/Organization">
+						<a href="https://www.instagram.com/glasstoneberry/" itemprop="url" target="_blank" class="grid__inner">
 							<img class="grid__img lazy" src="img/image-loader.gif" data-src="img/glasstoneberry.jpg"
 							     alt="«Glasstoneberry»"
 							     width="260"
 							     height="190"/>
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
-								<span class="grid__item-title">«Glasstone&shy;berry»</span>
+								<span class="grid__item-title" itemprop="name">«Glasstone&shy;berry»</span>
 								<span class="grid__item-desc">Свадебные аксессуары</span>
 							</div>
 						</a>
 					</div>
 				</div>
 			</div>
+
+			<p class="wedding-team__note fadeInUp wow" data-wow-offset="50">*Команда может изменяться и&nbsp;дополняться</p>
 		</div>
 
-		<div class="section-spacer zoomIn wow" data-wow-delay="0.5s" data-wow-offset="50">
+		<div class="section-spacer zoomIn wow" aria-hidden="true" data-wow-delay="0.5s" data-wow-offset="50">
 			<svg class="section-spacer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 172.97">
 				<title>Разделение секций</title>
 				<use xlink:href="#section-spacer-icon"></use>
@@ -2055,7 +2224,7 @@
 
 		<div class="story-map story-map--minimized" id="story-map-section">
 			<div class="story-map__overlay">
-				<button class="story-map__open-trigger">
+				<button class="story-map__open-trigger" tabindex="0">
 					<svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path
 							d="M19.5538 0.0523258C19.4442 -0.014174 19.3076 -0.017097 19.1947 0.0424604L13.1538 3.24066L7.11328 0.0424604C7.10853 0.0399027 7.10305 0.0391719 7.0983 0.0369796C7.08076 0.0285758 7.06286 0.0223643 7.04459 0.0168836C7.03436 0.0139605 7.02449 0.0106721 7.01426 0.00847978C6.99416 0.00446056 6.9737 0.00299904 6.95288 0.00226828C6.94374 0.00190289 6.93461 0.000806736 6.92511 0.00117212C6.90538 0.00226827 6.88601 0.00592209 6.86665 0.0103067C6.85568 0.012499 6.84472 0.0139605 6.83413 0.017249C6.83157 0.0179798 6.82901 0.0179797 6.82682 0.0187105L0.249922 2.21101C0.10048 2.2607 0 2.40028 0 2.55776V18.2692C0 18.3865 0.056269 18.4969 0.151999 18.5659C0.214845 18.6109 0.289749 18.6346 0.365383 18.6346C0.404114 18.6346 0.44321 18.6284 0.480844 18.6156L6.9284 16.4664L13.0146 18.9726C13.0197 18.9748 13.0255 18.9741 13.0307 18.9759C13.0709 18.9901 13.1118 19 13.1538 19C13.1867 19 13.2192 18.9945 13.251 18.9858C13.2612 18.9828 13.2707 18.9781 13.2809 18.9744C13.2956 18.9689 13.3109 18.9649 13.3248 18.9576L19.5363 15.6692C19.6558 15.606 19.7307 15.4814 19.7307 15.3462V0.365459C19.7307 0.23721 19.6635 0.11846 19.5538 0.0523258ZM0.730766 2.8212L6.5769 0.872611V10.735C6.41978 10.7635 6.26486 10.7957 6.11505 10.8351C5.91994 10.887 5.80375 11.0869 5.85563 11.282C5.89911 11.4457 6.04673 11.5539 6.20859 11.5539C6.23928 11.5539 6.27107 11.5498 6.30249 11.5418C6.39019 11.5184 6.48592 11.5067 6.5769 11.4877V15.8139L0.730766 17.7621V2.8212ZM7.30766 11.3854C7.42495 11.3763 7.53859 11.3613 7.6588 11.3587C7.86049 11.3544 8.02053 11.1874 8.01651 10.9857C8.01212 10.7866 7.84953 10.628 7.65112 10.628C7.64857 10.628 7.64564 10.628 7.64309 10.628C7.52982 10.6305 7.41837 10.6367 7.30766 10.6444V0.972361L12.7884 3.87387V11.6178C12.5275 11.6065 12.2623 11.5758 11.9842 11.5221C11.7854 11.483 11.5943 11.613 11.556 11.8111C11.5176 12.0091 11.6473 12.201 11.8454 12.2393C12.1691 12.3022 12.4833 12.3329 12.7888 12.3449V18.0891L7.30766 15.8321V11.3854ZM18.9999 15.1258L13.5192 18.0274V12.3055C13.6551 12.2437 13.7457 12.1049 13.7337 11.9474C13.7231 11.8107 13.6354 11.7011 13.5192 11.6474V3.87387L18.9999 0.972361V15.1258Z"
@@ -2158,7 +2327,7 @@
 			</div>
 		</div>
 
-		<div class="section-spacer zoomIn wow" data-wow-delay="0.5s" data-wow-offset="50">
+		<div class="section-spacer zoomIn wow" aria-hidden="true" data-wow-delay="0.5s" data-wow-offset="50">
 			<svg class="section-spacer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 172.97">
 				<title>Разделение секций</title>
 				<g>
@@ -2170,75 +2339,97 @@
 
 		<section class="gallery" id="gallery-section">
 			<h2 class="gallery__title fadeInUp wow" data-wow-offset="50">Галерея</h2>
+			<a class="keyboard-section-anchor" onclick="javascript:void(0);" tabindex="0" aria-hidden="true"></a>
 
 			<div class="gallery__stage fadeIn wow" data-wow-offset="50">
 				<div class="gallery__item">
-					<img data-src="img/gallery1.jpg" src="img/image-loader.gif" class="gallery__image lazy">
+					<img data-src="img/gallery1.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image lazy">
 				</div>
 				<div class="gallery__item">
-					<img data-src="img/gallery2.jpg" src="img/image-loader.gif"  class="gallery__image lazy">
+					<img data-src="img/gallery2.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image lazy">
 				</div>
 				<div class="gallery__item">
-					<img data-src="img/gallery3.jpg" src="img/image-loader.gif"  class="gallery__image lazy">
+					<img data-src="img/gallery3.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image lazy">
 				</div>
 				<div class="gallery__item">
-					<img data-lazy="img/gallery4.jpg" src="img/image-loader.gif"  class="gallery__image">
+					<img data-lazy="img/gallery4.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image">
 				</div>
 				<div class="gallery__item">
-					<img data-lazy="img/gallery5.jpg" src="img/image-loader.gif"  class="gallery__image">
+					<img data-lazy="img/gallery5.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image">
 				</div>
 				<div class="gallery__item">
-					<img data-lazy="img/gallery6.jpg" src="img/image-loader.gif"  class="gallery__image">
+					<img data-lazy="img/gallery6.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image">
 				</div>
 				<div class="gallery__item">
-					<img data-lazy="img/gallery7.jpg" src="img/image-loader.gif"  class="gallery__image">
+					<img data-lazy="img/gallery7.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image">
 				</div>
 				<div class="gallery__item">
-					<img data-lazy="img/gallery7-1.jpg" src="img/image-loader.gif"  class="gallery__image">
+					<img data-lazy="img/gallery7-1.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image">
 				</div>
 				<div class="gallery__item">
-					<img data-lazy="img/gallery7-2.jpg" src="img/image-loader.gif"  class="gallery__image">
+					<img data-lazy="img/gallery7-2.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image">
 				</div>
 				<div class="gallery__item">
-					<img data-lazy="img/gallery8.jpg" src="img/image-loader.gif"  class="gallery__image">
+					<img data-lazy="img/gallery8.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image">
 				</div>
 				<div class="gallery__item">
-					<img data-lazy="img/gallery9.jpg" src="img/image-loader.gif"  class="gallery__image">
+					<img data-lazy="img/gallery9.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image">
 				</div>
 				<div class="gallery__item">
-					<img data-lazy="img/gallery10.jpg" src="img/image-loader.gif"  class="gallery__image">
+					<img data-lazy="img/gallery10.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image">
 				</div>
 				<div class="gallery__item">
-					<img data-lazy="img/gallery11.jpg" src="img/image-loader.gif"  class="gallery__image">
+					<img data-lazy="img/gallery11.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image">
 				</div>
 				<div class="gallery__item">
-					<img data-lazy="img/gallery12.jpg" src="img/image-loader.gif"  class="gallery__image">
+					<img data-lazy="img/gallery12.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image">
 				</div>
 				<div class="gallery__item">
-					<img data-lazy="img/gallery13.jpg" src="img/image-loader.gif"  class="gallery__image">
+					<img data-lazy="img/gallery13.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image">
 				</div>
 				<div class="gallery__item">
-					<img data-lazy="img/gallery14.jpg" src="img/image-loader.gif"  class="gallery__image">
+					<img data-lazy="img/gallery14.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image">
 				</div>
 				<div class="gallery__item">
-					<img data-lazy="img/gallery15.jpg" src="img/image-loader.gif"  class="gallery__image">
+					<img data-lazy="img/gallery15.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image">
 				</div>
 				<div class="gallery__item">
-					<img data-lazy="img/gallery16.jpg" src="img/image-loader.gif"  class="gallery__image">
+					<img data-lazy="img/gallery16.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image">
 				</div>
 				<div class="gallery__item">
-					<img data-lazy="img/gallery17.jpg" src="img/image-loader.gif"  class="gallery__image">
+					<img data-lazy="img/gallery17.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image">
 				</div>
 				<div class="gallery__item">
-					<img data-lazy="img/gallery18.jpg" src="img/image-loader.gif"  class="gallery__image">
+					<img data-lazy="img/gallery18.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image">
 				</div>
 				<div class="gallery__item">
-					<img data-lazy="img/gallery19.jpg" src="img/image-loader.gif"  class="gallery__image">
+					<img data-lazy="img/gallery19.jpg" src="img/image-loader.gif" alt="Фотосессия Александра и Марины Санти"
+					     class="gallery__image">
 				</div>
 			</div>
 		</section>
 
-		<div class="section-spacer zoomIn wow" data-wow-delay="0.5s" data-wow-offset="50">
+		<div class="section-spacer zoomIn wow" aria-hidden="true" data-wow-delay="0.5s" data-wow-offset="50">
 			<svg class="section-spacer-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 172.97">
 				<title>Разделение секций</title>
 				<use xlink:href="#section-spacer-icon"></use>
@@ -2247,94 +2438,133 @@
 
 		<section class="comments" id="comments-section">
 			<h2 class="comments__title">Обсуждение</h2>
+			<p class="comments__note">Для оставления комментариев необходимо быть авторизованным VK</p>
+			<a class="keyboard-section-anchor" onclick="javascript:void(0);" tabindex="0" aria-hidden="true"></a>
 			<div class="js_vk-comments" id="vk_comments"></div>
 		</section>
 
-		<footer class="footer">
+		<footer class="footer" role="contentinfo">
 			<div class="footer__copyright">
 				<span class="footer__author">Дизайн и разработка сайта - Ярослав&nbsp;Старущенко</span>
+				<a class="keyboard-section-anchor" onclick="javascript:void(0);" tabindex="0" aria-hidden="true"></a>
 				<div class="footer__social">
 					<a class="footer__social-link footer__social-link--vk" target="_blank"
 					   href="https://vk.com/yarick_starushchenko">
 						<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
-						     fill="currentColor"><title>Вконтакте</title><path d="M11.701 18.771h1.437s.433-.047.654-.284c.21-.221.21-.63.21-.63s-.031-1.927.869-2.21c.887-.281 2.012 1.86 3.211 2.683.916.629 1.605.494 1.605.494l3.211-.044s1.682-.105.887-1.426c-.061-.105-.451-.975-2.371-2.76-2.012-1.861-1.742-1.561.676-4.787 1.469-1.965 2.07-3.166 1.875-3.676-.166-.48-1.26-.361-1.26-.361l-3.602.031s-.27-.031-.465.09c-.195.119-.314.391-.314.391s-.572 1.529-1.336 2.82c-1.623 2.729-2.268 2.879-2.523 2.699-.604-.391-.449-1.58-.449-2.432 0-2.641.404-3.75-.781-4.035-.39-.091-.681-.15-1.685-.166-1.29-.014-2.378.01-2.995.311-.405.203-.72.652-.539.675.24.03.779.146 1.064.537.375.506.359 1.636.359 1.636s.211 3.116-.494 3.503c-.495.262-1.155-.28-2.595-2.756-.735-1.26-1.291-2.67-1.291-2.67s-.105-.256-.299-.406c-.227-.165-.557-.225-.557-.225l-3.435.03s-.51.016-.689.24c-.166.195-.016.615-.016.615s2.686 6.287 5.732 9.453c2.79 2.902 5.956 2.715 5.956 2.715l-.05-.055z"/></svg>
+						     fill="currentColor"><title>Вконтакте</title>
+							<path
+								d="M11.701 18.771h1.437s.433-.047.654-.284c.21-.221.21-.63.21-.63s-.031-1.927.869-2.21c.887-.281 2.012 1.86 3.211 2.683.916.629 1.605.494 1.605.494l3.211-.044s1.682-.105.887-1.426c-.061-.105-.451-.975-2.371-2.76-2.012-1.861-1.742-1.561.676-4.787 1.469-1.965 2.07-3.166 1.875-3.676-.166-.48-1.26-.361-1.26-.361l-3.602.031s-.27-.031-.465.09c-.195.119-.314.391-.314.391s-.572 1.529-1.336 2.82c-1.623 2.729-2.268 2.879-2.523 2.699-.604-.391-.449-1.58-.449-2.432 0-2.641.404-3.75-.781-4.035-.39-.091-.681-.15-1.685-.166-1.29-.014-2.378.01-2.995.311-.405.203-.72.652-.539.675.24.03.779.146 1.064.537.375.506.359 1.636.359 1.636s.211 3.116-.494 3.503c-.495.262-1.155-.28-2.595-2.756-.735-1.26-1.291-2.67-1.291-2.67s-.105-.256-.299-.406c-.227-.165-.557-.225-.557-.225l-3.435.03s-.51.016-.689.24c-.166.195-.016.615-.016.615s2.686 6.287 5.732 9.453c2.79 2.902 5.956 2.715 5.956 2.715l-.05-.055z"/>
+						</svg>
 					</a>
 
 					<a class="footer__social-link footer__social-link--tm" target="_blank" href="https://t.me/starushchenko">
-						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><title>Telegram</title><path
-							d="M9.78,18.65L10.06,14.42L17.74,7.5C18.08,7.19 17.67,7.04 17.22,7.31L7.74,13.3L3.64,12C2.76,11.75 2.75,11.14 3.84,10.7L19.81,4.54C20.54,4.21 21.24,4.72 20.96,5.84L18.24,18.65C18.05,19.56 17.5,19.78 16.74,19.36L12.6,16.3L10.61,18.23C10.38,18.46 10.19,18.65 9.78,18.65Z"/></svg>
+						<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" width="32"
+						     height="32" viewBox="0 0 24 24" fill="currentColor"><title>Telegram</title>
+							<path
+								d="M9.78,18.65L10.06,14.42L17.74,7.5C18.08,7.19 17.67,7.04 17.22,7.31L7.74,13.3L3.64,12C2.76,11.75 2.75,11.14 3.84,10.7L19.81,4.54C20.54,4.21 21.24,4.72 20.96,5.84L18.24,18.65C18.05,19.56 17.5,19.78 16.74,19.36L12.6,16.3L10.61,18.23C10.38,18.46 10.19,18.65 9.78,18.65Z"/>
+						</svg>
 					</a>
 
 					<a class="footer__social-link footer__social-link--gm" target="_blank"
 					   href="mailto:starushchenkoyaroslav@gmail.com">
-						<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"><title>Gmail</title><path d="M24 4.5v15c0 .85-.65 1.5-1.5 1.5H21V7.387l-9 6.463-9-6.463V21H1.5C.649 21 0 20.35 0 19.5v-15c0-.425.162-.8.431-1.068C.7 3.16 1.076 3 1.5 3H2l10 7.25L22 3h.5c.425 0 .8.162 1.069.432.27.268.431.643.431 1.068z"/></svg>
+						<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+						     fill="currentColor"><title>Gmail</title>
+							<path
+								d="M24 4.5v15c0 .85-.65 1.5-1.5 1.5H21V7.387l-9 6.463-9-6.463V21H1.5C.649 21 0 20.35 0 19.5v-15c0-.425.162-.8.431-1.068C.7 3.16 1.076 3 1.5 3H2l10 7.25L22 3h.5c.425 0 .8.162 1.069.432.27.268.431.643.431 1.068z"/>
+						</svg>
 					</a>
 
-					<a class="footer__social-link footer__social-link--inst" target="_blank" href="https://www.instagram.com/ururustaru/">
-						<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+					<a class="footer__social-link footer__social-link--inst" target="_blank"
+					   href="https://www.instagram.com/ururustaru/">
+						<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+						     fill="currentColor"><title>Instagram</title>
+							<path
+								d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
+						</svg>
 					</a>
-					<a class="footer__social-link footer__social-link--gh" target="_blank" href="https://github.com/Starushchenko">
-						<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+					<a class="footer__social-link footer__social-link--gh" target="_blank"
+					   href="https://github.com/Starushchenko">
+						<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+						     fill="currentColor"><title>GitHub</title>
+							<path
+								d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+						</svg>
 					</a>
 				</div>
 			</div>
-			<p class="footer__attributes">Special thanks to <a href="https://tympanus.net/codrops/" target="_blank">Codrops</a> team for some tricks and inspiration they provided <br>
+			<p class="footer__attributes">Special thanks to
+				<a href="https://tympanus.net/codrops/" target="_blank">Codrops</a> team for some tricks and inspiration they
+				provided <br>
 				<strong>© Copyright 2019 Yaroslav&nbsp;Starushchenko</strong></p>
 		</footer>
 
+		<div class="old-browser__message">
+		<button class="old-browser__message-close" onclick="$('.old-browser__message').hide()">
+			<svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M23.915 24.7915L1.13957 1.00017" stroke="#3D708D" stroke-width="1.5"/>
+				<path d="M1 24.7915L23.7755 1.00017" stroke="#3D708D" stroke-width="1.5"/>
+			</svg>
+		</button>
+		На устаревших браузерах как Internet Explorer некоторые функции недоступны. Пожалуйста, используйте современные браузеры, например Google Chrome, Firefox или Яндекс.браузер.
+	</div>
+
 		<script src="js/jquery-3.2.1.min.js"></script>
 
-		<!--DEV lazy-load изображений -->
+		<!--lazy-load изображений-->
 		<script src="js/jquery.lazy.min.js"></script>
 
-		<!--DEV Кастомные скрипты, инициализаторы-->
+		<!--Кастомные скрипты, инициализаторы-->
 		<script src="js/scaffolding.js"></script>
 		<script src="js/script.min.js"></script>
 
-		<!--DEV Хэндлер для ожидания загрузки изображений-->
+		<!--Хэндлер для ожидания загрузки изображений-->
 		<script src="js/imagesloaded.pkgd.min.js"></script>
 
-		<!--DEV Анимированное появление элементов -->
+		<!--Анимированное появление элементов-->
 		<script src="js/wow.min.js"></script>
 
-		<!--DEV Скрипты для плавной отрисовки элементов masonry -->
+		<!--Скрипты для плавной отрисовки элементов masonry-->
 		<script src="js/masonry.pkgd.min.js"></script>
 		<script src="js/anime.min.js"></script>
 		<script src="js/gridLoading.js"></script>
 
-		<!--DEV Вращение плиток сетки при наведении-->
+		<!--Вращение плиток сетки при наведении-->
 		<script src="js/tilt.jquery.js"></script>
 
-		<!--DEV lazy-load-плагин для ленивой загрузки Google Maps-->
+		<!--lazy-load-плагин для ленивой загрузки Google Maps-->
 		<script src="js/jquery.lazy-load-google-maps.min.js"></script>
 
-		<!--DEV jquery-плагин для слайдера галереи-->
+		<!--jquery-плагин для слайдера галереи-->
 		<script src="js/slick.min.js"></script>
 
-		<!--DEV API ВК-->
+		<!--API ВК-->
 		<script src="js/vk-openapi.js"></script>
 
-		<script type="text/javascript">
+		<script>
 			VK.init({apiId: 7016903, onlyWidgets: true});
 		</script>
+
+		<!-- Отложенная загрузка Яндекс.Метрики -->
+		<script>
+			$(document).ready(function () {
+				function AppMetrica() {
+					(function (m, e, t, r, i, k, a) {
+						m[i] = m[i] || function () {
+									(m[i].a = m[i].a || []).push(arguments)
+								};
+						m[i].l = 1 * new Date();
+						k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+					})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+					ym(54160393, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true});
+				}
+
+				$(document).one('scroll', AppMetrica);
+				setTimeout(AppMetrica, 5000)
+			})
+
+		</script>
+		<noscript>
+			<div><img src="https://mc.yandex.ru/watch/54160393" style="position:absolute; left:-9999px;" alt=""/></div>
+		</noscript>
 	</body>
 </html>
-
-<!--DEV
-Старая не ленивая загрузка Google Maps
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHphXTH_roi5WSOoimgW7m5xDzk5JEb38&language=ru"></script>
-
-
-	Параметры wow.js:
-		data-wow-delay="1s" - задержка
-		data-wow-duration="1s" - длительность
-		data-wow-offset="10" - расстояние от нижнего края
-		data-wow-iteration="1" - количество повторений
--->
-
-<!--DEV
- Attribution
- !!! <a href="https://www.freepik.com/free-photos-vectors/wedding">Wedding vector created by macrovector - www.freepik
- .com</a>
- <a href="https://www.freepik.com/free-photos-vectors/background">Background vector created by rawpixel.com - www.freepik.com</a>
- -->

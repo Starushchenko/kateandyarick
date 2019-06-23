@@ -75,7 +75,7 @@ $(document).ready(function () {
 			if (!$('#vk_comments').attr('loaded')) {
 
 				$('#vk_comments').attr('loaded', true);
-				VK.Widgets.Comments("vk_comments", {limit: 15, width: "700", attach: "graffiti"});
+				VK.Widgets.Comments("vk_comments", {limit: 15, attach: "graffiti"});
 			}
 		}
 	});

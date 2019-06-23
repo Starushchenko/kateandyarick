@@ -1,0 +1,192 @@
+// В этом файле должны быть стили для БЭМ-блока instagram, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/mixins.scss";
+
+.instagram {
+	@include container;
+	padding-top: 20px;
+}
+
+.instagram__title {
+	@include section-title;
+	font-size: 20px;
+}
+
+.instagram__stage {
+	display: flex;
+	flex-wrap: wrap;
+	min-height: 285px;
+}
+
+.instagram__item-link {
+	display: block;
+	width: 265px;
+	//height: 265px;
+	margin: 0 20px 20px 0;
+	position: relative;
+	overflow: hidden;
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 265px;
+		background: rgba(87,212,217,.15);
+		transition: 0.3s;
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		width: 30px;
+		height: 30px;
+		background: url(../img/instagram-white.svg) center / contain no-repeat;
+		transition: 0.3s;
+		z-index: 2;
+	}
+
+	&:hover {
+		img {
+			transform: scale(1.05) translateY(-6px);
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: none;
+		}
+	}
+}
+
+.instagram__item-link:last-of-type {
+	margin-right: 0;
+}
+
+.instagram__image {
+	width: 265px;
+	height: 265px;
+	display: flex;
+	object-fit: cover;
+	transition: 0.3s;
+	margin-bottom: 10px;
+}
+
+.instagram__likes-count {
+	position: absolute;
+	top: 220px;
+	right: 5px;
+	background: url(../img/heart-white.svg) center / contain no-repeat;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 2;
+	color: $color-accent-dark;
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.instagram__image-desc {
+	font-size: 14px;
+	color: $main-text;
+}
+
+@media (max-width: 1150px) {
+	.instagram__item-link {
+		width: calc(25% - 20px);
+	}
+}
+
+@media (max-width: 991px) {
+	.instagram {
+		text-align: center;
+	}
+	.instagram__image-desc {
+		display: none;
+	}
+	.instagram__item-link {
+		width: calc(50% - 20px);
+		max-width: 260px;
+		margin: 0 10px 15px;
+	}
+	.instagram__item-link:last-of-type {
+		margin: 0 10px 20px;
+	}
+	.instagram__stage {
+		max-width: 640px;
+		margin: 0 auto;
+		justify-content: center;
+	}
+}
+
+@media (max-width: 768px) {
+	.instagram__title {
+		font-size: 20px;
+	}
+}
+
+@media (max-width: 640px) {
+	.instagram__title {
+		font-size: 20px;
+	}
+	.instagram__stage {
+		max-width: 100%;
+	}
+	.instagram__item-link {
+		max-width: 230px;
+
+		&::after {
+			height: 230px;
+		}
+	}
+	.instagram__likes-count {
+		bottom: 5px;
+		top: auto;
+	}
+	.instagram__image {
+		width: 230px;
+		height: 230px;
+		margin: 0;
+	}
+}
+
+@media (max-width: 520px) {
+	.instagram__title {
+		font-size: 20px;
+	}
+	.instagram__stage {
+		max-width: 100%;
+	}
+	.instagram__item-link {
+		max-width: 280px;
+		width: 100%;
+		margin-bottom: 20px;
+
+		&::after {
+			bottom: 0;
+			height: auto;
+		}
+	}
+	.instagram__item-link:last-of-type {
+		display: none;
+	}
+	.instagram__likes-count {
+		bottom: 15px;
+		top: auto;
+	}
+	.instagram__image {
+		width: 100%;
+		height: auto;
+		max-width: 280px;
+	}
+}

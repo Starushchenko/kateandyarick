@@ -539,6 +539,7 @@ $(document).ready(function () {
 						$('.later-lazy').lazy();
 
 						$('.story-map').removeClass('story-map--minimized');
+						$('.navigation').addClass('navigation--hidden');
 
 						$('.story-map__content').scroll(function () {
 							$('.later-lazy').lazy();
@@ -550,6 +551,7 @@ $(document).ready(function () {
 							}
 
 							$('.story-map').addClass('story-map--minimized');
+							$('.navigation').removeClass('navigation--hidden');
 						})
 					});
 				});

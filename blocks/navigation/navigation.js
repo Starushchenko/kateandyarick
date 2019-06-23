@@ -23,6 +23,7 @@ class ShapeOverlays {
 		this.isOpened = false;
 		this.isAnimating = false;
 	}
+
 	toggle() {
 		this.isAnimating = true;
 		for (var i = 0; i < this.numPoints; i++) {
@@ -34,23 +35,26 @@ class ShapeOverlays {
 			this.close();
 		}
 	}
+
 	open() {
 		this.isOpened = true;
 		this.elm.classList.add('shape-overlays--opened');
 		this.timeStart = Date.now();
 		this.renderLoop();
 	}
+
 	close() {
 		this.isOpened = false;
 		this.elm.classList.remove('shape-overlays--opened');
 		this.timeStart = Date.now();
 		this.renderLoop();
 	}
+
 	updatePath(time) {
 		const points = [];
 		for (var i = 0; i < this.numPoints; i++) {
 			const thisEase = this.isOpened ?
-					(i == 1) ? ease.cubicOut : ease.cubicInOut:
+					(i == 1) ? ease.cubicOut : ease.cubicInOut :
 					(i == 1) ? ease.cubicInOut : ease.cubicOut;
 			points[i] = thisEase(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1)) * 100
 		}
@@ -65,6 +69,7 @@ class ShapeOverlays {
 		str += (this.isOpened) ? `V 0 H 0` : `V 100 H 0`;
 		return str;
 	}
+
 	render() {
 		if (this.isOpened) {
 			for (var i = 0; i < this.path.length; i++) {
@@ -76,6 +81,7 @@ class ShapeOverlays {
 			}
 		}
 	}
+
 	renderLoop() {
 		this.render();
 		if (Date.now() - this.timeStart < this.duration + this.delayPerPath * (this.path.length - 1) + this.delayPointsMax) {
@@ -89,7 +95,7 @@ class ShapeOverlays {
 	}
 }
 
-(function() {
+(function () {
 	const elmHamburger = document.querySelector('.hamburger');
 	const gNavItems = document.querySelectorAll('.global-menu__item');
 	const elmOverlay = document.querySelector('.shape-overlays');
@@ -103,12 +109,36 @@ class ShapeOverlays {
 		if (overlay.isOpened === true) {
 			elmHamburger.classList.add('is-opened-navi');
 			for (var i = 0; i < gNavItems.length; i++) {
+				gNavItems[i].setAttribute('tabindex', 0)
 				gNavItems[i].classList.add('global-menu__item--opened');
 			}
 		} else {
 			elmHamburger.classList.remove('is-opened-navi');
 			for (var i = 0; i < gNavItems.length; i++) {
+				gNavItems[i].setAttribute('tabindex', -1)
 				gNavItems[i].classList.remove('global-menu__item--opened');
+			}
+		}
+	});
+
+	elmHamburger.addEventListener('keydown', (event) => {
+		if (event.keyCode === 13) {
+			if (overlay.isAnimating) {
+				return false;
+			}
+			overlay.toggle();
+			if (overlay.isOpened === true) {
+				elmHamburger.classList.add('is-opened-navi');
+				for (var i = 0; i < gNavItems.length; i++) {
+					gNavItems[i].setAttribute('tabindex', 0);
+					gNavItems[i].classList.add('global-menu__item--opened');
+				}
+			} else {
+				elmHamburger.classList.remove('is-opened-navi');
+				for (var i = 0; i < gNavItems.length; i++) {
+					gNavItems[i].setAttribute('tabindex', -1);
+					gNavItems[i].classList.remove('global-menu__item--opened');
+				}
 			}
 		}
 	});

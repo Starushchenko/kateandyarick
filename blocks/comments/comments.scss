@@ -13,8 +13,28 @@
 	@include section-title;
 }
 
+.comments__note {
+	margin-bottom: 15px;
+}
+
 .js_vk-comments {
-	width: 100% !important;
-	height: 600px !important;
-	background: rgba(72, 208, 213, 0.38823529411764707)!important;
+	max-width: 100%;
+}
+
+@media (max-width: 768px) {
+	.comments__title {
+		margin-bottom: 15px;
+	}
+
+	.comments__note {
+		font-size: 16px;
+	}
+	.js_vk-comments {
+		max-width: 100%;
+		height: 100% !important
+	}
+
+	.js_vk-comments iframe {
+		height: 100% !important
+	}
 }

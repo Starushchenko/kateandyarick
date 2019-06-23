@@ -183,6 +183,10 @@
 
 		&:hover {
 			transform: scale(1.05);
+
+			.grid__item-caption-bg {
+				background: none;
+			}
 		}
 	}
 	.grid__img {

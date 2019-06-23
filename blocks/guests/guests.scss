@@ -80,6 +80,14 @@
 	max-height: 80vh;
 }
 
+.guests__note {
+	color: #3d708d;
+	margin: -30px auto 0;
+	font-size: 16px;
+	max-width: 800px;
+	text-align: left;
+}
+
 @media (max-width: 860px) {
 	.guests__list {
 		max-width: 520px;
@@ -96,6 +104,12 @@
 		font-size: 17px;
 		padding: 0;
 	}
+	.guests__note {
+		margin: -40px auto 0;
+		max-width: 520px;
+		text-align: left;
+		font-size: 14px;
+	}
 }
 
 @media (max-width: 560px) {
@@ -107,6 +121,9 @@
 
 
 @media (max-width: 520px) {
+	.guests__note {
+		max-width: 280px;
+	}
 	.guests__list {
 		column-count: 1;
 		max-width: 280px;

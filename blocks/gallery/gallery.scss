@@ -84,6 +84,12 @@
 	width: 200px;
 }
 
+@media (min-width: 1000px) {
+	.gallery__image, .gallery__stage {
+		min-height: 650px;
+	}
+}
+
 @media (max-width: 768px) {
 	.gallery__stage, .gallery__stage {
 		max-height: calc(100vh - 80px);

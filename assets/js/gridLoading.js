@@ -237,10 +237,9 @@
 	window.GridLoaderFx = GridLoaderFx;
 
 	var body = document.body,
-			grids = [].slice.call(document.querySelectorAll('.grid')), masonry = []
-	// Экземпляры GridLoaderFx
-	loaders = [];
-
+			grids = [].slice.call(document.querySelectorAll('.grid')), masonry = [],
+			// Экземпляры GridLoaderFx
+			loaders = [];
 
 
 	function init() {
@@ -268,6 +267,7 @@
 
 					// Отрисовка грида
 					loaders[i]._render('Shu');
+
 					grid.classList.add('grid--showed');
 
 					if (grid.classList.contains('grid--showed')) {

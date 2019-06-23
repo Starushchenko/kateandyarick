@@ -1,0 +1,39 @@
+// В этом файле должны быть стили для БЭМ-блока old-browser, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/mixins.scss";
+
+.old-browser {
+	.old-browser__message {
+		background: rgba(255,255,255,0.8);
+		display: flex;
+		flex-direction: column;
+		position: fixed;
+		top: 30px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 800px;
+		max-width: calc(100% - 30px);
+		padding: 15px 30px 15px 15px;
+		border: 1px solid $secondary-text;
+		border-radius: 4px;
+		z-index: 10;
+	}
+	.old-browser__message-close {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+		transition: 0.3s;
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}
+
+.old-browser__message {
+	display: none;
+}
