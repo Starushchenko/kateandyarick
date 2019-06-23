@@ -44,4 +44,15 @@
 11. Сайт дополнен атрибутами по стандартам WAI-ARIA. Также сайт озвучен программой ` NVDA ` для тестирования доступности сайта со скрин-ридеров.
 
 
+
+## Замеры и валидации
+
+![Валидация GTMetrix](https://kateandyarick.ru/gtmetrix.png)
+
+![Валидация PageSpeed для мобильных](https://kateandyarick.ru/pagespeed-1.png)
+
+![Валидация PageSpeed для декстопов](https://kateandyarick.ru/pagespeed-2.png)
+
+![Валидация разметки](https://kateandyarick.ru/w3c-validate.png)
+
 © Copyright 2019 Yaroslav&nbsp;Starushchenko

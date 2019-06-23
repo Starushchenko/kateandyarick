@@ -63,6 +63,12 @@
 	}
 }
 
+.story-map__open-trigger-caption {
+	font-size: 12px;
+	margin-top: 10px;
+	display: none;
+}
+
 .story-map--minimized {
 	position: relative;
 	max-height: 100vh;
@@ -305,6 +311,11 @@
 		justify-content: space-between;
 		background: none;
 		transition: 0.3s;
+	}
+	.story-map__open-trigger-caption {
+		font-size: 12px;
+		margin-top: 10px;
+		display: block;
 	}
 	.story-map__mobile-block-trigger {
 		position: fixed;
