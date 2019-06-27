@@ -79,6 +79,14 @@ $(document).ready(function () {
 			}
 		}
 	});
+
+	// Открытие цветов палитры на мобильных
+	if ($(document).width() <= 768) {
+		$('.wedding__color').on("click", function () {
+			$('.wedding__colors-list').toggleClass('wedding__colors-list--full');
+			$(this).toggleClass('wedding__color--full');
+		})
+	}
 });
 
 // Проверка, попал ли элемент во вьюпорт

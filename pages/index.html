@@ -1119,7 +1119,9 @@
 					<li class="wedding__color wow fadeInLeft" data-wow-delay="0.7s" data-wow-offset="50"></li>
 					<li class="wedding__color wow fadeInLeft" data-wow-delay="0.9s" data-wow-offset="50"></li>
 				</ul>
-				<span class="wedding__colors-caption wow fadeInUp" data-wow-delay="0.6s" data-wow-offset="50">будем признательны, если в ваших нарядах и аксессуарах будут присутствовать эти оттенки</span>
+				<span class="wedding__colors-mobile-desc wow zoomIn" data-wow-delay="0.9s"
+				      data-wow-offset="50">Нажмите на цвет, чтобы открыть на весь экран</span>
+				<span class="wedding__colors-caption wow fadeInUp" data-wow-delay="1s" data-wow-offset="50">будем признательны, если в ваших нарядах и аксессуарах будут присутствовать эти оттенки</span>
 			</div>
 
 			<div class="wedding__schedule-wrapper">
@@ -1799,7 +1801,7 @@
 					<li class="guests__name guests__name--bridesmaid fadeIn wow" itemscope itemprop="attendee"
 					    itemtype="http://schema.org/Person"><span itemprop="name">Леся Падалка</span></li>
 					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
-					    itemtype="http://schema.org/Person"><span itemprop="name">Дима Лапашниченко</span></li>
+					    itemtype="http://schema.org/Person"><span itemprop="name">Дима Лапошниченко</span></li>
 					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
 					    itemtype="http://schema.org/Person"><span itemprop="name">Аня Рейзмир</span></li>
 					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
@@ -2100,7 +2102,7 @@
 							<span class="grid__item-caption-bg"></span>
 							<div class="grid__item-caption">
 								<span class="grid__item-title" itemprop="name">Елена Борисова</span>
-								<span class="grid__item-desc">Макияж невесты</span>
+								<span class="grid__item-desc">Свадебный стилист</span>
 							</div>
 						</a>
 					</div>
@@ -2512,6 +2514,8 @@
 			браузеры, например Google Chrome, Firefox или Яндекс.браузер.
 		</div>
 
+		<!--DEV !!! После команды npm run build удалять все подключения, кроме script.min.js -->
+
 		<script src="js/jquery-3.2.1.min.js"></script>
 
 		<!--lazy-load изображений-->
@@ -2565,7 +2569,6 @@
 				$(document).one('scroll', AppMetrica);
 				setTimeout(AppMetrica, 5000)
 			})
-
 		</script>
 		<noscript>
 			<div><img src="https://mc.yandex.ru/watch/54160393" style="position:absolute; left:-9999px;" alt=""/></div>
