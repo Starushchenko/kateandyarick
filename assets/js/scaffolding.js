@@ -85,6 +85,7 @@ $(document).ready(function () {
 		$('.wedding__color').on("click", function () {
 			$('.wedding__colors-list').toggleClass('wedding__colors-list--full');
 			$(this).toggleClass('wedding__color--full');
+			$('.hamburger').toggleClass('is-opened-navi');
 		})
 	}
 });

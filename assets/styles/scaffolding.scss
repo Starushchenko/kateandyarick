@@ -22,6 +22,11 @@ html {
 	-webkit-overflow-scrolling: touch;
 }
 
+*::selection {
+	background: #c8f3ff;
+	color: $main-text;
+}
+
 body {
 	font-size: 18px;
 	font-family: 'Museo Cyrl', Arial, sans-serif;
