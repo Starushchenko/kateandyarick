@@ -20,6 +20,16 @@
 	@include section-title;
 }
 
+.about__lovestory-wrap {
+	width: 900px;
+	display: block;
+	margin-top: 40px;
+
+	img {
+		width: 100%;
+	}
+}
+
 @media (max-width: 768px) {
 	.about {
 		padding-top: 45px;

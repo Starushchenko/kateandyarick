@@ -72,7 +72,7 @@ gulp.task('concat', function () {
 
 // concats and minify all js vendors of gulp.src below
 gulp.task('concat-vendors', function () {
-	return gulp.src(['build/js/jquery-3.2.1.min.js', 'build/js/jquery.lazy.min.js', 'build/js/scaffolding.js', 'build/js/script.js', 'build/js/imagesloaded.pkgd.min.js', 'build/js/wow.min.js', 'build/js/masonry.pkgd.min.js', 'build/js/anime.min.js', 'build/js/gridLoading.js', 'build/js/tilt.jquery.js', 'build/js/jquery.lazy-load-google-maps.min.js', 'build/js/slick.min.js', 'build/js/vk-openapi.js'])
+	return gulp.src(['build/js/jquery-3.2.1.min.js', 'build/js/jquery.lazy.min.js', 'build/js/scaffolding.js', 'build/js/script.js', 'build/js/imagesloaded.pkgd.min.js', 'build/js/jquery.fancybox.min.js', 'build/js/wow.min.js', 'build/js/masonry.pkgd.min.js', 'build/js/anime.min.js', 'build/js/gridLoading.js', 'build/js/tilt.jquery.js', 'build/js/jquery.lazy-load-google-maps.min.js', 'build/js/slick.min.js', 'build/js/vk-openapi.js'])
 	.pipe(concat('script.min.js'))
 	.pipe(jsmin({
 		output: {

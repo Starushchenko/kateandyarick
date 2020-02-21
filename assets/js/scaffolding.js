@@ -7,6 +7,11 @@ $(document).ready(function () {
 		$(document.body).removeClass('loading');
 	});
 
+	// Иницализация Fancybox без дополнительных кнопок
+	$('[data-fancybox]').fancybox({
+		buttons: ["close"]
+	});
+
 	setTimeout(function () {
 		$('.intro').addClass('intro--darked');
 		$('.intro__anim-svg').addClass('intro__anim-svg--js-ready');
@@ -17,16 +22,10 @@ $(document).ready(function () {
 	}, 5000);
 
 	// Инициализация lazy-load для картинок
-	$(function () {
-		$.each($('.lazy'), function (i, item) {
-			if (isElementInViewport(item)) {
-				$('.lazy').lazy();
-			}
-		})
-	});
-
-	$(document.body).scroll(function () {
-		$('.lazy').lazy();
+	$('.lazy').lazy({
+		effect: "fadeIn",
+		effectTime: 2000,
+		threshold: 0
 	});
 
 	// Скрипт плавной прокрутки до якорей

@@ -24,89 +24,48 @@
 		background: rgba(255, 255, 255, 0);
 		transition: 2s;
 	}
+}
 
+div.intro {
 	@media (min-width: 1920px) {
-		background: #2c2d31 url('../img/intro.jpg') center / cover no-repeat;
+		background: #2c2d31 url('../img/intro.jpg') bottom / cover no-repeat;
 	}
 
 	@media (max-width: 1920px) {
-		background: #2c2d31 url('../img/intro1920x1080.jpg') center / cover no-repeat;
+		background: #2c2d31 url('../img/intro1920x1080@2x.jpg') bottom / cover no-repeat;
 	}
 
 	@media (max-width: 1366px) {
-		background: #2c2d31 url('../img/intro1366x768.jpg') center / cover no-repeat;
+		background: #2c2d31 url('../img/intro1366x768@2x.jpg') bottom / cover no-repeat;
 	}
 
 	@media (max-width: 1280px) {
-		background: #2c2d31 url('../img/intro1280x1024.jpg') center / cover no-repeat;
+		background: #2c2d31 url('../img/intro1280x1024@2x.jpg') bottom / cover no-repeat;
 	}
 
 	@media (max-width: 768px) {
-		background: #2c2d31 url('../img/intro768x1024.jpg') center / cover no-repeat;
+		background: #2c2d31 url('../img/intro768x1024@2x.jpg') bottom / cover no-repeat;
 	}
 
 	@media (max-width: 415px) {
-		background: #2c2d31 url('../img/intro414x736.jpg') center / cover no-repeat;
+		background: #2c2d31 url('../img/intro414x736@2x.jpg') bottom / cover no-repeat;
 	}
 
 	@media (max-width: 375px) {
-		background: #2c2d31 url('../img/intro375x667.jpg') center / cover no-repeat;
+		background: #2c2d31 url('../img/intro375x667@2x.jpg') bottom / cover no-repeat;
 	}
 
 	@media (max-width: 375px) and (min-width: 740px) {
-		background: #2c2d31 url('../img/intro375x812.jpg') center / cover no-repeat;
+		background: #2c2d31 url('../img/intro375x812@2x.jpg') bottom / cover no-repeat;
 	}
 
 	@media (max-width: 360px) {
-		background: #2c2d31 url('../img/intro360x640.jpg') center / cover no-repeat;
+		background: #2c2d31 url('../img/intro360x640@2x.jpg') bottom / cover no-repeat;
 	}
-}
 
-@media only screen and (-webkit-min-device-pixel-ratio: 1.3),
-only screen and (-o-min-device-pixel-ratio: 13/10),
-only screen and (min-resolution: 120dpi) {
-
-	div.intro {
-		@media (min-width: 1920px) {
-			background: #2c2d31 url('../img/original.jpg') center / cover no-repeat;
-		}
-
-		@media (max-width: 1920px) {
-			background: #2c2d31 url('../img/intro1920x1080@2x.jpg') center / cover no-repeat;
-		}
-
-		@media (max-width: 1366px) {
-			background: #2c2d31 url('../img/intro1366x768@2x.jpg') center / cover no-repeat;
-		}
-
-		@media (max-width: 1280px) {
-			background: #2c2d31 url('../img/intro1280x1024@2x.jpg') center / cover no-repeat;
-		}
-
-		@media (max-width: 768px) {
-			background: #2c2d31 url('../img/intro768x1024@2x.jpg') center / cover no-repeat;
-		}
-
-		@media (max-width: 415px) {
-			background: #2c2d31 url('../img/intro414x736@2x.jpg') center / cover no-repeat;
-		}
-
-		@media (max-width: 375px) {
-			background: #2c2d31 url('../img/intro375x667@2x.jpg') center / cover no-repeat;
-		}
-
-		@media (max-width: 375px) and (min-width: 740px) {
-			background: #2c2d31 url('../img/intro375x812@2x.jpg') center / cover no-repeat;
-		}
-
-		@media (max-width: 360px) {
-			background: #2c2d31 url('../img/intro360x640@2x.jpg') center / cover no-repeat;
-		}
-
-		/* Swap higher DPI images */
-		-moz-osx-font-smoothing: grayscale;
-		-webkit-font-smoothing: antialiased;
-	}
+	/* Swap higher DPI images */
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
 }
 
 .intro--darked {
