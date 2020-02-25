@@ -7,19 +7,6 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 $(document).ready(function () {
-  $('.gallery__stage').slick({
-    lazyLoad: 'ondemand',
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    infinite: true,
-    speed: 500,
-    fade: true,
-    cssEase: 'linear',
-    dots: false,
-    arrows: true
-  });
-});
-$(document).ready(function () {
   $('.guests__map-container').lazyLoadGoogleMaps({
     key: 'AIzaSyAHphXTH_roi5WSOoimgW7m5xDzk5JEb38',
     language: 'ru',

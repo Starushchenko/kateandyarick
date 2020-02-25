@@ -1,7 +1,7 @@
 // assets and script style addons
 @import "libs/animate.scss";
 @import "libs/jquery.fancybox.scss";
-@import "libs/slick.scss";
+//@import "libs/slick.scss";
 
 // global styles
 @import "reset.scss";
@@ -13,8 +13,8 @@
 // BEM blocks
 @import "../../blocks/about/about.scss";
 @import "../../blocks/comments/comments.scss";
+@import "../../blocks/family-crest/family-crest.scss";
 @import "../../blocks/footer/footer.scss";
-@import "../../blocks/gallery/gallery.scss";
 @import "../../blocks/global-menu/global-menu.scss";
 @import "../../blocks/grid/grid.scss";
 @import "../../blocks/guests/guests.scss";
@@ -27,4 +27,5 @@
 @import "../../blocks/story-map/story-map.scss";
 @import "../../blocks/timeline/timeline.scss";
 @import "../../blocks/wedding/wedding.scss";
+@import "../../blocks/wedding-dance/wedding-dance.scss";
 @import "../../blocks/wedding-team/wedding-team.scss";

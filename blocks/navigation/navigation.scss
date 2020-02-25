@@ -4,7 +4,15 @@
 @import "../../assets/styles/mixins.scss";
 
 .navigation {
-	z-index: 5;
+
+	&.active {
+		z-index: 5;
+		width: 100vw;
+		height: 100vh;
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
 
 	a {
 		text-decoration: none;

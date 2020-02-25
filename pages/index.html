@@ -6,7 +6,7 @@
 		<meta charset="utf-8">
 		<meta content="width=device-width, initial-scale=1" name="viewport">
 		<meta
-			content="Сайт о главном событии Ярослава и Екатерины, а также небольшой эксурс в наши счастливые будни. Здесь будут все детали для наших дорогих гостей!"
+			content="Сайт о главном событии Ярослава и Екатерины, а также небольшой эксурс в наши счастливые будни. Здесь все детали о свадьбе, которая состоялась 9 сентября 2019 года"
 			name="description">
 		<meta content="создание семьи старущенко, событие в крыму, стобойтакблизко" name="keywords">
 		<meta content="ie=edge" http-equiv="x-ua-compatible">
@@ -493,10 +493,14 @@
 			<div class="global-menu">
 				<nav class="global-menu__wrap">
 					<a class="global-menu__item global-menu__item--big" href="#about-section" tabindex="-1">О
-						Ярике и
-						Кате</a>
+						Ярике и Кате</a>
 					<a class="global-menu__item global-menu__item--big" href="#wedding-section" tabindex="-1">Наша
 						свадьба</a>
+					<a class="global-menu__item global-menu__item--big" href="#photo-section" tabindex="-1">Фото и видео</a>
+					<a class="global-menu__item global-menu__item--big" href="#dance-section"
+						 tabindex="-1">Свадебный танец</a>
+					<a class="global-menu__item global-menu__item--big" href="#crest-section"
+						 tabindex="-1">Герб семьи Старущенко</a>
 					<a class="global-menu__item global-menu__item--big" href="#guests-section" tabindex="-1">Гости
 					</a>
 					<a class="global-menu__item global-menu__item--big" href="#hashtag-section"
@@ -505,12 +509,7 @@
 					<a class="global-menu__item global-menu__item--big" href="#team-section" tabindex="-1">Команда
 					</a>
 					<a class="global-menu__item global-menu__item--big" href="#story-map-section"
-						 tabindex="-1">География
-						нашей
-						любви</a>
-					<a class="global-menu__item global-menu__item--big" href="#gallery-section"
-						 tabindex="-1">Галерея
-					</a>
+						 tabindex="-1">География нашей любви</a>
 					<a class="global-menu__item global-menu__item--big" href="#comments-section"
 						 tabindex="-1">Обсуждение
 					</a>
@@ -547,10 +546,20 @@
 				</p>
 			</div>
 			
-			<a data-fancybox data-type="iframe" data-src="//vk.com/video_ext.php?oid=-16779914&id=456239202&hash=b7e91d602a3a9521&hd=4" href="javascript:;" class="about__lovestory-wrap fadeIn wow" data-wow-delay="0.1s" data-wow-offset="50">
-				<img class="lazy" data-src="img/lovestory-video-bg.jpg"
-					src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="">
-				видео
+			<a class="about__lovestory-wrap fadeIn wow" data-fancybox
+				 data-src="//vk.com/video_ext.php?oid=-16779914&id=456239202&hash=b7e91d602a3a9521&hd=4" data-type="iframe"
+				 data-wow-delay="0.1s" data-wow-offset="50" href="javascript:;">
+				<img alt="Ярослав и Екатерина, фото Д. Страхова" class="lazy"
+						 data-src="img/lovestory-video-bg.jpg"
+						 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+				<div class="about__lovestory-button wow fadeIn">
+					<span><span class="about__word-see">Смотреть </span>видео Lovestory</span>
+					<svg fill="none" height="40" viewBox="0 0 30 40" width="30" xmlns="http://www.w3.org/2000/svg">
+						<path
+							d="M27.4375 16.2844L5.52991 1.0749C4.51817 0.372005 3.49877 0 2.65146 0C1.01333 0 0 1.33326 0 3.56497V36.4371C0 38.6662 1.01205 39.9969 2.64635 39.9969C3.49494 39.9969 4.49806 39.6245 5.51203 38.9197L27.4299 23.7106C28.8394 22.7308 29.62 21.4125 29.62 19.9967C29.6203 18.5818 28.8487 17.2638 27.4375 16.2844Z"
+							fill="white"/>
+					</svg>
+				</div>
 			</a>
 			
 			<div class="timeline">
@@ -744,7 +753,6 @@
 			<div class="wedding__places">
 				<div class="wedding__place-item wow fadeIn" itemprop="location" itemscope itemtype="http://schema.org/Place">
 					<svg class="wedding__arch-icon" id="arch-full" viewBox="0 0 97.42 141.05" xmlns="http://www.w3.org/2000/svg">
-						<title>wedding arch</title>
 						<g id="arch-main">
 							<path
 								d="M31,126.68h-.14c-.46,1.57-1,3.13-1.51,4.68s-1.07,3.19-1.65,4.77Q26,140.9,24,145.54c1.37.12,2.76.18,4.17.22l6.31-18.95Z"
@@ -1188,8 +1196,16 @@
 			</div>
 			
 			<div class="wedding__schedule-wrapper">
-				<h3 class="wedding__schedule-title wow fadeInUp" tabindex="0">Расписание мероприятий</h3>
-				<div class="wedding__schedule">
+				<h3 class="wedding__schedule-title wow fadeInUp js_show-schedule" tabindex="0">
+					Расписание мероприятия
+					
+					<svg class="wedding__schedule-icon" width="40" height="22" viewBox="0 0 40 22" fill="none"
+							 xmlns="http://www.w3.org/2000/svg">
+						<path d="M39.5113 0.48872C38.8596 -0.162907 37.8063 -0.162907 37.1547 0.48872L20 17.6434L2.84531 0.48872C2.19369 -0.162907 1.14035 -0.162907 0.48872 0.48872C-0.162907 1.14035 -0.162907 2.19368 0.48872 2.84531L18.8217 21.1783C19.1467 21.5033 19.5733 21.6666 20 21.6666C20.4267 21.6666 20.8534 21.5033 21.1784 21.1783L39.5114 2.84531C40.1629 2.19368 40.1629 1.14035 39.5113 0.48872Z" fill="#3D708D"/>
+					</svg>
+				</h3>
+				<div class="wedding__schedule-dropdown">
+					<div class="wedding__schedule">
 					<div class="wedding__schedule-item wow fadeIn" data-wow-delay="0.2s" data-wow-offset="50">
 						<svg class="wedding__dress-icon" viewBox="0 0 70.33 119.57" xmlns="http://www.w3.org/2000/svg">
 							<title>Wedding dress</title>
@@ -1334,7 +1350,117 @@
 						<span class="wedding__schedule-event">Свадебный банкет, танцпол и живая музыка</span>
 					</div>
 				</div>
+				</div>
 			</div>
+		</section>
+		
+		<section class="wedding" id="photo-section">
+			<h2 class="wedding__title wow fadeInUp" data-wow-offset="50" tabindex="0">Фото и видео</h2>
+			
+			<div class="wedding__galleries">
+				<div class="wedding__gallery-block js_photogallery-trigger wow fadeIn" data-wow-offset="50">
+					<img alt="Фотогалерея" class="lazy"
+							 data-src="img/wedding-gallery-bg.jpg"
+							 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+					<div class="wedding__gallery-button wow fadeIn">
+						<svg fill="none" height="36" viewBox="0 0 40 36" width="40" xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M20.2563 12.374C18.0029 12.374 16.176 14.2008 16.176 16.4543C16.176 18.7077 18.0028 20.5345 20.2563 20.5345C22.5097 20.5345 24.3365 18.7078 24.3365 16.4543C24.3365 14.2008 22.5098 12.374 20.2563 12.374ZM20.2563 18.5915C19.0759 18.5915 18.119 17.6346 18.119 16.4542C18.119 15.2738 19.0759 14.3169 20.2563 14.3169C21.4367 14.3169 22.3936 15.2738 22.3936 16.4542C22.3936 17.6346 21.4367 18.5915 20.2563 18.5915Z"
+								fill="#3d708d"/>
+							<path
+								d="M36.5289 3.04779L10.0076 0.0362851C8.97827 -0.110055 7.93539 0.190435 7.14177 0.862076C6.34824 1.47737 5.83958 2.38944 5.73312 3.38789L5.24743 7.37097H3.74154C1.60427 7.37097 0.00131268 9.2653 0.00131268 11.4026V31.2693C-0.0525189 33.3073 1.55601 35.0033 3.59418 35.0571C3.64327 35.0584 3.69245 35.0587 3.74154 35.058H30.4086C32.5458 35.058 34.4888 33.4065 34.4888 31.2693V30.4921C35.1514 30.3641 35.78 30.0994 36.3346 29.7149C37.1216 29.0523 37.6255 28.1139 37.7432 27.092L39.9777 7.37097C40.2054 5.22876 38.6681 3.3017 36.5289 3.04779ZM32.5458 31.2693C32.5458 32.3379 31.4772 33.1151 30.4086 33.1151H3.74154C2.7762 33.1434 1.97068 32.3838 1.94232 31.4185C1.94083 31.3687 1.94148 31.319 1.94427 31.2693V27.6748L9.47326 22.1374C10.3777 21.443 11.6516 21.5047 12.4849 22.2831L17.7794 26.9462C18.5834 27.6213 19.5956 27.9986 20.6453 28.0148C21.4661 28.0248 22.2734 27.8063 22.9769 27.3833L32.5459 21.8459V31.2693H32.5458ZM32.5458 19.563L21.9567 25.7318C21.0474 26.2705 19.8965 26.173 19.0908 25.489L13.7477 20.7773C12.2163 19.4614 9.97811 19.3807 8.356 20.583L1.94427 25.2461V11.4026C1.94427 10.3339 2.6729 9.31393 3.74154 9.31393H30.4086C31.5503 9.36125 32.4723 10.2623 32.5458 11.4026V19.563ZM38.0366 7.10869C38.0359 7.1151 38.0353 7.12161 38.0346 7.12803L35.7516 26.849C35.7555 27.3604 35.5224 27.8447 35.1202 28.1605C34.9258 28.3548 34.4887 28.452 34.4887 28.5491V11.4026C34.412 9.18971 32.6221 7.42108 30.4085 7.37097H7.1903L7.62746 3.5822C7.72229 3.09158 7.9788 2.64698 8.35609 2.31925C8.78209 2.02471 9.29717 1.88739 9.81336 1.93062L36.2861 4.99075C37.3542 5.09218 38.138 6.04042 38.0366 7.10869Z"
+								fill="#3d708d"/>
+						</svg>
+						<span>Нажмите, чтобы открыть фотогалерею</span>
+					</div>
+				</div>
+				
+				<a class="wedding__gallery-block wow fadeIn" data-fancybox
+					 data-src="//vk.com/video_ext.php?oid=-16779914&id=456239207&hash=86d99f374ea92211&hd=2"
+					 data-type="iframe" data-wow-offset="50" href="javascript:;">
+					<img alt="Свадебный клип" class="lazy"
+							 data-src="img/video-clip-bg.jpg"
+							 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+					<div class="wedding__gallery-button wedding__gallery-button--video wow fadeIn">
+						<span>Свадебный клип</span>
+						<svg fill="none" height="35" viewBox="0 0 31 35" width="31" xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M27.9575 13.4613L7.28555 0.71875C5.78998 -0.201984 3.9818 -0.240265 2.44857 0.616347C0.915334 1.47282 0 3.03285 0 4.78908V30.1581C0 32.8136 2.13965 34.9856 4.76944 34.9999C4.77662 34.9999 4.7838 35 4.79084 35C5.61265 34.9999 6.46906 34.7424 7.26894 34.2543C7.9124 33.8617 8.11577 33.0218 7.72319 32.3784C7.3306 31.7349 6.49059 31.5316 5.84733 31.9242C5.4732 32.1523 5.10782 32.2704 4.78414 32.2703C3.7919 32.2649 2.72953 31.415 2.72953 30.1582V4.78915C2.72953 4.03576 3.12218 3.36672 3.7798 2.99929C4.43749 2.63186 5.21303 2.64826 5.85376 3.04277L26.5257 15.7853C27.147 16.1679 27.5026 16.8057 27.5011 17.5354C27.4996 18.265 27.1414 18.9014 26.5167 19.2827L11.5708 28.4338C10.9279 28.8274 10.7259 29.6676 11.1195 30.3104C11.513 30.9533 12.3532 31.1553 12.9961 30.7617L27.9402 21.6117C29.3711 20.7388 30.2273 19.2171 30.2307 17.5409C30.2342 15.8648 29.384 14.3396 27.9575 13.4613Z"
+								fill="#3d708d"/>
+						</svg>
+					</div>
+				</a>
+			</div>
+			
+			<a class="wedding__gallery-more" href="https://yadi.sk/d/qF_Gx_CG6RhsVA" target="_blank">
+				<svg class="wedding__yadisk-icon" fill="none" height="45" viewBox="0 0 45 45" width="45"
+						 xmlns="http://www.w3.org/2000/svg">
+					<g clip-path="url(#clip0)">
+						<path d="M25.0296 35.1809C36.5951 32.4034 44.8382 26.3629 43.4409 21.6892C42.0436 17.0154 31.5352 15.4782 19.9696 18.2558C8.40406 21.0333 0.161027 27.0737 1.55829 31.7475C2.95556 36.4212 13.464 37.9584 25.0296 35.1809Z"
+									fill="black"
+									opacity="0.2"/>
+						<path
+							d="M21.0941 9.84375C11.2503 9.84375 13.5399 18.5216 8.49988 21.2303C3.38668 24.1312 6.20379 26.7281 7.03156 29.5313C8.42808 34.2052 12.3401 30.9029 23.9066 28.125C35.4725 25.3477 37.9595 25.7674 36.5628 21.0938C35.7253 18.3219 38.4741 15.753 32.4971 15.5084C27.6392 15.7744 28.1253 9.84375 21.0941 9.84375V9.84375Z"
+							fill="#4F4F4F"/>
+						<path d="M21.0937 9.84375C11.25 9.84375 13.5407 18.5223 8.50065 21.2311C5.77393 22.778 5.32364 24.2373 5.603 25.6888C5.84682 24.6949 6.65113 23.6839 8.50065 22.6346C13.5407 19.9258 11.25 11.25 21.0937 11.25C28.125 11.25 27.6395 17.1795 32.4975 16.9135C35.4278 17.0334 36.2578 17.7142 36.4444 18.7015C36.5877 16.99 36.6651 15.6778 32.4975 15.5072C27.6395 15.7733 28.125 9.84375 21.0937 9.84375ZM36.4279 20.2917C36.3711 20.9841 36.3302 21.7311 36.5625 22.5C36.6882 22.9207 36.7699 23.2874 36.8289 23.6316C36.9919 22.9904 36.8884 22.1842 36.5625 21.0938C36.4805 20.8224 36.4527 20.5572 36.4279 20.2917Z"
+									fill="white"
+									opacity="0.1"/>
+						<path
+							d="M25.0305 33.7757C36.5961 30.9982 44.8391 24.9578 43.4419 20.284C42.0446 15.6103 31.5361 14.0731 19.9706 16.8506C8.40503 19.6281 0.162004 25.6686 1.55927 30.3423C2.95653 35.0161 13.465 36.5533 25.0305 33.7757Z"
+							fill="#2E72DE"/>
+						<path d="M24.8597 37.3767C30.2705 36.084 34.23 33.0974 33.7033 30.7059C33.1767 28.3144 28.3634 27.4237 22.9525 28.7164C17.5417 30.0091 13.5822 32.9957 14.1088 35.3872C14.6355 37.7786 19.4488 38.6694 24.8597 37.3767Z"
+									fill="black"
+									opacity="0.2"/>
+						<path
+							d="M24.8597 35.9702C30.2705 34.6775 34.23 31.6909 33.7033 29.2994C33.1767 26.9079 28.3634 26.0172 22.9525 27.3099C17.5417 28.6026 13.5822 31.5892 14.1088 33.9807C14.6355 36.3721 19.4488 37.2629 24.8597 35.9702Z"
+							fill="white"/>
+						<path d="M30.3199 15.4743C27.0376 15.5343 23.479 16.0075 19.9708 16.8503C14.5992 18.1432 9.68505 20.2203 6.24461 22.6521C2.80417 25.084 1.10063 27.6844 1.48629 29.9158C1.89848 27.7765 3.96129 25.4495 7.32774 23.3261C10.6942 21.2027 15.1589 19.4125 19.9708 18.2565C22.721 17.596 25.5098 17.1609 28.1779 16.9759C30.8459 16.791 33.341 16.8599 35.5207 17.1787C37.7003 17.4975 39.5218 18.06 40.8811 18.834C42.2405 19.608 43.111 20.5784 43.4431 21.6898C43.4753 21.8298 43.4991 21.9718 43.5145 22.1155C43.6388 21.4775 43.6149 20.8636 43.4431 20.2835C42.9893 18.7638 41.5313 17.5153 39.2222 16.6691C36.913 15.8228 33.838 15.4101 30.3199 15.4743V15.4743Z"
+									fill="white"
+									opacity="0.1"/>
+					</g>
+					<defs>
+						<clipPath id="clip0">
+							<rect fill="white" height="45" width="45"/>
+						</clipPath>
+					</defs>
+				</svg>
+				
+				Смотреть ещё более 1000
+				фотографий</a>
+		</section>
+		
+		<div aria-hidden="true" class="section-spacer zoomIn wow" data-wow-delay="0.5s" data-wow-offset="50">
+			<svg class="section-spacer-icon" viewBox="0 0 640 172.97" xmlns="http://www.w3.org/2000/svg">
+				<title>Разделение секций</title>
+				<use xlink:href="#section-spacer-icon"></use>
+			</svg>
+		</div>
+		
+		<section class="wedding wedding-dance" id="dance-section">
+			<h2 class="wedding__title wow fadeInUp" data-wow-offset="50" tabindex="0">Свадебный танец</h2>
+			
+			<a class="wedding__gallery-block wedding__gallery-block--wide wow fadeIn" data-fancybox
+				 data-src="//vk.com/video_ext.php?oid=47856814&id=456239092&hash=28ebfebeec1b5646&hd=2"
+				 data-type="iframe" data-wow-offset="50" href="javascript:;">
+				<img alt="Свадебный танец Ярослава и Екатерины" class="lazy"
+						 data-src="img/wedding-dance.jpg"
+						 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+				<div class="wedding__gallery-button wedding__gallery-button--dance wow fadeIn">
+					<span>Смотреть видео</span>
+					<svg fill="none" height="35" viewBox="0 0 31 35" width="31" xmlns="http://www.w3.org/2000/svg">
+						<path
+							d="M27.9575 13.4613L7.28555 0.71875C5.78998 -0.201984 3.9818 -0.240265 2.44857 0.616347C0.915334 1.47282 0 3.03285 0 4.78908V30.1581C0 32.8136 2.13965 34.9856 4.76944 34.9999C4.77662 34.9999 4.7838 35 4.79084 35C5.61265 34.9999 6.46906 34.7424 7.26894 34.2543C7.9124 33.8617 8.11577 33.0218 7.72319 32.3784C7.3306 31.7349 6.49059 31.5316 5.84733 31.9242C5.4732 32.1523 5.10782 32.2704 4.78414 32.2703C3.7919 32.2649 2.72953 31.415 2.72953 30.1582V4.78915C2.72953 4.03576 3.12218 3.36672 3.7798 2.99929C4.43749 2.63186 5.21303 2.64826 5.85376 3.04277L26.5257 15.7853C27.147 16.1679 27.5026 16.8057 27.5011 17.5354C27.4996 18.265 27.1414 18.9014 26.5167 19.2827L11.5708 28.4338C10.9279 28.8274 10.7259 29.6676 11.1195 30.3104C11.513 30.9533 12.3532 31.1553 12.9961 30.7617L27.9402 21.6117C29.3711 20.7388 30.2273 19.2171 30.2307 17.5409C30.2342 15.8648 29.384 14.3396 27.9575 13.4613Z"
+							fill="#3d708d"/>
+					</svg>
+				</div>
+			</a>
+			
+			<p class="wedding-dance__desc">
+				Свадебный танец стал кульминацией всего торжества. Не случайно была выбрана музыкальная композиция "С тобой
+				так близко" из художественного фильма "Зачарованная". Кстати, если вы хотите такой же свадебный танец или
+				даже лучше, то вам помогут в <a href="https://sevweddance.ru" target="_blank">студии свадебного танца "О
+				любви"</a>.
+			</p>
 			
 			<div class="wedding__family-ready wow fadeIn" data-wow-delay="0.8s" data-wow-offset="50">
 				<svg class="wedding__car-icon" id="wedding-car-icon" viewBox="0 0 132.8 98.79"
@@ -1503,11 +1629,29 @@
 			</svg>
 		</div>
 		
+		<section class="family-crest" id="crest-section">
+			<h2 class="family-crest__title">Герб семьи Старущенко</h2>
+			<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+					 data-src="img/family-crest.png" alt="Герб семьи Старущенко"
+					 class="family-crest__image lazy">
+			<p class="family-crest__desc">Каждая благородная семья имеет свою геральдику, вот и мы обзавелись собственным
+				гербом прямо в день создания семьи. Он полностью отражает наше мировоззрение: здесь наши любимые
+				цвета (королевский синий и бирюзовый), наши тотемные животные и принципы, которые преследуем.
+				Семья, творчество, дружба, взаимовыручка, достижение целей и познание мира, а также ещё ряд других
+				ценностей, образ которых был проработан совместно с прекрасной художницей и геральдистом Тори&nbsp;Воробьевой
+				.</p>
+		</section>
+		
+		<div aria-hidden="true" class="section-spacer zoomIn wow" data-wow-delay="0.5s" data-wow-offset="50">
+			<svg class="section-spacer-icon" viewBox="0 0 640 172.97" xmlns="http://www.w3.org/2000/svg">
+				<title>Разделение секций</title>
+				<use xlink:href="#section-spacer-icon"></use>
+			</svg>
+		</div>
+		
 		<section class="guests" id="guests-section">
-			<h2 class="guests__title fadeIn wow" data-wow-offset="50">Гости</h2>
+			<h2 class="guests__title fadeIn wow" data-wow-offset="50">Подружки невесты и друзья жениха</h2>
 			<a aria-hidden="true" class="keyboard-section-anchor" onclick="javascript:void(0);" tabindex="0"></a>
-			<h3 class="guests__section-title fadeIn wow" data-wow-delay="0.2s" data-wow-offset="50">Подружки невесты и друзья
-				жениха</h3>
 			
 			<div class="grid__wrapper">
 				<div class="grid guests__grid">
@@ -1778,7 +1922,11 @@
 				</div>
 			</div>
 			
-			<div class="guests__lists">
+			<a data-fancybox href="img/friends-full.jpg" class="guests__friends-full wow fadeIn">
+				<img alt="Друзья жениха и подруги невесты" class="lazy" data-src="img/friends-full.jpg"
+						 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+			</a>
+			<!--DEV<div class="guests__lists">
 				<h3 class="guests__list-title fadeIn wow" data-wow-offset="50">Родственники</h3>
 				<a aria-hidden="true" class="keyboard-section-anchor" onclick="javascript:void(0);" tabindex="0"></a>
 				
@@ -1942,8 +2090,8 @@
 							itemtype="http://schema.org/Person">
 						<span itemprop="name">Лиза Бакулина</span>
 					</li>
-					<!--DEV<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
-					    itemtype="http://schema.org/Person"><span itemprop="name">Вова Грошев</span></li>-->
+					<li class="guests__name fadeIn wow" itemscope itemprop="attendee"
+					    itemtype="http://schema.org/Person"><span itemprop="name">Вова Грошев</span></li>
 					<li class="guests__name fadeIn wow" itemprop="attendee" itemscope
 							itemtype="http://schema.org/Person">
 						<span itemprop="name">Макс Чорный</span>
@@ -1991,11 +2139,11 @@
 				</ol>
 			</div>
 			
-			<div class="guests__map">
+			 <div class="guests__map">
 				<h3 class="guests__map-title fadeInUp wow" data-wow-offset="50">География наших гостей</h3>
 				<a aria-hidden="true" class="keyboard-section-anchor" onclick="javascript:void(0);" tabindex="0"></a>
 				<div class="guests__map-container" id="guests-map"></div>
-			</div>
+			</div>-->
 		</section>
 		
 		<div aria-hidden="true" class="section-spacer zoomIn wow" data-wow-delay="0.5s" data-wow-offset="50">
@@ -2510,105 +2658,6 @@
 			</svg>
 		</div>
 		
-		<section class="gallery" id="gallery-section">
-			<h2 class="gallery__title fadeInUp wow" data-wow-offset="50">Галерея</h2>
-			<a aria-hidden="true" class="keyboard-section-anchor" onclick="javascript:void(0);" tabindex="0"></a>
-			
-			<div class="gallery__stage fadeIn wow" data-wow-offset="50">
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image lazy" data-src="img/gallery1.jpg"
-							 src="img/image-loader.gif">
-				</div>
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image lazy" data-src="img/gallery2.jpg"
-							 src="img/image-loader.gif">
-				</div>
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image lazy" data-src="img/gallery3.jpg"
-							 src="img/image-loader.gif">
-				</div>
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image" data-lazy="img/gallery4.jpg"
-							 src="img/image-loader.gif">
-				</div>
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image" data-lazy="img/gallery5.jpg"
-							 src="img/image-loader.gif">
-				</div>
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image" data-lazy="img/gallery6.jpg"
-							 src="img/image-loader.gif">
-				</div>
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image" data-lazy="img/gallery7.jpg"
-							 src="img/image-loader.gif">
-				</div>
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image" data-lazy="img/gallery7-1.jpg"
-							 src="img/image-loader.gif">
-				</div>
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image" data-lazy="img/gallery7-2.jpg"
-							 src="img/image-loader.gif">
-				</div>
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image" data-lazy="img/gallery8.jpg"
-							 src="img/image-loader.gif">
-				</div>
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image" data-lazy="img/gallery9.jpg"
-							 src="img/image-loader.gif">
-				</div>
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image" data-lazy="img/gallery10.jpg"
-							 src="img/image-loader.gif">
-				</div>
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image" data-lazy="img/gallery11.jpg"
-							 src="img/image-loader.gif">
-				</div>
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image" data-lazy="img/gallery12.jpg"
-							 src="img/image-loader.gif">
-				</div>
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image" data-lazy="img/gallery13.jpg"
-							 src="img/image-loader.gif">
-				</div>
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image" data-lazy="img/gallery14.jpg"
-							 src="img/image-loader.gif">
-				</div>
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image" data-lazy="img/gallery15.jpg"
-							 src="img/image-loader.gif">
-				</div>
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image" data-lazy="img/gallery16.jpg"
-							 src="img/image-loader.gif">
-				</div>
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image" data-lazy="img/gallery17.jpg"
-							 src="img/image-loader.gif">
-				</div>
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image" data-lazy="img/gallery18.jpg"
-							 src="img/image-loader.gif">
-				</div>
-				<div class="gallery__item">
-					<img alt="Фотосессия Александра и Марины Санти" class="gallery__image" data-lazy="img/gallery19.jpg"
-							 src="img/image-loader.gif">
-				</div>
-			</div>
-		</section>
-		
-		<div aria-hidden="true" class="section-spacer zoomIn wow" data-wow-delay="0.5s" data-wow-offset="50">
-			<svg class="section-spacer-icon" viewBox="0 0 640 172.97" xmlns="http://www.w3.org/2000/svg">
-				<title>Разделение секций</title>
-				<use xlink:href="#section-spacer-icon"></use>
-			</svg>
-		</div>
-		
 		<section class="comments" id="comments-section">
 			<h2 class="comments__title">Обсуждение</h2>
 			<p class="comments__note">Для оставления комментариев необходимо быть авторизованным VK</p>
@@ -2618,7 +2667,7 @@
 		
 		<footer class="footer" role="contentinfo">
 			<div class="footer__copyright">
-				<span class="footer__author">Дизайн и разработка сайта - Ярослав&nbsp;Старущенко</span>
+				<span class="footer__author">Дизайн и разработка сайта - <a href="https://ururustaru.ru" target="_blank">Ярослав&nbsp;Старущенко</a></span>
 				<a aria-hidden="true" class="keyboard-section-anchor" onclick="javascript:void(0);" tabindex="0"></a>
 				<div class="footer__social">
 					<a class="footer__social-link footer__social-link--vk" href="https://vk.com/yarick_starushchenko"
@@ -2715,7 +2764,7 @@
 		<script src="js/jquery.lazy-load-google-maps.min.js"></script>
 		
 		<!--jquery-плагин для слайдера галереи-->
-		<script src="js/slick.min.js"></script>
+		<!--<script src="js/slick.min.js"></script>-->
 		
 		<!--API ВК-->
 		<script src="js/vk-openapi.js"></script>

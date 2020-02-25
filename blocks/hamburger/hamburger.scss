@@ -44,6 +44,12 @@
 	background-color: var(--button-bg);
 	pointer-events: auto;
 	transform: translateZ(30px);
+
+	.fancybox-active & {
+		z-index: 0;
+		visibility: hidden;
+		opacity: 0;
+	}
 }
 
 .hamburger::after {

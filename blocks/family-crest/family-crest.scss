@@ -1,0 +1,38 @@
+// В этом файле должны быть стили для БЭМ-блока family-crest, его элементов, 
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий
+@import "../../assets/styles/variables.scss";
+@import "../../assets/styles/mixins.scss";
+
+.family-crest {
+	@include container;
+	text-align: center;
+	padding-top: 70px;
+}
+
+.family-crest__title {
+	@include section-title;
+	text-align: center;
+}
+
+.family-crest__image {
+	max-width: 100%;
+	width: 600px;
+}
+
+.family-crest__desc {
+	max-width: 900px;
+	font-size: 18px;
+	line-height: 1.5;
+	margin: -30px auto 0;
+}
+
+@media (max-width: 768px) {
+	.family-crest {
+		padding-top: 40px;
+	}
+	.family-crest__desc {
+		font-size: 16px;
+		line-height: 1.4;
+		width: calc(100% - 20px);
+	}
+}

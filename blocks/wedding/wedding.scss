@@ -49,6 +49,7 @@
 	.wedding__date-day {
 		width: 32px;
 	}
+
 	.wedding__date-year {
 		width: 125px;
 	}
@@ -72,6 +73,7 @@ html:not(.edge-browser) .wedding__date-bg {
 
 .wedding__date-day {
 	opacity: 0;
+
 	path {
 		stroke-width: 10px;
 		stroke-dashoffset: 800;
@@ -80,6 +82,7 @@ html:not(.edge-browser) .wedding__date-bg {
 
 .wedding__date-year {
 	opacity: 0;
+
 	path {
 		stroke-width: 10px;
 		stroke-dashoffset: 800;
@@ -95,6 +98,7 @@ html:not(.edge-browser) .wedding__date-bg {
 	.wedding__date-year {
 		opacity: 1;
 	}
+
 	.wedding__date-month {
 		animation: fadeIn 0.5s linear forwards;
 		animation-delay: 2.3s;
@@ -295,7 +299,7 @@ html:not(.edge-browser) {
 
 .wedding__color.wedding__color--full {
 	position: fixed;
-	top:0;
+	top: 0;
 	left: 0;
 	width: 100vw;
 	height: 100vh;
@@ -346,6 +350,11 @@ html:not(.edge-browser) {
 .wedding__schedule {
 	display: flex;
 	justify-content: space-around;
+}
+
+.wedding__schedule-dropdown {
+	display: none;
+	margin-top: 36px;
 }
 
 .wedding__schedule-item {
@@ -404,7 +413,25 @@ html:not(.edge-browser) {
 .wedding__schedule-title {
 	color: $secondary-text;
 	font-size: 32px;
-	margin-bottom: 36px;
+	display: inline-flex;
+	align-items: center;
+	border-bottom: 1px dashed;
+	cursor: pointer;
+	outline: none;
+
+	svg {
+		width: 22px;
+		margin-left: 13px;
+		position: relative;
+		top: 2px;
+		transition: 0.3s;
+	}
+
+	&.active {
+		svg {
+			transform: rotate(180deg);
+		}
+	}
 }
 
 .wedding__schedule-wrapper {
@@ -441,9 +468,120 @@ html:not(.edge-browser) {
 .wedding__family-ready {
 	width: 400px;
 	max-width: 100%;
-	margin: 70px auto 10px;
+	margin: 120px auto 10px;
 	position: relative;
 	left: -30px;
+}
+
+.wedding__galleries {
+	display: flex;
+}
+
+.wedding__gallery-block {
+	position: relative;
+	max-width: 900px;
+	margin: 20px 10px 0;
+	overflow: hidden;
+	cursor: pointer;
+	height: 0;
+	padding-bottom: 31%;
+	width: 100%;
+	background: whitesmoke;
+	display: block;
+
+	&--wide {
+		margin: 0 auto;
+		padding-bottom: 52%;
+	}
+
+	img {
+		max-width: 100%;
+		transition: 0.3s;
+	}
+
+	&:hover {
+		img {
+			filter: brightness(0.95);
+			transform: scale(1.05);
+		}
+
+		.wedding__gallery-button {
+			box-shadow: 0px 10px 20px rgba(61, 112, 141, 0.49);
+		}
+	}
+}
+
+.wedding__gallery-button {
+	@include fancy-button;
+	background: #fff;
+	color: $secondary-text;
+	font-weight: 400;
+	letter-spacing: 0.3px;
+	position: absolute;
+	line-height: 1.5;
+	text-align: left;
+	padding: 25px 50px;
+	font-size: 17px;
+	bottom: 50%;
+	left: 50%;
+	transform: translate(-50%, 50%);
+	background: rgba(255, 255, 255, 0.8);
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	min-width: 415px;
+
+	.wedding__gallery-block:hover & {
+		background: #fff;
+	}
+
+	svg {
+		margin-right: 25px;
+		height: 55px;
+		min-width: 55px;
+	}
+}
+
+.wedding__gallery-button--video {
+	min-width: 340px;
+
+	svg {
+		height: 44px;
+		min-width: 36px;
+		margin-right: 0;
+		margin-left: 30px;
+	}
+}
+
+.wedding__gallery-button--dance {
+	min-width: 240px;
+
+	svg {
+		height: 44px;
+		min-width: 36px;
+		margin-right: 0;
+		margin-left: 30px;
+	}
+}
+
+.wedding__gallery-more {
+	font-size: 24px;
+	margin: 14px 10px 0;
+	background: #3d708d;
+	font-weight: 300;
+	color: #fff;
+	position: relative;
+	transition: 0.3s;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 18px 50px;
+	background: linear-gradient(to right, $secondary-text, $color-accent-dark);
+	border: none;
+
+	svg {
+		margin-right: 15px;
+	}
 }
 
 @media (max-width: 1100px) {
@@ -554,6 +692,50 @@ html:not(.edge-browser) {
 	}
 	.wedding__notices {
 		margin-left: 20px;
+	}
+	.wedding__galleries {
+		flex-direction: column;
+	}
+	.wedding__gallery-button {
+		padding: 15px 20px;
+		font-size: 16px;
+		min-width: 300px;
+		font-weight: 700;
+
+		svg {
+			margin-right: 15px;
+			height: 35px;
+			min-width: 35px;
+		}
+	}
+	.wedding__gallery-more {
+		padding: 12px 20px;
+		font-size: 18px;
+		line-height: 1.5;
+		margin-top: 15px;
+	}
+	.wedding__gallery-block {
+		padding-bottom: 75%;
+		width: calc(100% - 20px);
+		position: relative;
+
+		img {
+			max-width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			object-fit: cover;
+			height: 100%;
+		}
+	}
+	.wedding__gallery-button--dance {
+		min-width: 260px;
+
+		svg {
+			margin-right: 0;
+		}
 	}
 }
 

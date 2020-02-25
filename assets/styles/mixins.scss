@@ -194,6 +194,20 @@ $media-direction: max !default;
 	box-sizing: border-box;
 }
 
+@mixin fancy-button {
+	z-index: 2;
+	background: $secondary-text;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 15px 40px;
+	color: #fff;
+	border-radius: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.6px;
+	transition: 0.3s;
+}
+
 @mixin section-title {
 	font-weight: 700;
 	font-size: 48px;

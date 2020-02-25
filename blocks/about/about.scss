@@ -24,9 +24,46 @@
 	width: 900px;
 	display: block;
 	margin-top: 40px;
+	position: relative;
+	max-width: 100%;
+	overflow: hidden;
 
 	img {
 		width: 100%;
+		transition: 0.3s;
+		min-height: 250px;
+		object-fit: cover;
+	}
+}
+
+.about__lovestory-button {
+	@include fancy-button;
+	position: absolute;
+	bottom: 40px;
+	right: 40px;
+
+	span {
+		margin-right: 20px;
+	}
+
+	.about__word-see {
+		margin-right: 0;
+	}
+
+	svg {
+		height: 30px;
+	}
+}
+
+.about__lovestory-wrap:hover {
+	img {
+		filter: brightness(0.95);
+		transform: scale(1.05);
+	}
+
+	.about__lovestory-button {
+		transform: scale(1.05) translate(-10px, -10px);
+		box-shadow: 0 10px 20px rgba(61, 112, 141, 0.49);
 	}
 }
 
@@ -36,6 +73,27 @@
 
 		p {
 			font-size: 16px;
+		}
+	}
+}
+
+@media (max-width: 570px) {
+	.about__word-see {
+		display: none;
+	}
+	.about__lovestory-button {
+		font-size: 16px;
+		padding: 13px 25px;
+		bottom: 18px;
+		right: 10px;
+
+		span {
+			font-size: 16px;
+			margin-right: 8px;
+		}
+
+		svg {
+			height: 20px;
 		}
 	}
 }
